@@ -1,0 +1,49 @@
+{
+    "name": "holidayz/holidayz-manager-monorepo",
+    "type": "project",
+    "description": "Monorepo for the Holidayz Manager travel platform.",
+    "keywords": ["laravel", "monorepo", "travel"],
+    "license": "proprietary",
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.0",
+        "laravel/pint": "^1.0"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/*"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Holidayz\\Packages\\Core\\": "packages/Core/src/"
+    
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "scripts": {
+        "pint": [
+            "./vendor/bin/pint"
+        ],
+        "test": [
+            "./vendor/bin/pest"
+        ]
+    }
+}

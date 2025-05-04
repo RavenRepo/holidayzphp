@@ -1,0 +1,44 @@
+# General
+/.idea
+/.vscode
+*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# PHP / Composer
+/vendor
+composer.lock
+
+# Laravel specific
+/storage/*.key
+/public/hot
+/public/storage
+homestead.yaml
+homestead.json
+.vagrant
+
+# Env files (Allow template)
+.env
+!/.env.example
+
+# App Env files
+/apps/*/.env
+!/apps/*/.env.example
+
+# PHPUnit
+phpunit.xml
+!phpunit.xml.dist
+coverage/
+.phpunit.result.cache
+
+# Sail
+/docker-compose.yml
+/.docker/~
+/sail

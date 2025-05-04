@@ -1,0 +1,14 @@
+{
+    "name": "holidayz/common",
+    "description": "Shared common utilities for Holidayz Manager applications.",
+    "type": "library",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Holidayz\\Packages\\Common\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.2"
+    }
+} 
