@@ -59,3 +59,78 @@ This registry documents all files and directories in the Holidayz Manager monore
 | `memory-bank/techContext.md`  | File | Technologies, setup, constraints             | N/A             | Cline Workflow  |
 | `memory-bank/activeContext.md`| File | Current focus, next steps, decisions         | N/A             | Cline Workflow  |
 | `memory-bank/progress.md`     | File | What works, what's left, status, issues      | N/A             | Cline Workflow  |
+
+
+# File and Directory Registry
+
+## Frontend Application
+- `/apps/frontend/resources/views/components/ui/`
+  - `/layout/`
+    - `app.blade.php`: Main layout component with header and footer
+    - `header.blade.php`: Main navigation header component
+    - `footer.blade.php`: Site-wide footer component
+    - `page-heading.blade.php`: Reusable page heading with optional subtitle
+    - `section.blade.php`: Container section with background and padding options
+  - `/forms/`
+    - `button.blade.php`: Button component with variants and sizes
+    - `input.blade.php`: Input field with label and error handling
+  - `/feedback/`
+    - `alert.blade.php`: Alert component with multiple types (info, success, warning, error) and dismissible options
+    - `modal.blade.php`: Accessible modal dialog with customizable width, header, footer, and close functionality
+  - `/cards/`: Card components (to be implemented)
+  - `/carousel/`
+    - `slick.blade.php`: Highly configurable Slick Carousel component using CDN for scripts and styles
+    - `slide.blade.php`: Standardized slide component for use within the Slick Carousel
+    - `demo.blade.php`: Demo page showing carousel component usage with examples
+- `/apps/frontend/resources/views/`
+  - `welcome.blade.php`: Homepage view using UI layout components
+  - `home.blade.php`: New visually appealing homepage with multiple sections
+  - `components/demo.blade.php`: Demonstration page for UI components with usage examples
+- `/apps/frontend/resources/views/components/package-card.blade.php`: Blade component for displaying a single travel package card. Used by packages/index.blade.php. Imports: Tailwind classes, uses props for package data.
+- `/apps/frontend/resources/views/packages/index.blade.php`: Main package listing page. Extends layouts/app.blade.php. Uses: x-package-card component for each package.
+- `/apps/frontend/resources/views/components/home/`
+  - `hero-carousel.blade.php`: Hero carousel component for homepage
+  - `popular-packages.blade.php`: Component for displaying popular travel packages
+  - `why-choose-us.blade.php`: Component showcasing company features and benefits
+  - `testimonials.blade.php`: Customer testimonials slider component
+  - `blog-inspirations.blade.php`: Travel blog and inspiration articles section
+  - `cta-section.blade.php`: Call to action section with promotional content
+  - `lead-form.blade.php`: Lead capture form for customer information
+
+## Admin Application
+- `/apps/admin/resources/views/`
+  - `welcome.blade.php`: Admin dashboard landing page
+
+## Shared Resources
+- `/resources/css/`
+  - `global.css`: Global styles shared across applications
+- `/resources/design-system/`
+  - `theme-documentation.md`: Design system documentation
+
+## Packages
+- `/packages/Core/`
+  - `src/Traits/UsesUuid.php`: UUID implementation for models
+- `/packages/Common/`
+  - Ready for shared functionality
+
+## Configuration Files
+- `/composer.json`: Root dependencies
+- `/package.json`: Root JS dependencies
+- `/apps/frontend/composer.json`: Frontend app dependencies
+- `/apps/admin/composer.json`: Admin app dependencies
+
+## Documentation
+- `/memory-bank/`
+  - [activeContext.md](cci:7://file:///d:/Projects%20files/holidayzphp/memory-bank/activeContext.md:0:0-0:0): Current project state and decisions
+  - [progress.md](cci:7://file:///d:/Projects%20files/holidayzphp/memory-bank/progress.md:0:0-0:0): Project progress tracking
+  - `norepeatfiles.md`: File registry (this file)
+  - `projectbrief.md`: Project overview
+  - `systemPatterns.md`: Architecture patterns
+  - `techContext.md`: Technical context
+  - `productContext.md`: Product context
+- `/design-system.md`: Design system documentation
+
+## Data Flow
+1. Frontend components use shared resources from `/resources/`
+2. Both frontend and admin apps use packages from `/packages/`
+3. Shared CSS and design system ensure consistent styling

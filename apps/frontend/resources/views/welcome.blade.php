@@ -1,19 +1,41 @@
-<x-layout>
-    <x-header />
+<x-ui.layout.app>
 
     <main>
         <!-- Hero Section -->
-        <section class="section" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1600x600?text=Travel+Destination'); background-size: cover; background-position: center; color: white; text-align: center; padding: 5rem 1.5rem;">
-            <div class="container fade-in">
-                <h1 style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 2.5rem; margin-bottom: 1rem;">Your Dream Vacation Starts Here</h1>
-                <p style="font-family: 'Open Sans', sans-serif; font-size: 1.25rem; margin: 1rem auto 2rem; max-width: 800px;">Discover the world with Holidayz Manager, your trusted partner in creating unforgettable travel experiences.</p>
-                <div class="search-bar" style="background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 8px; max-width: 700px; margin: 0 auto;">
-                    <div class="flex-desktop" style="gap: 1rem; flex-wrap: wrap;">
-                        <input type="text" placeholder="Destination" style="flex: 1; padding: 0.5rem; border: 1px solid var(--neutral-medium); border-radius: 4px; font-family: 'Open Sans', sans-serif;">
-                        <input type="date" style="flex: 1; padding: 0.5rem; border: 1px solid var(--neutral-medium); border-radius: 4px; font-family: 'Open Sans', sans-serif;">
-                        <input type="number" placeholder="Travelers" min="1" style="flex: 1; padding: 0.5rem; border: 1px solid var(--neutral-medium); border-radius: 4px; font-family: 'Open Sans', sans-serif;">
-                        <button class="btn btn-accent" style="background-color: var(--accent); color: var(--neutral-dark);">Search Packages</button>
-                    </div>
+        <x-ui.layout.section
+            class="bg-cover bg-center text-white text-center py-20"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1600x600?text=Travel+Destination')"
+            padding="none"
+        >
+            <div class="fade-in">
+                <x-ui.layout.page-heading
+                    title="Your Dream Vacation Starts Here"
+                    subtitle="Discover the world with Holidayz Manager, your trusted partner in creating unforgettable travel experiences."
+                    class="text-white max-w-4xl mx-auto"
+                />
+                <div class="bg-white/90 p-4 rounded-lg max-w-3xl mx-auto mt-8">
+                    <form class="flex flex-wrap gap-4">
+                        <x-ui.forms.input
+                            name="destination"
+                            placeholder="Destination"
+                            class="flex-1"
+                        />
+                        <x-ui.forms.input
+                            type="date"
+                            name="date"
+                            class="flex-1"
+                        />
+                        <x-ui.forms.input
+                            type="number"
+                            name="travelers"
+                            placeholder="Travelers"
+                            min="1"
+                            class="flex-1"
+                        />
+                        <x-ui.forms.button type="submit" variant="primary" size="lg">
+                            Search Packages
+                        </x-ui.forms.button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -122,5 +144,4 @@
         </section>
     </main>
 
-    <x-footer />
-</x-layout>
+</x-ui.layout.app>

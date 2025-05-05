@@ -1,40 +1,67 @@
-# System Patterns: Holidayz Manager
+# System Patterns - HolidayzPHP
 
-*(To be populated as patterns emerge)*
+## Architecture Overview
+- Monorepo structure with separate frontend, admin, and API applications
+- Shared packages for common functionality
+- Component-based frontend architecture
 
-## System Architecture
+## Design Patterns
+1. **Component Architecture**
+   - Namespaced UI components (`x-ui.*`)
+   - Hierarchical component organization
+   - Consistent props and styling patterns
+   - Component composition for complex UIs
 
-- **Monorepo:** Single Git repository housing multiple applications (`apps/`) and shared code (`packages/`).
-  - `apps/frontend`: Public Laravel application.
-  - `apps/admin`: Admin Laravel application.
-  - `apps/api`: (Potential) API application/routes.
-- **Layered Architecture (within Laravel apps):** Standard MVC pattern expected.
+2. **Package Structure**
+   - Core package for fundamental functionality
+   - Common package for shared utilities
+   - Clear separation of concerns
 
-## Key Technical Decisions
+3. **Frontend Architecture**
+   - Blade templates with Tailwind CSS
+   - Alpine.js for interactive functionality
+   - Responsive design principles
 
-- Use Laravel (latest LTS) as the core backend framework.
-- Employ Blade templating with Tailwind CSS and Alpine.js for the frontend.
-- Use MySQL with UUIDs for primary keys in main tables.
-- Leverage Spatie packages for Roles/Permissions and Activity Logging.
-- Utilize Composer path repositories for managing shared local `packages`.
+4. **Backend Architecture**
+   - Laravel 10+ framework
+   - RESTful API design
+   - MySQL with UUID primary keys
 
-## Design Patterns in Use
+5. **Authentication & Authorization**
+   - Laravel Breeze/Jetstream
+   - Spatie roles and permissions
+   - Laravel Socialite integration
 
-- Model-View-Controller (MVC) - inherent in Laravel.
-- Repository Pattern (Potentially for data access abstraction).
-- Service Layer (Potentially for complex business logic).
-- Dependency Injection (Laravel service container).
+## Implementation Guidelines
+1. **Component Creation**
+   - Place in appropriate `/components/ui/[category]` directory
+   - Use namespaced component naming: `x-ui.[category].[name]`
+   - Include props validation and documentation
+   - Follow accessibility best practices
 
-## Component Relationships
+2. **Component Categories**
+   - `/layout`: Page structure components (app, header, footer, section)
+   - `/forms`: Input elements and controls
+   - `/cards`: Content display components
+   - `/feedback`: User interaction feedback (alerts, modals)
 
-- `apps/*` applications depend on shared code in `packages/*`.
-- Shared `packages` encapsulate core domain logic (Booking, Itinerary, Models).
-- Frontend and Admin apps interact with the same database schema.
+3. **Component Props**
+   - Use `@props` directive for prop definition
+   - Provide default values where appropriate
+   - Document expected prop types and formats
+   - Use consistent prop naming across components
 
-## Critical Implementation Paths
+2. **Package Development**
+   - Maintain in `/packages` directory
+   - Clear versioning
+   - Comprehensive documentation
 
-- Authentication and Authorization (Roles/Permissions).
-- Package management CRUD and display.
-- Booking workflow.
-- Itinerary builder logic and UI.
-- Shared package development and integration.
+3. **Resource Management**
+   - Shared resources in root `/resources`
+   - App-specific resources in respective app directories
+   - Clear asset organization
+
+4. **Testing Strategy**
+   - Unit tests for packages
+   - Feature tests for applications
+   - Integration tests for API
