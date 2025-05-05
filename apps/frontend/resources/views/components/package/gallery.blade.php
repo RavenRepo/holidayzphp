@@ -1,25 +1,25 @@
 @props(['images'])
 
-<div class="relative">
+<div class="relative space-y-6">
     <!-- Main Image -->
-    <div class="aspect-[16/9] overflow-hidden rounded-2xl mb-4">
+    <div class="aspect-[16/9] overflow-hidden rounded-2xl group cursor-pointer">
         <img 
             src="{{ asset('images/packages/' . $images[0]) }}" 
             alt="Main Package Image"
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             loading="lazy"
             decoding="async"
         >
     </div>
 
     <!-- Thumbnail Grid -->
-    <div class="grid grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         @foreach(array_slice($images, 1, 4) as $image)
-            <div class="aspect-square overflow-hidden rounded-xl">
+            <div class="aspect-square overflow-hidden rounded-xl group cursor-pointer">
                 <img 
                     src="{{ asset('images/packages/' . $image) }}" 
                     alt="Package Image"
-                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                     decoding="async"
                 >

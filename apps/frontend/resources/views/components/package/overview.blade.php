@@ -1,34 +1,37 @@
 @props(['duration', 'price', 'highlights'])
 
-<div class="bg-white/70 backdrop-blur-md rounded-2xl border border-gray-100 shadow-soft p-6">
-    <!-- Duration and Price -->
-    <div class="flex justify-between items-center mb-8">
-        <div class="flex items-center gap-2">
-            <span class="text-brandblue">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-            </span>
-            <span class="text-lg font-medium text-gray-700">{{ $duration }}</span>
+<div class="bg-white/70 backdrop-blur-md rounded-2xl border border-gray-100 shadow-soft p-6 space-y-8">
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+        <!-- Duration & Price -->
+        <div class="bg-white/70 backdrop-blur-md rounded-2xl border border-gray-100 p-8 shadow-soft hover:shadow-lg transition-all duration-300">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-brandblue mb-2">Duration</h3>
+                    <p class="text-lg text-gray-700">{{ $duration }}</p>
+                </div>
+                <div class="text-right">
+                    <h3 class="text-xl font-bold text-brandblue mb-2">Price</h3>
+                    <p class="text-lg text-gray-700">₹{{ number_format($price) }}</p>
+                </div>
+            </div>
         </div>
-        <div class="text-right">
-            <span class="text-sm text-gray-500">Starting from</span>
-            <div class="text-2xl font-bold text-brandblue">₹{{ number_format($price) }}</div>
+
+        <!-- Book Now Button -->
+        <div class="bg-white/70 backdrop-blur-md rounded-2xl border border-gray-100 p-8 shadow-soft hover:shadow-lg transition-all duration-300 flex items-center justify-center">
+            <a href="#enquiry-form" class="bg-brandblue text-white px-10 py-4 rounded-full text-lg font-medium hover:bg-saffron transition-colors duration-300 hover:scale-105 transform">
+                Book Now
+            </a>
         </div>
     </div>
 
     <!-- Highlights -->
-    <div>
-        <h3 class="text-xl font-bold text-brandblue mb-4">Highlights</h3>
-        <ul class="space-y-3">
+    <div class="bg-white/70 backdrop-blur-md rounded-2xl border border-gray-100 p-8 shadow-soft hover:shadow-lg transition-all duration-300">
+        <h3 class="text-2xl font-bold text-brandblue mb-8">Highlights</h3>
+        <ul class="grid md:grid-cols-2 gap-6">
             @foreach($highlights as $highlight)
-                <li class="flex items-start gap-3">
-                    <span class="text-saffron mt-1">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                        </svg>
-                    </span>
-                    <span class="text-gray-700">{{ $highlight }}</span>
+                <li class="flex items-start gap-4">
+                    <span class="text-saffron text-xl">✓</span>
+                    <span class="text-gray-700 text-lg">{{ $highlight }}</span>
                 </li>
             @endforeach
         </ul>

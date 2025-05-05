@@ -1,95 +1,73 @@
 @props(['days'])
 
-<div class="space-y-4">
+<div x-data="{ selected: 0 }" class="space-y-6">
     @foreach($days as $index => $day)
-        <div x-data="{ open: false }" class="bg-white/70 backdrop-blur-md rounded-2xl border border-gray-100 shadow-soft overflow-hidden">
-            <!-- Day Header -->
+        <div class="bg-white/70 backdrop-blur-md rounded-2xl border border-gray-100 shadow-soft overflow-hidden hover:shadow-lg transition-all duration-300">
             <button 
-                @click="open = !open" 
-                class="w-full flex items-center justify-between p-6 text-left"
-                :class="{ 'border-b border-gray-100': open }"
+                class="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-gray-50/50 transition-colors duration-300"
+                @click="selected !== {{ $index }} ? selected = {{ $index }} : selected = null"
             >
-                <div class="flex items-center gap-4">
-                    <span class="flex items-center justify-center w-12 h-12 rounded-full bg-brandblue/10 text-brandblue font-bold">
-                        Day {{ $index + 1 }}
-                    </span>
-                    <h3 class="text-lg font-bold text-brandblue">{{ $day['title'] }}</h3>
+                <div>
+                    <span class="text-sm text-saffron font-medium mb-1 block">Day {{ $index + 1 }}</span>
+                    <h3 class="text-xl font-bold text-brandblue">{{ $day['title'] }}</h3>
                 </div>
-                <svg 
-                    class="w-5 h-5 text-brandblue transition-transform duration-300"
-                    :class="{ 'rotate-180': open }"
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                >
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
+                <span class="text-brandblue transform transition-transform duration-300" :class="{'rotate-180': selected === {{ $index }}}">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </span>
             </button>
 
-            <!-- Day Details -->
             <div 
-                x-show="open" 
-                x-collapse 
-                class="p-6 bg-gray-50/50"
+                x-show="selected === {{ $index }}"
+                x-collapse
+                class="px-8 pb-8"
             >
-                <div class="prose prose-brandblue max-w-none">
-                    {!! $day['description'] !!}
+                <p class="text-lg text-gray-700 mb-8 leading-relaxed">{{ $day['description'] }}</p>
+
+                <!-- Activities -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-medium text-brandblue mb-4">Today's Activities:</h4>
+                    <ul class="grid gap-3 text-gray-700">
+                        @foreach($day['activities'] as $activity)
+                            <li class="flex items-start gap-3">
+                                <span class="text-saffron mt-1">•</span>
+                                <span class="text-lg">{{ $activity }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
 
-                @if(isset($day['activities']) && count($day['activities']) > 0)
-                    <div class="mt-4">
-                        <h4 class="font-medium text-gray-700 mb-2">Activities:</h4>
-                        <ul class="space-y-2">
-                            @foreach($day['activities'] as $activity)
-                                <li class="flex items-start gap-2">
-                                    <span class="text-saffron mt-1">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                        </svg>
-                                    </span>
-                                    <span class="text-gray-600">{{ $activity }}</span>
-                                </li>
-                            @endforeach
-                        </ul>
+                <!-- Meals -->
+                <div>
+                    <h4 class="text-lg font-medium text-brandblue mb-4">Meals:</h4>
+                    <div class="flex gap-8">
+                        <div class="flex items-center gap-2">
+                            <span class="{{ $day['meals']['breakfast'] ? 'text-saffron' : 'text-gray-400' }}">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </span>
+                            <span class="text-lg {{ $day['meals']['breakfast'] ? 'text-gray-700' : 'text-gray-400' }}">Breakfast</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="{{ $day['meals']['lunch'] ? 'text-saffron' : 'text-gray-400' }}">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </span>
+                            <span class="text-lg {{ $day['meals']['lunch'] ? 'text-gray-700' : 'text-gray-400' }}">Lunch</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="{{ $day['meals']['dinner'] ? 'text-saffron' : 'text-gray-400' }}">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </span>
+                            <span class="text-lg {{ $day['meals']['dinner'] ? 'text-gray-700' : 'text-gray-400' }}">Dinner</span>
+                        </div>
                     </div>
-                @endif
-
-                @if(isset($day['meals']))
-                    <div class="mt-4 flex items-center gap-6">
-                        @if($day['meals']['breakfast'])
-                            <div class="flex items-center gap-2">
-                                <span class="text-saffron">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8 4-8-4V5l8 4 8-4v2z"/>
-                                    </svg>
-                                </span>
-                                <span class="text-sm text-gray-600">Breakfast</span>
-                            </div>
-                        @endif
-
-                        @if($day['meals']['lunch'])
-                            <div class="flex items-center gap-2">
-                                <span class="text-saffron">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-                                    </svg>
-                                </span>
-                                <span class="text-sm text-gray-600">Lunch</span>
-                            </div>
-                        @endif
-
-                        @if($day['meals']['dinner'])
-                            <div class="flex items-center gap-2">
-                                <span class="text-saffron">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-                                    </svg>
-                                </span>
-                                <span class="text-sm text-gray-600">Dinner</span>
-                            </div>
-                        @endif
-                    </div>
-                @endif
+                </div>
             </div>
         </div>
     @endforeach

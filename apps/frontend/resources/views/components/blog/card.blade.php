@@ -13,11 +13,13 @@
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         <div class="absolute bottom-4 left-4 right-4">
             <div class="flex flex-wrap gap-2 mb-2">
-                @foreach($post['categories'] as $category)
-                    <span class="bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium text-brandblue shadow-soft">
-                        {{ $category }}
-                    </span>
-                @endforeach
+                @if(!empty($post['categories']) && is_array($post['categories']))
+                    @foreach($post['categories'] as $category)
+                        <span class="bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium text-brandblue shadow-soft">
+                            {{ $category }}
+                        </span>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
@@ -33,19 +35,21 @@
         
         <!-- Author and Date -->
         <div class="mt-auto flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <img 
-                    src="{{ asset('images/authors/' . $post['author']['avatar']) }}" 
-                    alt="{{ $post['author']['name'] }}"
-                    class="w-10 h-10 rounded-full border-2 border-saffron"
-                    loading="lazy"
-                    decoding="async"
-                >
-                <div>
-                    <p class="text-sm font-medium text-brandblue">{{ $post['author']['name'] }}</p>
-                    <p class="text-sm text-gray-600">{{ $post['date'] }}</p>
+            @if(!empty($post['author']) && is_array($post['author']))
+                <div class="flex items-center gap-3">
+                    <img 
+                        src="{{ asset('images/authors/' . $post['author']['avatar']) }}" 
+                        alt="{{ $post['author']['name'] }}"
+                        class="w-10 h-10 rounded-full border-2 border-saffron"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                    <div>
+                        <p class="text-sm font-medium text-brandblue">{{ $post['author']['name'] }}</p>
+                        <p class="text-sm text-gray-600">{{ $post['date'] }}</p>
+                    </div>
                 </div>
-            </div>
+            @endif
             <a 
                 href="#" 
                 class="text-brandblue hover:text-saffron transition-colors"

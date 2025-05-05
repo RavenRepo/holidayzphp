@@ -111,7 +111,7 @@
                     ],
                     [
                         'name' => 'Kerala',
-                        'description' => 'Discover God's own country and backwaters',
+                        'description' => 'Discover God\'s own country and backwaters',
                         'image' => 'kerala.jpg',
                         'tags' => ['Nature', 'Wellness', 'Culture']
                     ],
@@ -126,8 +126,6 @@
                         'description' => 'Explore the abode of clouds and living root bridges',
                         'image' => 'meghalaya.jpg',
                         'tags' => ['Nature', 'Adventure', 'Culture']
-                    ],
-                    [
                     ],
                     [
                         'name' => 'Rajasthan',

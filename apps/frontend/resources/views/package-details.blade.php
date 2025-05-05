@@ -6,13 +6,13 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="relative py-20 bg-gradient-to-br from-brandblue/5 via-white to-saffron/10 overflow-hidden">
-        <div class="container mx-auto px-4">
+    <section class="relative py-24 md:py-32 bg-gradient-to-br from-brandblue/5 via-white to-saffron/10 overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
             <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-brandblue mb-6">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-brandblue mb-6 drop-shadow">
                     {{ $package['name'] }}
                 </h1>
-                <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                <p class="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
                     {{ $package['description'] }}
                 </p>
             </div>
@@ -20,10 +20,10 @@
     </section>
 
     <!-- Main Content -->
-    <div class="container mx-auto px-4 py-16">
-        <div class="grid lg:grid-cols-3 gap-8">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl py-16 md:py-24">
+        <div class="grid lg:grid-cols-3 gap-8 lg:gap-12">
             <!-- Left Content -->
-            <div class="lg:col-span-2 space-y-16">
+            <div class="lg:col-span-2 space-y-20">
                 <!-- Gallery -->
                 <div>
                     <x-package.gallery :images="$package['images']" />

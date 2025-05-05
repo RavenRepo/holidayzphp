@@ -13,11 +13,9 @@ Route::get('/', function () {
 
 Route::get('/destinations', function () {
     return view('destinations');
-});
+})->name('destinations');
 
-Route::get('/package/{slug}', function ($slug) {
-    return view('package-details', ['slug' => $slug]);
-})->name('package.details');
+Route::get('/package/{slug}', [PackageController::class, 'show'])->name('package.details');
 
 Route::post('/package/enquiry', [PackageController::class, 'submitEnquiry'])->name('package.enquiry');
 
