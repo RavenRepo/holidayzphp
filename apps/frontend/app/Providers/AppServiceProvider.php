@@ -28,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
             'layout.page-heading' => 'components.ui.layout.page-heading',
             'layout.section' => 'components.ui.layout.section',
             
+            // Feature Components
+            'why-choose-us.why-choose-us' => 'components.ui.why-choose-us.why-choose-us',
+            
             // Form Components
             'forms.button' => 'components.ui.forms.button',
             'forms.input' => 'components.ui.forms.input',

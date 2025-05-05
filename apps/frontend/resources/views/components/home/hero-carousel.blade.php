@@ -8,8 +8,8 @@
             <div class="bg-white rounded-lg shadow-xl p-6 max-w-5xl mx-auto">
                 <form class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                        <label for="destination" class="block text-sm font-medium text-gray-700 mb-1">Destination</label>
-                        <select id="destination" name="destination" class="w-full rounded-md border-gray-300 shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50">
+                        <label for="hero-destination" class="block text-sm font-medium text-gray-700 mb-1">Destination</label>
+                        <select id="hero-destination" name="destination" class="w-full rounded-md border-gray-300 shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50">
                             <option value="">Any Destination</option>
                             <option value="goa">Goa</option>
                             <option value="kerala">Kerala</option>

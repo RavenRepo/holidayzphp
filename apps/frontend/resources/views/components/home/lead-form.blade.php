@@ -61,8 +61,8 @@
                         </div>
                         
                         <div>
-                            <label for="destination" class="block text-sm font-medium text-gray-700 mb-1">Preferred Destination(s)</label>
-                            <select id="destination" name="destination" class="w-full rounded-md border-gray-300 shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50">
+                            <label for="lead-form-destination" class="block text-sm font-medium text-gray-700 mb-1">Preferred Destination(s)</label>
+                            <select id="lead-form-destination" name="destination" class="w-full rounded-md border-gray-300 shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50">
                                 <option value="">Select destination</option>
                                 <option value="goa">Goa</option>
                                 <option value="kerala">Kerala</option>
