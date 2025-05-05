@@ -60,6 +60,21 @@ This file records all custom Tailwind classes, theme extensions, and utility pat
   - Use this card for packages, blog posts, CTAs, and more for a consistent UI.
   - Extend with slots or additional props as needed.
 
+## Why Choose Us Component
+- **Location:** `components/ui/why-choose-us/why-choose-us.blade.php`
+- **Usage:**
+  - Use as `<x-ui.why-choose-us.why-choose-us :features="$features" />`
+  - Features array should include `icon`, `title`, and `description` for each feature.
+- **Custom Classes/Patterns:**
+  - `bg-gradient-to-br from-saffron/10 via-white to-brandblue/5` (section background)
+  - `bg-white/70 backdrop-blur-md` (glassmorphism effect on cards)
+  - `bg-gradient-to-br from-saffron/80 to-brandblue/80` (icon background)
+  - `shadow-soft`, `shadow-card`, `rounded-2xl`, `drop-shadow`, `font-poppins`, `font-open-sans`
+  - Responsive grid: `grid-cols-1 md:grid-cols-2 lg:grid-cols-4`
+- **Notes:**
+  - This component is now modular and can be reused anywhere in the project.
+  - All custom classes are defined in `tailwind.config.js` and should be kept in sync with this registry.
+
 ---
 
 _Last updated: 2025-05-05_ 

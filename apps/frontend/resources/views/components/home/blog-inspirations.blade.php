@@ -4,10 +4,10 @@
     <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center mb-16">
             <div>
-                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-brand-blue mb-3">Travel Inspirations</h2>
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-brandblue mb-3">Travel Inspirations</h2>
                 <p class="text-lg font-open-sans text-neutral-600 leading-relaxed">Discover stories and tips to inspire your next adventure</p>
             </div>
-            <a href="/blog" class="mt-6 md:mt-0 inline-flex items-center font-medium text-brand-blue hover:text-brand-blue-dark transition-colors duration-300">
+            <a href="/blog" class="mt-6 md:mt-0 inline-flex items-center font-medium text-brandblue hover:text-brandblue-dark transition-colors duration-300">
                 <span>View All Articles</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -25,7 +25,7 @@
                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         >
                         @if(isset($post['category']))
-                            <div class="absolute top-4 left-4 bg-white px-4 py-1.5 rounded-full text-sm font-medium text-brand-blue shadow-soft">
+                            <div class="absolute top-4 left-4 bg-white px-4 py-1.5 rounded-full text-sm font-medium text-brandblue shadow-soft">
                                 {{ $post['category'] }}
                             </div>
                         @endif
@@ -47,7 +47,7 @@
                                 </span>
                             @endif
                         </div>
-                        <h3 class="text-xl font-poppins font-semibold text-neutral-800 mb-3 group-hover:text-brand-blue transition-colors duration-300">
+                        <h3 class="text-xl font-poppins font-semibold text-neutral-800 mb-3 group-hover:text-brandblue transition-colors duration-300">
                             <a href="{{ $post['link'] }}">{{ $post['title'] }}</a>
                         </h3>
                         <p class="text-neutral-600 font-open-sans mb-6 line-clamp-3">{{ $post['excerpt'] }}</p>
