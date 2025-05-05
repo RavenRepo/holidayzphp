@@ -11,8 +11,17 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/destinations', function () {
+    return view('destinations');
+});
+
+Route::get('/package/{slug}', function ($slug) {
+    return view('package-details', ['slug' => $slug]);
+})->name('package.details');
+
+Route::post('/package/enquiry', [PackageController::class, 'submitEnquiry'])->name('package.enquiry');
+
 Route::view('/about', 'about')->name('about');
-Route::view('/destinations', 'destinations')->name('destinations');
 Route::view('/blog', 'blog')->name('blog');
 Route::view('/contact', 'contact')->name('contact');
 Route::view('/privacy', 'privacy')->name('privacy');

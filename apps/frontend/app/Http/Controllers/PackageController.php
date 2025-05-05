@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail\PackageEnquiry;
+use Illuminate\Support\Facades\Mail;
 
 class PackageController extends Controller
 {
@@ -43,4 +45,28 @@ class PackageController extends Controller
 
         return view('packages.index', compact('packages'));
     }
-} 
+
+    /**
+     * Handle package enquiry form submission.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function submitEnquiry(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'mobile' => 'required|string|max:20',
+            'travel_date' => 'required|date|after:today',
+            'travellers' => 'required|string',
+            'message' => 'nullable|string|max:1000',
+            'package' => 'required|string|max:255',
+        ]);
+
+        // Send email notification
+        Mail::to(config('mail.admin_email'))->send(new PackageEnquiry($validated));
+
+        return back()->with('success', 'Thank you for your enquiry. Our team will contact you shortly.');
+    }
+}
