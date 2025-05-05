@@ -1,52 +1,92 @@
-<footer class="bg-brand-blue-dark text-white py-16">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div>
-                <h3 class="text-2xl font-poppins font-bold mb-6 text-brand-saffron">Holidayz</h3>
-                <p class="font-open-sans text-neutral-200 leading-relaxed">Discover your next adventure with us. We provide personalized travel experiences to destinations worldwide.</p>
-            </div>
-            <div>
-                <h4 class="text-lg font-poppins font-semibold mb-6 text-brand-saffron-light">Explore</h4>
-                <ul class="space-y-4 font-open-sans">
-                    <li><a href="/destinations" class="text-neutral-200 hover:text-white hover:translate-x-1 transform transition-all duration-300 inline-block">Destinations</a></li>
-                    <li><a href="/packages" class="text-neutral-200 hover:text-white hover:translate-x-1 transform transition-all duration-300 inline-block">Packages</a></li>
-                    <li><a href="/special-offers" class="text-neutral-200 hover:text-white hover:translate-x-1 transform transition-all duration-300 inline-block">Special Offers</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-lg font-poppins font-semibold mb-6 text-brand-saffron-light">Company</h4>
-                <ul class="space-y-4 font-open-sans">
-                    <li><a href="/about" class="text-neutral-200 hover:text-white hover:translate-x-1 transform transition-all duration-300 inline-block">About Us</a></li>
-                    <li><a href="/contact" class="text-neutral-200 hover:text-white hover:translate-x-1 transform transition-all duration-300 inline-block">Contact</a></li>
-                    <li><a href="/careers" class="text-neutral-200 hover:text-white hover:translate-x-1 transform transition-all duration-300 inline-block">Careers</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-lg font-poppins font-semibold mb-6 text-brand-saffron-light">Connect</h4>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-neutral-300 hover:text-brand-saffron transition-colors duration-300 transform hover:scale-110">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="text-neutral-300 hover:text-brand-saffron transition-colors duration-300 transform hover:scale-110">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="text-neutral-300 hover:text-brand-saffron transition-colors duration-300 transform hover:scale-110">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
-                        </svg>
-                    </a>
+<footer class="bg-gray-900 text-gray-200 pt-12 pb-6">
+    <div class="max-w-screen-2xl mx-auto px-4">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Left: Multi-column links -->
+            <div class="flex-1 grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold mb-3">Company</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:underline">About</a></li>
+                        <li><a href="#" class="hover:underline">Premium</a></li>
+                        <li><a href="#" class="hover:underline">Blog</a></li>
+                        <li><a href="#" class="hover:underline">Affiliate Program</a></li>
+                        <li><a href="#" class="hover:underline">Get Coupon</a></li>
+                    </ul>
                 </div>
-                <div class="mt-8">
-                    <p class="font-open-sans text-neutral-400 text-sm">Follow us on social media for travel inspiration and updates</p>
+                <div>
+                    <h3 class="font-bold mb-3">Order & Purchases</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:underline">Order Status</a></li>
+                        <li><a href="#" class="hover:underline">Track Your Order</a></li>
+                        <li><a href="#" class="hover:underline">Purchase History</a></li>
+                        <li><a href="#" class="hover:underline">Returns & Refunds</a></li>
+                        <li><a href="#" class="hover:underline">Payment Methods</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-3">Support & Services</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:underline">Contact Support</a></li>
+                        <li><a href="#" class="hover:underline">FAQs</a></li>
+                        <li><a href="#" class="hover:underline">Service Centers</a></li>
+                        <li><a href="#" class="hover:underline">Warranty Information</a></li>
+                        <li><a href="#" class="hover:underline">Product Manuals</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-3">Get Support</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:underline">Contact Us</a></li>
+                        <li><a href="#" class="hover:underline">Help Center</a></li>
+                        <li><a href="#" class="hover:underline">Community Forums</a></li>
+                        <li><a href="#" class="hover:underline">Technical Support</a></li>
+                        <li><a href="#" class="hover:underline">Live Chat</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Right: Newsletter, app, social -->
+            <div class="w-full lg:w-96 bg-gray-800 rounded-lg p-6 flex flex-col gap-4">
+                <a href="#" class="text-brandblue font-semibold hover:underline">Sign In or Create Account</a>
+                <div>
+                    <p class="text-sm mb-2">Get the latest deals and more.</p>
+                    <form class="flex gap-2">
+                        <input type="email" class="flex-1 rounded-md border border-gray-600 bg-gray-900 text-gray-200 px-3 py-2 text-sm focus:ring-brandblue focus:border-brandblue" placeholder="Enter your email address">
+                        <button type="submit" class="bg-brandblue hover:bg-saffron text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">Subscribe</button>
+                    </form>
+                </div>
+                <div>
+                    <p class="text-sm mb-2">Trade on the go with <a href="#" class="text-brandblue underline">Holidayz App</a></p>
+                    <div class="flex gap-2 mb-2">
+                        <a href="#" class="inline-flex items-center bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-md text-xs font-medium">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M17.564 12.095c.01-2.14 1.75-3.15 1.826-3.2-1-1.46-2.56-1.66-3.11-1.68-1.32-.13-2.58.77-3.25.77-.67 0-1.7-.75-2.8-.73-1.44.02-2.77.84-3.51 2.13-1.5 2.6-.38 6.44 1.08 8.55.72 1.04 1.58 2.2 2.7 2.16 1.09-.04 1.5-.7 2.81-.7 1.31 0 1.67.7 2.8.68 1.16-.02 1.89-1.05 2.6-2.09.82-1.19 1.16-2.34 1.17-2.4-.03-.01-2.24-.86-2.25-3.41z"/><path d="M15.45 6.13c.59-.72.99-1.72.88-2.73-.85.03-1.88.57-2.5 1.29-.55.64-1.03 1.66-.85 2.64.9.07 1.83-.51 2.47-1.2z"/></svg>
+                            Download on the Google Play
+                        </a>
+                        <a href="#" class="inline-flex items-center bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-md text-xs font-medium">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M17.564 12.095c.01-2.14 1.75-3.15 1.826-3.2-1-1.46-2.56-1.66-3.11-1.68-1.32-.13-2.58.77-3.25.77-.67 0-1.7-.75-2.8-.73-1.44.02-2.77.84-3.51 2.13-1.5 2.6-.38 6.44 1.08 8.55.72 1.04 1.58 2.2 2.7 2.16 1.09-.04 1.5-.7 2.81-.7 1.31 0 1.67.7 2.8.68 1.16-.02 1.89-1.05 2.6-2.09.82-1.19 1.16-2.34 1.17-2.4-.03-.01-2.24-.86-2.25-3.41z"/><path d="M15.45 6.13c.59-.72.99-1.72.88-2.73-.85.03-1.88.57-2.5 1.29-.55.64-1.03 1.66-.85 2.64.9.07 1.83-.51 2.47-1.2z"/></svg>
+                            Download on the Mac App Store
+                        </a>
+                    </div>
+                    <div class="flex gap-3 mt-2">
+                        <a href="#" class="text-gray-400 hover:text-brandblue"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195A4.92 4.92 0 0 0 16.616 3c-2.73 0-4.942 2.21-4.942 4.932 0 .386.045.763.127 1.124C7.728 8.807 4.1 6.884 1.671 3.965c-.423.722-.666 1.561-.666 2.475 0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.237-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.21-.005-.423-.014-.633A9.936 9.936 0 0 0 24 4.557z"/></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-brandblue"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .592 0 1.326v21.348C0 23.408.597 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.408 24 22.674V1.326C24 .592 23.403 0 22.675 0"/></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-brandblue"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c-5.468 0-9.837 4.369-9.837 9.837 0 4.991 3.657 9.128 8.438 9.877.617.113.843-.267.843-.595 0-.293-.011-1.07-.017-2.099-3.338.726-4.042-1.61-4.042-1.61-.562-1.429-1.374-1.809-1.374-1.809-1.123-.768.085-.753.085-.753 1.242.087 1.897 1.276 1.897 1.276 1.104 1.893 2.896 1.346 3.602 1.03.112-.799.432-1.346.785-1.656-2.665-.304-5.466-1.332-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.984-.399 3.003-.404 1.019.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.625-5.475 5.921.444.383.839 1.137.839 2.293 0 1.655-.015 2.987-.015 3.393 0 .33.224.713.849.592C20.544 21.287 24 17.151 24 12.163c0-5.468-4.369-9.837-9.837-9.837z"/></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-brandblue"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c-5.468 0-9.837 4.369-9.837 9.837 0 4.991 3.657 9.128 8.438 9.877.617.113.843-.267.843-.595 0-.293-.011-1.07-.017-2.099-3.338.726-4.042-1.61-4.042-1.61-.562-1.429-1.374-1.809-1.374-1.809-1.123-.768.085-.753.085-.753 1.242.087 1.897 1.276 1.897 1.276 1.104 1.893 2.896 1.346 3.602 1.03.112-.799.432-1.346.785-1.656-2.665-.304-5.466-1.332-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.984-.399 3.003-.404 1.019.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.625-5.475 5.921.444.383.839 1.137.839 2.293 0 1.655-.015 2.987-.015 3.393 0 .33.224.713.849.592C20.544 21.287 24 17.151 24 12.163c0-5.468-4.369-9.837-9.837-9.837z"/></svg></a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="mt-12 pt-8 border-t border-brand-blue text-center">
-            <p class="font-open-sans text-neutral-400 text-sm">&copy; {{ date('Y') }} Holidayz. All rights reserved.</p>
+        <div class="mt-12 border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <img src="/logo.svg" class="h-7 w-7" alt="Holidayz Manager Logo" />
+                <span class="font-poppins font-bold text-lg text-gray-200">Holidayz Manager</span>
+            </div>
+            <div class="text-xs text-gray-400 space-x-4">
+                <a href="#" class="hover:underline">Holidayz Express</a>
+                <a href="#" class="hover:underline">Legal Notice</a>
+                <a href="#" class="hover:underline">Product Listing Policy</a>
+                <a href="#" class="hover:underline">Terms of Use</a>
+            </div>
+            <div class="text-xs text-gray-400">© {{ date('Y') }} Holidayz Manager. All rights reserved.</div>
         </div>
     </div>
 </footer>

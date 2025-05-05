@@ -1,8 +1,8 @@
 @props(['slides' => []])
 
-<div class="relative bg-gray-100">
-    <div class="max-w-screen-2xl mx-auto overflow-hidden">
-        <div class="hero-slider relative w-full h-[550px] md:h-[600px] lg:h-[650px]">
+<div class="relative w-full bg-gray-100">
+    <div class="w-full overflow-hidden">
+        <div class="hero-slider relative w-full h-[23rem] md:h-[28rem] lg:h-[32rem]">
             @foreach($slides as $index => $slide)
                 <div class="hero-slide absolute inset-0 w-full h-full transition-opacity duration-1000 {{ $index === 0 ? 'opacity-100' : 'opacity-0' }}" data-slide="{{ $index }}">
                     <img 
@@ -13,7 +13,7 @@
                     >
                     <div class="absolute inset-0 bg-black bg-opacity-40"></div>
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="container mx-auto px-6 py-12">
+                        <div class="px-6 py-12 w-full">
                             <div class="max-w-xl mx-auto md:mx-0 text-center md:text-left">
                                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 opacity-0 translate-y-8 transition-all duration-700 delay-300" data-slide-content>
                                     {{ $slide['title'] }}

@@ -1,7 +1,8 @@
 import './bootstrap';
 
-// Import jQuery
+// Import jQuery and Slick Carousel from npm
 import $ from 'jquery';
+import 'slick-carousel';
 window.$ = window.jQuery = $;
 
 // Initialize popular packages carousel when the DOM is ready

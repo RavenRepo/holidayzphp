@@ -35,35 +35,15 @@
             >
                 @foreach($packages as $package)
                     <div class="px-4 py-2">
-                        <div class="bg-white rounded-xl overflow-hidden shadow-card transition-all duration-300 hover:shadow-xl hover:-translate-y-2 h-full">
-                            <div class="relative aspect-w-16 aspect-h-9">
-                                <img 
-                                    src="{{ $package['image'] }}" 
-                                    alt="{{ $package['title'] }}" 
-                                    class="w-full h-full object-cover"
-                                >
-                                <div class="absolute top-4 right-4 bg-brand-saffron text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-soft">
-                                    {{ $package['duration'] }}
-                                </div>
-                            </div>
-                            <div class="p-8">
-                                <h3 class="text-xl font-poppins font-semibold text-neutral-800 mb-3">{{ $package['title'] }}</h3>
-                                <p class="text-neutral-600 font-open-sans mb-6 line-clamp-2">{{ $package['description'] }}</p>
-                                <div class="flex justify-between items-center">
-                                    <div class="text-brand-blue font-poppins font-bold text-2xl">
-                                        ${{ number_format($package['price']) }}
-                                    </div>
-                                    <a href="{{ $package['link'] }}" 
-                                       class="inline-flex items-center text-brand-blue hover:text-brand-blue-dark font-medium transition-colors duration-300"
-                                    >
-                                        <span>View Details</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <x-ui.card.card
+                            :image="$package['image']"
+                            :alt="$package['title']"
+                            :badge="$package['duration']"
+                            :title="$package['title']"
+                            :description="$package['description']"
+                            :price="'$' . number_format($package['price'])"
+                            :action="'<a href=\'' . $package['link'] . '\' class=\'inline-flex items-center text-brandblue hover:text-brandblue-dark font-medium transition-colors duration-300\'>View Details</a>'"
+                        />
                     </div>
                 @endforeach
             </x-ui.carousel.slick>
@@ -73,35 +53,15 @@
         <div class="md:hidden grid grid-cols-1 gap-6">
             @foreach($packages as $package)
                 @if($loop->index < 3)
-                    <div class="bg-white rounded-xl overflow-hidden shadow-card">
-                        <div class="relative aspect-w-16 aspect-h-9">
-                            <img 
-                                src="{{ $package['image'] }}" 
-                                alt="{{ $package['title'] }}" 
-                                class="w-full h-full object-cover"
-                            >
-                            <div class="absolute top-4 right-4 bg-brand-saffron text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-soft">
-                                {{ $package['duration'] }}
-                            </div>
-                        </div>
-                        <div class="p-8">
-                            <h3 class="text-xl font-poppins font-semibold text-neutral-800 mb-3">{{ $package['title'] }}</h3>
-                            <p class="text-neutral-600 font-open-sans mb-6">{{ $package['description'] }}</p>
-                            <div class="flex justify-between items-center">
-                                <div class="text-brand-blue font-poppins font-bold text-2xl">
-                                    ${{ number_format($package['price']) }}
-                                </div>
-                                <a href="{{ $package['link'] }}" 
-                                   class="inline-flex items-center text-brand-blue hover:text-brand-blue-dark font-medium transition-colors duration-300"
-                                >
-                                    <span>View Details</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <x-ui.card.card
+                        :image="$package['image']"
+                        :alt="$package['title']"
+                        :badge="$package['duration']"
+                        :title="$package['title']"
+                        :description="$package['description']"
+                        :price="'$' . number_format($package['price'])"
+                        :action="'<a href=\'' . $package['link'] . '\' class=\'inline-flex items-center text-brandblue hover:text-brandblue-dark font-medium transition-colors duration-300\'>View Details</a>'"
+                    />
                 @endif
             @endforeach
             
