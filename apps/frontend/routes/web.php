@@ -2,13 +2,38 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ContactController;
 
+// Main Routes
 Route::get('/', function () {
     return view('home');
+})->name('home');
+
+Route::view('/about', 'about')->name('about');
+Route::view('/destinations', 'destinations')->name('destinations');
+Route::view('/blog', 'blog')->name('blog');
+Route::view('/contact', 'contact')->name('contact');
+Route::view('/privacy', 'privacy')->name('privacy');
+Route::view('/terms', 'terms')->name('terms');
+
+// Packages Routes
+Route::get('/packages', [PackageController::class, 'index'])->name('packages');
+
+// Authentication Routes
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [RegisterController::class, 'register']);
 });
 
-Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// UI Component Demo route
+// Contact Form Submission
+Route::post('/contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
+
+// UI Component Demo Routes
 Route::view('/ui-demo', 'components.demo')->name('ui.demo');
 Route::view('/ui-demo/carousel', 'components.ui.carousel.demo')->name('ui.demo.carousel');

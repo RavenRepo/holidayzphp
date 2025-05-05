@@ -3,52 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="@yield('meta_description', 'Your trusted travel partner for curated packages and custom itineraries across India.')">
     <title>@yield('title', 'Holidayz Manager')</title>
-    <!-- Google Fonts -->
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
     <!-- Vite Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="bg-white min-h-screen flex flex-col">
     <!-- Header -->
-    <header class="bg-brandblue text-white">
-        <div class="container mx-auto flex items-center justify-between py-4 px-4 md:px-8">
-            <div class="flex items-center gap-2">
-                <span class="font-heading text-2xl font-bold tracking-tight">Holidayz Manager</span>
-            </div>
-            <nav class="hidden md:flex gap-8 font-body text-lg">
-                <a href="#" class="hover:text-saffron transition-colors">Packages</a>
-                <a href="#" class="hover:text-saffron transition-colors">Blog</a>
-                <a href="#" class="hover:text-saffron transition-colors">Itinerary</a>
-                <a href="#" class="hover:text-saffron transition-colors">Contact</a>
-            </nav>
-            <!-- Mobile menu button (Alpine.js placeholder) -->
-            <button class="md:hidden focus:outline-none" aria-label="Open menu" title="Open menu">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            </button>
-        </div>
-    </header>
+    <x-ui.layout.header />
 
     <!-- Main Content -->
-    <main class="flex-1 container mx-auto px-4 py-8">
+    <main class="flex-1">
         @yield('content')
     </main>
 
     <!-- Footer -->
-    <footer class="bg-brandblue text-white mt-8">
-        <div class="container mx-auto py-8 px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-                <div class="font-heading text-xl font-bold mb-2">Holidayz Manager</div>
-                <p class="text-sm text-gray-200">Your trusted travel partner for curated packages and custom itineraries.</p>
-            </div>
-            <div>
-                <div class="font-semibold mb-2">Quick Links</div>
-                <ul class="space-y-1">
-                    <li><a href="#" class="hover:text-saffron">Packages</a></li>
-                    <li><a href="#" class="hover:text-saffron">Blog</a></li>
-                    <li><a href="#" class="hover:text-saffron">Contact</a></li>
-                </ul>
-            </div>
+    <x-ui.layout.mega-footer />
+
             <div>
                 <div class="font-semibold mb-2">Contact</div>
                 <p class="text-sm">info@holidayz-manager.com</p>

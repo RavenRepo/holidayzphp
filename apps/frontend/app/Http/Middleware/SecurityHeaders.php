@@ -11,19 +11,20 @@ class SecurityHeaders
     {
         $response = $next($request);
 
-        $response->headers->set('Content-Type', 'text/html; charset=utf-8');
-        $response->headers->set('X-Content-Type-Options', 'nosniff');
-        $response->headers->set('Content-Security-Policy', "frame-ancestors 'self'");
-        $response->headers->remove('X-Frame-Options');
-        $response->headers->remove('X-XSS-Protection');
-        
-        // Cache control
-        $response->headers->set('Cache-Control', 'max-age=31536000, public');
-        $response->headers->remove('Expires');
+        $cacheTime = 31536000; // 1 year in seconds
 
-        // Ensure secure cookies in production
+        $headers = [
+            'Content-Type' => 'text/html; charset=utf-8',
+            'Content-Security-Policy' => "default-src 'self'; frame-ancestors 'self'",
+            'X-Content-Type-Options' => 'nosniff',
+            'Cache-Control' => 'public, max-age=' . $cacheTime . ', must-revalidate',
+            'Strict-Transport-Security' => 'max-age=31536000; includeSubDomains',
+            'Referrer-Policy' => 'strict-origin-when-cross-origin',
+            'Permissions-Policy' => 'accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()',
+        ];
+
         if (config('app.env') === 'production') {
-            config(['session.secure' => true]);
+            $headers['Set-Cookie'] = 'secure; HttpOnly; SameSite=Strict';
         }
 
         return $response;
