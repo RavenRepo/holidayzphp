@@ -1,81 +1,192 @@
 @props(['packages' => []])
 
-<section class="py-16 bg-gray-50">
+<section class="py-20 bg-neutral-50">
     <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Popular Packages</h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Discover our most loved travel experiences handpicked for unforgettable journeys</p>
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-poppins font-bold text-brand-blue mb-4">Popular Packages</h2>
+            <p class="text-lg font-open-sans text-neutral-600 max-w-2xl mx-auto leading-relaxed">Discover our most loved travel experiences handpicked for unforgettable journeys</p>
         </div>
         
-        <x-ui.carousel.slick 
-            :slidesToShow="3"
-            :slidesToScroll="1"
-            :autoplay="true"
-            :autoplaySpeed="3000"
-            :dots="true"
-            :arrows="true"
-            class="popular-packages-carousel"
-        >
+        <div class="hidden md:block">
+            <x-ui.carousel.slick 
+                :slidesToShow="3"
+                :slidesToScroll="1"
+                :autoplay="true"
+                :autoplaySpeed="3000"
+                :dots="true"
+                :arrows="true"
+                :responsive="[
+                    [
+                        'breakpoint' => 1024,
+                        'settings' => [
+                            'slidesToShow' => 2,
+                            'slidesToScroll' => 1
+                        ]
+                    ],
+                    [
+                        'breakpoint' => 640,
+                        'settings' => [
+                            'slidesToShow' => 1,
+                            'slidesToScroll' => 1
+                        ]
+                    ]
+                ]"
+                class="popular-packages-carousel"
+            >
+                @foreach($packages as $package)
+                    <div class="px-4 py-2">
+                        <div class="bg-white rounded-xl overflow-hidden shadow-card transition-all duration-300 hover:shadow-xl hover:-translate-y-2 h-full">
+                            <div class="relative aspect-w-16 aspect-h-9">
+                                <img 
+                                    src="{{ $package['image'] }}" 
+                                    alt="{{ $package['title'] }}" 
+                                    class="w-full h-full object-cover"
+                                >
+                                <div class="absolute top-4 right-4 bg-brand-saffron text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-soft">
+                                    {{ $package['duration'] }}
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-xl font-poppins font-semibold text-neutral-800 mb-3">{{ $package['title'] }}</h3>
+                                <p class="text-neutral-600 font-open-sans mb-6 line-clamp-2">{{ $package['description'] }}</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="text-brand-blue font-poppins font-bold text-2xl">
+                                        ${{ number_format($package['price']) }}
+                                    </div>
+                                    <a href="{{ $package['link'] }}" 
+                                       class="inline-flex items-center text-brand-blue hover:text-brand-blue-dark font-medium transition-colors duration-300"
+                                    >
+                                        <span>View Details</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </x-ui.carousel.slick>
+        </div>
+        
+        <!-- Mobile view - grid instead of carousel -->
+        <div class="md:hidden grid grid-cols-1 gap-6">
             @foreach($packages as $package)
-                <div class="px-3">
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-xl hover:-translate-y-2">
-                        <div class="relative">
+                @if($loop->index < 3)
+                    <div class="bg-white rounded-xl overflow-hidden shadow-card">
+                        <div class="relative aspect-w-16 aspect-h-9">
                             <img 
                                 src="{{ $package['image'] }}" 
                                 alt="{{ $package['title'] }}" 
-                                class="w-full h-60 object-cover"
+                                class="w-full h-full object-cover"
                             >
-                            @if(isset($package['discount']) && $package['discount'] > 0)
-                                <div class="absolute top-4 right-4 bg-saffron text-white text-sm font-bold px-3 py-1 rounded-full">
-                                    {{ $package['discount'] }}% OFF
-                                </div>
-                            @endif
-                            <div class="absolute top-4 left-4 bg-white bg-opacity-90 px-3 py-1 rounded text-sm font-medium text-gray-800">
-                                {{ $package['duration'] }} Days
+                            <div class="absolute top-4 right-4 bg-brand-saffron text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-soft">
+                                {{ $package['duration'] }}
                             </div>
                         </div>
-                        <div class="p-6">
-                            <div class="flex items-center mb-2">
-                                <div class="text-yellow-400 flex">
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        @if ($i <= $package['rating'])
-                                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                                                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                                            </svg>
-                                        @else
-                                            <svg class="w-4 h-4 fill-current text-gray-300" viewBox="0 0 24 24">
-                                                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                                            </svg>
-                                        @endif
-                                    @endfor
-                                </div>
-                                <span class="text-sm text-gray-500 ml-1">({{ $package['reviewCount'] }} reviews)</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">{{ $package['title'] }}</h3>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">{{ $package['description'] }}</p>
+                        <div class="p-8">
+                            <h3 class="text-xl font-poppins font-semibold text-neutral-800 mb-3">{{ $package['title'] }}</h3>
+                            <p class="text-neutral-600 font-open-sans mb-6">{{ $package['description'] }}</p>
                             <div class="flex justify-between items-center">
-                                <div>
-                                    <span class="text-sm text-gray-500">From</span>
-                                    <p class="text-2xl font-bold text-brandblue">₹{{ number_format($package['price']) }}</p>
+                                <div class="text-brand-blue font-poppins font-bold text-2xl">
+                                    ${{ number_format($package['price']) }}
                                 </div>
-                                <a href="{{ $package['link'] }}" class="px-4 py-2 bg-brandblue text-white rounded hover:bg-brandblue/90 transition duration-300">
-                                    View Details
+                                <a href="{{ $package['link'] }}" 
+                                   class="inline-flex items-center text-brand-blue hover:text-brand-blue-dark font-medium transition-colors duration-300"
+                                >
+                                    <span>View Details</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
                                 </a>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
             @endforeach
-        </x-ui.carousel.slick>
+            
+            <div class="text-center mt-4">
+                <a href="/packages" class="inline-flex items-center font-medium text-brand-blue hover:text-brand-blue-dark transition-colors duration-300">
+                    <span>View All Packages</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </div>
     </div>
 </section>
 
 <style>
     .popular-packages-carousel .slick-track {
-        padding: 20px 0;
+        display: flex !important;
+        padding: 1rem 0;
+    }
+    
+    .popular-packages-carousel .slick-slide {
+        height: inherit !important;
+        margin: 0 1rem;
+    }
+    
+    .popular-packages-carousel .slick-slide > div {
+        height: 100%;
     }
     
     .popular-packages-carousel .slick-dots {
-        bottom: -40px;
+        bottom: -3rem;
+    }
+    
+    .popular-packages-carousel .slick-dots li button:before {
+        font-size: 12px;
+        color: #E5E7EB;
+        opacity: 1;
+    }
+    
+    .popular-packages-carousel .slick-dots li.slick-active button:before {
+        color: #0056B3;
+    }
+    
+    .popular-packages-carousel .slick-prev,
+    .popular-packages-carousel .slick-next {
+        width: 48px;
+        height: 48px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+    
+    .popular-packages-carousel .slick-prev {
+        left: -24px;
+    }
+    
+    .popular-packages-carousel .slick-next {
+        right: -24px;
+    }
+    
+    .popular-packages-carousel .slick-prev:before,
+    .popular-packages-carousel .slick-next:before {
+        color: #0056B3;
+        opacity: 1;
+    }
+    
+    .popular-packages-carousel .slick-prev:hover,
+    .popular-packages-carousel .slick-next:hover {
+        background-color: #0056B3;
+    }
+    
+    .popular-packages-carousel .slick-prev:hover:before,
+    .popular-packages-carousel .slick-next:hover:before {
+        color: white;
+    }
+    
+    @media (max-width: 640px) {
+        .popular-packages-carousel .slick-prev {
+            left: 0;
+        }
+        
+        .popular-packages-carousel .slick-next {
+            right: 0;
+        }
     }
 </style> 

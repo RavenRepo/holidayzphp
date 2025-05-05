@@ -6,8 +6,8 @@
     <title>@yield('title', 'Holidayz Manager')</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS (Vite) -->
-    @vite('resources/css/app.css')
+    <!-- Vite Assets -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-white min-h-screen flex flex-col">
     <!-- Header -->

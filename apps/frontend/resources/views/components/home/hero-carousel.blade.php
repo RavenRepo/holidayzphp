@@ -1,50 +1,6 @@
 @props(['slides' => []])
 
-<div class="relative bg-gray-100">
-    <x-ui.carousel.slick 
-        :autoplay="true"
-        :autoplaySpeed="5000"
-        :fade="true"
-        :arrows="true"
-        :dots="true"
-        :slidesToShow="1"
-        :slidesToScroll="1"
-        :infinite="true"
-        class="homepage-hero-carousel"
-    >
-        @foreach($slides as $slide)
-            <div class="relative">
-                <div class="w-full h-[600px] md:h-[650px] lg:h-[700px] relative overflow-hidden">
-                    <img 
-                        src="{{ $slide['image'] }}" 
-                        alt="{{ $slide['title'] }}" 
-                        class="absolute inset-0 w-full h-full object-cover"
-                    >
-                    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="container mx-auto px-6 py-12">
-                            <div class="max-w-xl mx-auto md:mx-0 text-center md:text-left">
-                                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 animate-fadeInUp">
-                                    {{ $slide['title'] }}
-                                </h2>
-                                <p class="text-xl text-white mb-8 animate-fadeInUp animation-delay-200">
-                                    {{ $slide['subtitle'] }}
-                                </p>
-                                @if(isset($slide['button']))
-                                    <a 
-                                        href="{{ $slide['button']['link'] }}" 
-                                        class="inline-block px-8 py-3 bg-saffron hover:bg-saffron/90 text-white font-semibold rounded-md transition duration-300 animate-fadeInUp animation-delay-400"
-                                    >
-                                        {{ $slide['button']['text'] }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </x-ui.carousel.slick>
+<x-ui.slider.hero :slides="$slides" />
     
     <!-- Search Box Overlay -->
     <div class="absolute bottom-0 left-0 right-0 z-10 transform translate-y-1/2">

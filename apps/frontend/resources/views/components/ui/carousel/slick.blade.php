@@ -13,24 +13,59 @@
     'variableWidth' => false,
     'fade' => false,
     'adaptiveHeight' => false,
-    'lazyLoad' => 'ondemand' // ondemand/progressive
+    'lazyLoad' => 'ondemand', // ondemand/progressive
+    'responsive' => null,
+    'contained' => true, // Whether to contain the carousel within max-width container
+    'containerClass' => 'container mx-auto px-4' // Container class when contained is true
 ])
 
 @php
     // Generate a unique ID if none provided
     $id = $id ?? 'slick-'.uniqid();
+    
+    // Format responsive settings
+    $responsiveJson = 'null';
+    if (is_array($responsive)) {
+        $responsiveJson = json_encode($responsive);
+    }
 @endphp
 
-{{-- Slick Carousel Container --}}
-<div 
-    id="{{ $id }}" 
-    {{ $attributes->class(['relative slick-carousel-container']) }}
-    data-slick-initialized="false"
->
-    {{-- Slides Container --}}
-    <div class="slick-carousel">
-        {{ $slot }}
+{{-- Slick Carousel Wrapper --}}
+<div class="relative slick-carousel-wrapper {{ $contained ? '' : 'w-full' }}">
+    @if($contained)
+    <div class="{{ $containerClass }}">
+    @endif
+    
+    {{-- Slick Carousel Container --}}
+    <div 
+        id="{{ $id }}" 
+        {{ $attributes->class(['relative slick-carousel-container']) }}
+        data-slick-initialized="false"
+        data-slick-dots="{{ $dots ? 'true' : 'false' }}"
+        data-slick-arrows="{{ $arrows ? 'true' : 'false' }}"
+        data-slick-infinite="{{ $infinite ? 'true' : 'false' }}"
+        data-slick-speed="{{ $speed }}"
+        data-slick-slides-to-show="{{ $slidesToShow }}"
+        data-slick-slides-to-scroll="{{ $slidesToScroll }}"
+        data-slick-autoplay="{{ $autoplay ? 'true' : 'false' }}"
+        data-slick-autoplay-speed="{{ $autoplaySpeed }}"
+        data-slick-pause-on-hover="{{ $pauseOnHover ? 'true' : 'false' }}"
+        data-slick-center-mode="{{ $centerMode ? 'true' : 'false' }}"
+        data-slick-variable-width="{{ $variableWidth ? 'true' : 'false' }}"
+        data-slick-fade="{{ $fade ? 'true' : 'false' }}"
+        data-slick-adaptive-height="{{ $adaptiveHeight ? 'true' : 'false' }}"
+        data-slick-lazy-load="{{ $lazyLoad }}"
+        data-slick-responsive="{{ $responsiveJson }}"
+    >
+        {{-- Slides Container --}}
+        <div class="slick-carousel">
+            {{ $slot }}
+        </div>
+        
+    @if($contained)
     </div>
+    @endif
+</div>
 </div>
 
 {{-- Only include CSS once per page --}}
@@ -100,43 +135,52 @@
 @once
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-@endonce
 
-{{-- Initialize this specific carousel instance --}}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Check if the carousel is already initialized
-        const carousel = document.getElementById('{{ $id }}');
-        if (carousel && carousel.getAttribute('data-slick-initialized') !== 'true') {
-            // Initialize with jQuery
-            $(document).ready(function(){
-                $('#{{ $id }} .slick-carousel').slick({
-                    dots: {{ $dots ? 'true' : 'false' }},
-                    arrows: {{ $arrows ? 'true' : 'false' }},
-                    infinite: {{ $infinite ? 'true' : 'false' }},
-                    speed: {{ $speed }},
-                    slidesToShow: {{ $slidesToShow }},
-                    slidesToScroll: {{ $slidesToScroll }},
-                    autoplay: {{ $autoplay ? 'true' : 'false' }},
-                    autoplaySpeed: {{ $autoplaySpeed }},
-                    pauseOnHover: {{ $pauseOnHover ? 'true' : 'false' }},
-                    centerMode: {{ $centerMode ? 'true' : 'false' }},
-                    variableWidth: {{ $variableWidth ? 'true' : 'false' }},
-                    fade: {{ $fade ? 'true' : 'false' }},
-                    adaptiveHeight: {{ $adaptiveHeight ? 'true' : 'false' }},
-                    lazyLoad: '{{ $lazyLoad }}',
-                    responsive: [
+    // Global initialization function for Slick carousels
+    function initializeSlickCarousels() {
+        document.querySelectorAll('.slick-carousel-container').forEach(function(container) {
+            if (container.getAttribute('data-slick-initialized') === 'true') return;
+            
+            const carousel = container.querySelector('.slick-carousel');
+            if (!carousel) return;
+            
+            const config = {
+                dots: container.getAttribute('data-slick-dots') === 'true',
+                arrows: container.getAttribute('data-slick-arrows') === 'true',
+                infinite: container.getAttribute('data-slick-infinite') === 'true',
+                speed: parseInt(container.getAttribute('data-slick-speed')),
+                slidesToShow: parseInt(container.getAttribute('data-slick-slides-to-show')),
+                slidesToScroll: parseInt(container.getAttribute('data-slick-slides-to-scroll')),
+                autoplay: container.getAttribute('data-slick-autoplay') === 'true',
+                autoplaySpeed: parseInt(container.getAttribute('data-slick-autoplay-speed')),
+                pauseOnHover: container.getAttribute('data-slick-pause-on-hover') === 'true',
+                centerMode: container.getAttribute('data-slick-center-mode') === 'true',
+                variableWidth: container.getAttribute('data-slick-variable-width') === 'true',
+                fade: container.getAttribute('data-slick-fade') === 'true',
+                adaptiveHeight: container.getAttribute('data-slick-adaptive-height') === 'true',
+                lazyLoad: container.getAttribute('data-slick-lazy-load')
+            };
+            
+            // Handle responsive settings
+            try {
+                const responsiveData = container.getAttribute('data-slick-responsive');
+                if (responsiveData && responsiveData !== 'null') {
+                    config.responsive = JSON.parse(responsiveData);
+                } else {
+                    // Default responsive behavior if none provided
+                    config.responsive = [
                         {
                             breakpoint: 1024,
                             settings: {
-                                slidesToShow: Math.min(3, {{ $slidesToShow }}),
+                                slidesToShow: Math.min(3, config.slidesToShow),
                                 slidesToScroll: 1
                             }
                         },
                         {
                             breakpoint: 768,
                             settings: {
-                                slidesToShow: Math.min(2, {{ $slidesToShow }}),
+                                slidesToShow: Math.min(2, config.slidesToShow),
                                 slidesToScroll: 1
                             }
                         },
@@ -147,11 +191,31 @@
                                 slidesToScroll: 1
                             }
                         }
-                    ]
-                });
-                // Mark as initialized
-                carousel.setAttribute('data-slick-initialized', 'true');
-            });
-        }
+                    ];
+                }
+            } catch (e) {
+                console.error('Error parsing responsive settings', e);
+            }
+            
+            // Initialize Slick
+            $(carousel).slick(config);
+            container.setAttribute('data-slick-initialized', 'true');
+        });
+    }
+    
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', initializeSlickCarousels);
+</script>
+@endonce
+
+{{-- Initialize this specific carousel instance --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Wait for global init function to be available
+        setTimeout(function() {
+            if (typeof initializeSlickCarousels === 'function') {
+                initializeSlickCarousels();
+            }
+        }, 0);
     });
 </script> 

@@ -10,4 +10,13 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    resolve: {
+        alias: {
+            '$': 'jquery',
+            'jQuery': 'jquery',
+        },
+    },
+    optimizeDeps: {
+        include: ['jquery'],
+    },
 });
