@@ -5,7 +5,7 @@
     'linkedin' => '#'
 ]])
 
-<footer class="bg-gradient-to-br from-brandblue to-brandblue/90 text-white pt-16 pb-8">
+<footer class="bg-brandblue text-white pt-16 pb-8">
     <div class="container mx-auto px-4">
         <!-- Main Footer Content -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">

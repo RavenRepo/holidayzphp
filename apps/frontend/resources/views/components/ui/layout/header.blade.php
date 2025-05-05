@@ -9,7 +9,13 @@
                 </a>
 
                 <!-- Desktop Navigation -->
-                <x-ui.navigation.main-nav />
+                <div class="hidden md:flex gap-8 font-body text-lg">
+                    <a href="{{ route('home') }}" class="hover:text-saffron transition-colors">Home</a>
+                    <a href="{{ route('about') }}" class="hover:text-saffron transition-colors">About Us</a>
+                    <a href="{{ route('destinations') }}" class="hover:text-saffron transition-colors">Destinations</a>
+                    <a href="{{ route('blog') }}" class="hover:text-saffron transition-colors">Blog</a>
+                    <a href="{{ route('contact') }}" class="hover:text-saffron transition-colors">Contact</a>
+                </div>
 
                 <!-- Actions -->
                 <div class="flex items-center gap-2 lg:gap-4">
