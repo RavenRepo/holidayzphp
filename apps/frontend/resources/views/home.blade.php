@@ -109,6 +109,9 @@
         ],
     ]" />
     
+    {{-- Visa Free Destinations Section --}}
+    <x-home.visa-free-destinations />
+    
     {{-- Why Choose Us Section --}}
     @php
     $whyChooseUsFeatures = [
@@ -212,6 +215,9 @@
     
     {{-- CTA Section --}}
     <x-home.cta-section />
+    
+    {{-- Benefits Section --}}
+    <x-home.benefits-section />
     
     {{-- Lead Capture Form --}}
     <x-home.lead-form />

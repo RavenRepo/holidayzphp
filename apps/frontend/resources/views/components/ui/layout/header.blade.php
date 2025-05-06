@@ -3,18 +3,23 @@
         <div class="container mx-auto">
             <div class="flex justify-between items-center">
                 <!-- Logo & Brand -->
-                <a href="{{ route('home') }}" class="flex items-center gap-2">
-                    <img src="{{ asset('images/logo.svg') }}" class="h-8 w-8" alt="Holidayz Manager Logo" />
-                    <span class="self-center text-2xl font-poppins font-bold text-brandblue whitespace-nowrap">Holidayz Manager</span>
+                <a href="{{ route('home') }}" class="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron focus-visible:ring-offset-2 rounded-md">
+                    <span class="h-8 w-auto block" aria-label="Holidayz Manager Logo">
+                        <svg viewBox="0 0 480 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8 w-auto">
+                            <text x="0" y="50" font-family="Poppins, Arial, sans-serif" font-size="48" font-weight="bold" fill="#1A3399">holidayz</text>
+                            <text x="215" y="50" font-family="Poppins, Arial, sans-serif" font-size="48" font-weight="normal" fill="#1A3399">Manager</text>
+                        </svg>
+                    </span>
+                    <span class="self-center text-2xl font-poppins font-bold text-brandblue whitespace-nowrap sr-only">Holidayz Manager</span>
                 </a>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex gap-8 font-body text-lg">
-                    <a href="{{ route('home') }}" class="hover:text-saffron transition-colors">Home</a>
-                    <a href="{{ route('about') }}" class="hover:text-saffron transition-colors">About Us</a>
-                    <a href="{{ route('destinations') }}" class="hover:text-saffron transition-colors">Destinations</a>
-                    <a href="{{ route('blog') }}" class="hover:text-saffron transition-colors">Blog</a>
-                    <a href="{{ route('contact') }}" class="hover:text-saffron transition-colors">Contact</a>
+                <div class="hidden md:flex gap-8 font-body text-lg font-bold">
+                    <a href="{{ route('home') }}" class="font-large hover:text-saffron transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron focus-visible:ring-offset-2 rounded-md">Home</a>
+                    <a href="{{ route('about') }}" class="font-large hover:text-saffron transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron focus-visible:ring-offset-2 rounded-md">About Us</a>
+                    <a href="{{ route('destinations') }}" class="font-large hover:text-saffron transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron focus-visible:ring-offset-2 rounded-md">Destinations</a>
+                    <a href="{{ route('blog') }}" class="font-large hover:text-saffron transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron focus-visible:ring-offset-2 rounded-md">Blog</a>
+                    <a href="{{ route('contact') }}" class="font-large hover:text-saffron transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron focus-visible:ring-offset-2 rounded-md">Contact Us</a>
                 </div>
 
                 <!-- Actions -->
@@ -60,5 +65,5 @@
     </nav>
 
     <!-- Mobile Navigation -->
-    <x-ui.navigation.main-nav :isOpen="true" />
+    {{-- <x-ui.navigation.main-nav :isOpen="true" /> --}}
 </header>

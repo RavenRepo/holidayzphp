@@ -26,5 +26,7 @@
 
     <!-- Footer -->
     <x-ui.layout.mega-footer />
+
+    <x-ui.lead-capture-modal />
 </body>
 </html> 

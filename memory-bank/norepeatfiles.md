@@ -82,24 +82,34 @@ This registry documents all files and directories in the Holidayz Manager monore
     - `slick.blade.php`: Highly configurable Slick Carousel component using CDN for scripts and styles
     - `slide.blade.php`: Standardized slide component for use within the Slick Carousel
     - `demo.blade.php`: Demo page showing carousel component usage with examples
+  - `/apps/frontend/resources/views/components/home/`
+    - `hero-carousel.blade.php`: Hero carousel component for homepage
+    - `popular-packages.blade.php`: Component for displaying popular travel packages
+    - `why-choose-us.blade.php`: Component showcasing company features and benefits
+    - `testimonials.blade.php`: Customer testimonials slider component
+    - `blog-inspirations.blade.php`: Travel blog and inspiration articles section
+    - `cta-section.blade.php`: Call to action section with promotional content
+    - `lead-form.blade.php`: Lead capture form for customer information
+    - `benefits-section.blade.php`: Benefits showcase section for homepage
+    - `visa-free-destinations.blade.php`: Visa-free destinations grid for homepage
+- `/apps/frontend/app/Providers/`
+  - `AppServiceProvider.php`: Service provider for bootstrapping the application
+  - `ViewServiceProvider.php`: Service provider for registering view components
 - `/apps/frontend/resources/views/`
   - `welcome.blade.php`: Homepage view using UI layout components
   - `home.blade.php`: New visually appealing homepage with multiple sections
   - `components/demo.blade.php`: Demonstration page for UI components with usage examples
 - `/apps/frontend/resources/views/components/package-card.blade.php`: Blade component for displaying a single travel package card. Used by packages/index.blade.php. Imports: Tailwind classes, uses props for package data.
 - `/apps/frontend/resources/views/packages/index.blade.php`: Main package listing page. Extends layouts/app.blade.php. Uses: x-package-card component for each package.
-- `/apps/frontend/resources/views/components/home/`
-  - `hero-carousel.blade.php`: Hero carousel component for homepage
-  - `popular-packages.blade.php`: Component for displaying popular travel packages
-  - `why-choose-us.blade.php`: Component showcasing company features and benefits
-  - `testimonials.blade.php`: Customer testimonials slider component
-  - `blog-inspirations.blade.php`: Travel blog and inspiration articles section
-  - `cta-section.blade.php`: Call to action section with promotional content
-  - `lead-form.blade.php`: Lead capture form for customer information
 
 ## Admin Application
 - `/apps/admin/resources/views/`
   - `welcome.blade.php`: Admin dashboard landing page
+  - `filament/dashboard.blade.php`: Filament admin dashboard view
+- `/apps/admin/routes/`
+  - `web.php`: Main admin routes
+  - `auth.php`: Authentication routes
+  - `filament.php`: Filament admin dashboard routes
 
 ## Shared Resources
 - `/resources/css/`
