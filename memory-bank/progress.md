@@ -51,10 +51,12 @@
 - Implement testing (unit, feature, integration).
 - Configure build process (Vite/Mix).
 - Prepare deployment strategy for Hostinger.
+- **Role Management**: Implement role-based access control (RBAC) for admin users.
 
 ## Known Issues
 - None at the moment.
 - `edit_file` tool unreliable for modifying `composer.json` in this session (required manual user intervention).
+- Password reset and email verification not implemented yet.
 
 ## Evolution of Project Decisions
 - Decided to create reusable components for better code organization and maintenance.
@@ -62,6 +64,39 @@
 - Confirmed monorepo root is `d:\Projects files\holidayzphp`.
 - Decided to start API routes within `frontend` app.
 - Adopted Cline's Memory Bank workflow for documentation and context management.
+- Initially planned to use Laravel Breeze for authentication, but switched to custom implementation for better control.
+- Separated admin and frontend guards for authentication.
+- Using Spatie Permission package for role-based access control (RBAC).
+
+## Project Progress
+
+### Phase 1: Basic Admin Authentication (COMPLETED)
+
+1. Core Authentication Setup:
+   - ✅ Admin guard configuration
+   - ✅ Authentication routes
+   - ✅ Login and registration views
+   - ✅ Authentication controllers
+
+2. Middleware Configuration:
+   - ✅ Authenticate middleware with admin guard
+   - ✅ RedirectIfAuthenticated middleware
+   - ✅ Middleware groups in Kernel.php
+   - ✅ Route protection
+
+3. View Components:
+   - ✅ AppLayout component
+   - ✅ Guest layout
+   - ✅ Navigation and user dropdown
+   - ✅ UI components
+
+### Phase 2: Role Management (IN PROGRESS)
+
+1. Planned Tasks:
+   - ⏳ Install Spatie Permission
+   - ⏳ Role migrations with UUIDs
+   - ⏳ Role CRUD
+   - ⏳ Role management UI
 
 ## UI Component Progress (DATE)
 
