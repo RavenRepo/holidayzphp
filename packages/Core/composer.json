@@ -10,11 +10,20 @@
         }
     ],
     "require": {
-        "php": "^8.2"
+        "php": "^8.2",
+        "spatie/laravel-permission": "^6.3",
+        "ramsey/uuid": "^4.7"
     },
     "autoload": {
         "psr-4": {
             "Holidayz\\Packages\\Core\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Holidayz\\Packages\\Core\\Providers\\CoreServiceProvider"
+            ]
         }
     }
 }
