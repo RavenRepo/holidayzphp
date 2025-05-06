@@ -1,8 +1,16 @@
 @props(['days'])
 
-<div x-data="{ selected: 0 }" class="space-y-6">
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8" x-data="{ selected: 0 }">
     @foreach($days as $index => $day)
         <div class="bg-white/70 backdrop-blur-md rounded-2xl border border-gray-100 shadow-soft overflow-hidden hover:shadow-lg transition-all duration-300">
+            <!-- Demo Unsplash Image -->
+            <img 
+                src="{{ $day['image'] ?? 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80' }}" 
+                alt="Day {{ $index + 1 }} image" 
+                class="w-full h-48 object-cover rounded-t-2xl mb-0"
+                loading="lazy"
+                decoding="async"
+            >
             <button 
                 class="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-gray-50/50 transition-colors duration-300"
                 @click="selected !== {{ $index }} ? selected = {{ $index }} : selected = null"

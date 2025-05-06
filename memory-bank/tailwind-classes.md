@@ -76,5 +76,20 @@ This file records all custom Tailwind classes, theme extensions, and utility pat
   - All custom classes are defined in `tailwind.config.js` and should be kept in sync with this registry.
 
 ---
+## Itinerary Section Layout (package/itinerary.blade.php)
+
+- **Container:** `max-w-3xl mx-auto px-4 sm:px-6 lg:px-8`
+  - Centers the itinerary section on the page.
+  - Sets a maximum width for readability and visual balance.
+  - Adds responsive horizontal padding for mobile and desktop.
+- **Vertical Spacing:** `space-y-8`
+  - Adds consistent vertical space between each itinerary day card.
+- **Card Classes:**
+  - `bg-white/70 backdrop-blur-md rounded-2xl border border-gray-100 shadow-soft overflow-hidden hover:shadow-lg transition-all duration-300`
+  - Ensures cards are visually distinct, modern, and consistent with the design system.
+
+**Rationale:**
+- The itinerary section was previously left-aligned and cramped. The new layout centers the content, improves readability, and matches the reference design for a more professional, visually appealing look.
+---
 
 _Last updated: 2025-05-05_ 
