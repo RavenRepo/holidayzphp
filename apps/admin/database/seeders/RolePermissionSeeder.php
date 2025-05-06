@@ -7,18 +7,21 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\PermissionRegistrar;
 use App\Models\User;
 
 class RolePermissionSeeder extends Seeder
 {
     public function run(): void
     {
-        // Truncate all relevant tables
-        DB::table('role_has_permissions')->truncate();
-        DB::table('model_has_roles')->truncate();
-        DB::table('model_has_permissions')->truncate();
-        DB::table('roles')->truncate();
-        DB::table('permissions')->truncate();
+        // Only truncate tables in local, testing environments
+        if (app()->environment('local', 'testing')) {
+            DB::table('role_has_permissions')->truncate();
+            DB::table('model_has_roles')->truncate();
+            DB::table('model_has_permissions')->truncate();
+            DB::table('roles')->truncate();
+            DB::table('permissions')->truncate();
+        }
 
         // Define roles and permissions
         $roles = [
@@ -68,5 +71,8 @@ class RolePermissionSeeder extends Seeder
         if ($adminUser && !$adminUser->hasRole('admin')) {
             $adminUser->assignRole('admin');
         }
+        
+        // Clear permission cache
+        app()->make(PermissionRegistrar::class)->forgetCachedPermissions();
     }
 } 

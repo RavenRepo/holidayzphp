@@ -13,8 +13,9 @@ Route::middleware('guest')->group(function () {
 });
 
 // Protected routes
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:admin|manager'])->group(function () {
+    // Redirect to Filament admin panel
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return redirect('/admin');
     })->name('dashboard');
 });

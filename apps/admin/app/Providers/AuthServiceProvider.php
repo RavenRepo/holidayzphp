@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,7 +15,10 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\\Models\\Model' => 'App\\Policies\\ModelPolicy',
+        User::class => UserPolicy::class,
+        // Future models will be registered here as they're created:
+        // Package::class => PackagePolicy::class,
+        // Blog::class => BlogPolicy::class,
     ];
 
     /**
@@ -22,6 +27,12 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPolicies();
-        // Additional gates or policies can be registered here
+        
+        // Define super-admin gate for users with the admin role
+        Gate::before(function ($user, $ability) {
+            if ($user->hasRole('admin')) {
+                return true;
+            }
+        });
     }
 } 

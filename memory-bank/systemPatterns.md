@@ -32,6 +32,14 @@
    - Spatie roles and permissions
    - Laravel Socialite integration
 
+6. **RBAC Implementation**
+   - Spatie Laravel-Permission for role-based access control
+   - UUID primary keys for all permission-related tables
+   - Admin guard for admin/backend panel
+   - Route middleware protection: `role:admin|manager`
+   - Policy-based authorization for model actions
+   - Permission seeder with explicit role/permission relationships
+
 ## Implementation Guidelines
 1. **Component Creation**
    - Place in appropriate `/components/ui/[category]` directory
@@ -51,17 +59,25 @@
    - Document expected prop types and formats
    - Use consistent prop naming across components
 
-2. **Package Development**
+4. **Role & Permission Guidelines**
+   - Route Protection: Use middleware `['auth', 'role:rolename']`
+   - Controller Actions: Use `$this->authorize('ability', $model)`
+   - Policies: Create per-model with well-defined permissions
+   - Permission Naming: Consistent verb-noun format (e.g., `edit user`)
+   - Role Assignment: Role-based, not direct permission assignment
+
+5. **Package Development**
    - Maintain in `/packages` directory
    - Clear versioning
    - Comprehensive documentation
 
-3. **Resource Management**
+6. **Resource Management**
    - Shared resources in root `/resources`
    - App-specific resources in respective app directories
    - Clear asset organization
 
-4. **Testing Strategy**
+7. **Testing Strategy**
    - Unit tests for packages
    - Feature tests for applications
    - Integration tests for API
+   - Policy tests for authorization
