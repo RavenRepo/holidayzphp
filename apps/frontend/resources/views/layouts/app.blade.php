@@ -27,6 +27,8 @@
     <!-- Footer -->
     <x-ui.layout.mega-footer />
 
-    <x-ui.lead-capture-modal />
+    @if (!Route::is('login') && !Route::is('register'))
+        <x-ui.lead-capture-modal />
+    @endif
 </body>
 </html> 

@@ -10,105 +10,46 @@
                         </p>
                     </div>
                     
-                    <form class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
-                                <input 
-                                    type="text" 
-                                    id="name" 
-                                    name="name" 
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50" 
-                                    placeholder="John Doe"
-                                    required
-                                >
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                <input 
-                                    type="email" 
-                                    id="email" 
-                                    name="email" 
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50" 
-                                    placeholder="john@example.com"
-                                    required
-                                >
-                            </div>
+                    <form method="POST" action="{{ route('lead.submit') }}" class="space-y-4">
+                        @csrf
+                        <div>
+                            <label for="lead-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name<span class="text-red-500">*</span></label>
+                            <input id="lead-name" name="name" type="text" required class="w-full rounded-md border border-gray-300 bg-white shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50" />
                         </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                <input 
-                                    type="tel" 
-                                    id="phone" 
-                                    name="phone" 
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50" 
-                                    placeholder="+91 98765 43210"
-                                >
-                            </div>
-                            <div>
-                                <label for="travel_date" class="block text-sm font-medium text-gray-700 mb-1">When do you plan to travel?</label>
-                                <select id="travel_date" name="travel_date" class="w-full rounded-md border-gray-300 shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50">
-                                    <option value="">Select timeframe</option>
-                                    <option value="within_month">Within a month</option>
-                                    <option value="1_3_months">1-3 months</option>
-                                    <option value="3_6_months">3-6 months</option>
-                                    <option value="6_plus_months">More than 6 months</option>
-                                    <option value="not_sure">Not sure yet</option>
+                        <div>
+                            <label for="lead-email" class="block text-sm font-medium text-gray-700 mb-1">Email<span class="text-red-500">*</span></label>
+                            <input id="lead-email" name="email" type="email" required class="w-full rounded-md border border-gray-300 bg-white shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50" />
+                        </div>
+                        <div class="flex space-x-2">
+                            <div class="w-1/3">
+                                <label for="lead-country" class="block text-sm font-medium text-gray-700 mb-1 sr-only">Country</label>
+                                <select id="lead-country" name="country_code" class="w-full rounded-md border border-gray-300 bg-white shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50">
+                                    <option value="+91">+91</option>
+                                    <option value="+1">+1</option>
+                                    <option value="+44">+44</option>
+                                    <!-- Add more country codes as needed -->
                                 </select>
                             </div>
+                            <div class="w-2/3">
+                                <label for="lead-phone" class="block text-sm font-medium text-gray-700 mb-1 sr-only">Your Phone</label>
+                                <input id="lead-phone" name="phone" type="tel" required placeholder="Your Phone" class="w-full rounded-md border border-gray-300 bg-white shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50" />
+                            </div>
                         </div>
-                        
+                        <div class="flex space-x-2">
+                            <div class="w-1/2">
+                                <label for="lead-date" class="block text-sm font-medium text-gray-700 mb-1">Travel Date</label>
+                                <input id="lead-date" name="travel_date" type="date" class="w-full rounded-md border border-gray-300 bg-white shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50" />
+                            </div>
+                            <div class="w-1/2">
+                                <label for="lead-count" class="block text-sm font-medium text-gray-700 mb-1">Traveller Count<span class="text-red-500">*</span></label>
+                                <input id="lead-count" name="traveller_count" type="number" min="1" required class="w-full rounded-md border border-gray-300 bg-white shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50" />
+                            </div>
+                        </div>
                         <div>
-                            <label for="lead-form-destination" class="block text-sm font-medium text-gray-700 mb-1">Preferred Destination(s)</label>
-                            <select id="lead-form-destination" name="destination" class="w-full rounded-md border-gray-300 shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50">
-                                <option value="">Select destination</option>
-                                <option value="goa">Goa</option>
-                                <option value="kerala">Kerala</option>
-                                <option value="rajasthan">Rajasthan</option>
-                                <option value="himachal">Himachal Pradesh</option>
-                                <option value="andaman">Andaman & Nicobar</option>
-                                <option value="kashmir">Kashmir</option>
-                                <option value="northeast">Northeast India</option>
-                                <option value="multiple">Multiple Destinations</option>
-                                <option value="not_sure">Not Sure (Need Recommendations)</option>
-                            </select>
+                            <label for="lead-message" class="block text-sm font-medium text-gray-700 mb-1">Message...</label>
+                            <textarea id="lead-message" name="message" rows="3" class="w-full rounded-md border border-gray-300 bg-white shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50" placeholder="Message..."></textarea>
                         </div>
-                        
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Tell us about your dream vacation</label>
-                            <textarea 
-                                id="message" 
-                                name="message" 
-                                rows="4" 
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-brandblue focus:ring focus:ring-brandblue focus:ring-opacity-50" 
-                                placeholder="Include details about your interests, preferences, budget, etc."
-                            ></textarea>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <input 
-                                id="subscribe" 
-                                name="subscribe" 
-                                type="checkbox" 
-                                class="h-4 w-4 text-brandblue border-gray-300 rounded focus:ring-brandblue"
-                                checked
-                            >
-                            <label for="subscribe" class="ml-2 block text-sm text-gray-600">
-                                I'd like to receive travel inspiration, deals and updates via email. You can unsubscribe anytime.
-                            </label>
-                        </div>
-                        
-                        <div>
-                            <button type="submit" class="w-full bg-brandblue hover:bg-brandblue/90 text-white font-medium py-3 px-4 rounded-md transition duration-300">
-                                Send My Travel Request
-                            </button>
-                        </div>
-                        
-                        <p class="text-xs text-gray-500 text-center">
-                            By submitting this form, you agree to our <a href="/privacy-policy" class="text-brandblue hover:underline">Privacy Policy</a> and <a href="/terms-of-service" class="text-brandblue hover:underline">Terms of Service</a>.
-                        </p>
+                        <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200">Connect with an Expert</button>
                     </form>
                 </div>
                 

@@ -16,11 +16,15 @@ class RolePermissionSeeder extends Seeder
     {
         // Only truncate tables in local, testing environments
         if (app()->environment('local', 'testing')) {
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
             DB::table('role_has_permissions')->truncate();
             DB::table('model_has_roles')->truncate();
             DB::table('model_has_permissions')->truncate();
             DB::table('roles')->truncate();
             DB::table('permissions')->truncate();
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+            // Clear permission cache after truncation
+            app()->make(PermissionRegistrar::class)->forgetCachedPermissions();
         }
 
         // Define roles and permissions
@@ -38,32 +42,29 @@ class RolePermissionSeeder extends Seeder
             'view dashboard', 'access admin panel',
         ];
 
-        // Create permissions with explicit UUIDs
-        $permissionIds = [];
+        // Create permissions
         foreach ($permissions as $permission) {
-            $perm = Permission::create([
+            Permission::create([
                 'id' => (string) Str::uuid(),
                 'name' => $permission,
                 'guard_name' => 'admin',
             ]);
-            $permissionIds[] = $perm->id;
         }
 
-        // Create roles with explicit UUIDs
-        $roleIds = [];
+        // Create roles
         foreach ($roles as $role) {
-            $roleModel = Role::create([
+            Role::create([
                 'id' => (string) Str::uuid(),
                 'name' => $role,
                 'guard_name' => 'admin',
             ]);
-            $roleIds[$role] = $roleModel->id;
         }
 
-        // Assign all permissions to the admin role
+        // Reload permissions and roles from the database
+        $allPermissions = Permission::pluck('name')->toArray();
         $adminRole = Role::where('name', 'admin')->where('guard_name', 'admin')->first();
         if ($adminRole) {
-            $adminRole->permissions()->sync($permissionIds);
+            $adminRole->givePermissionTo($allPermissions);
         }
 
         // Assign admin role to the first user (if exists)
@@ -71,8 +72,8 @@ class RolePermissionSeeder extends Seeder
         if ($adminUser && !$adminUser->hasRole('admin')) {
             $adminUser->assignRole('admin');
         }
-        
-        // Clear permission cache
+
+        // Clear permission cache again after assignments
         app()->make(PermissionRegistrar::class)->forgetCachedPermissions();
     }
 } 

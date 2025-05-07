@@ -24,6 +24,12 @@
 - Built dashboard widgets for bookings, profile, and team stats as Blade components
 - Integrated widgets into user and manager dashboards
 - Registered new widget components in norepeatfiles.md
+- Refactored lead capture form to match reference UI (fields, order, styling, required marks, button)
+- Lead form now posts to a new named route 'lead.submit'
+- Created LeadController with submit method for validation and success message
+- Registered POST route for lead submission in routes/web.php
+- Confirmed modal suppression on login/register pages
+- Proceeding with more autonomous workflow as per user preference
 
 ## Next Steps
 - Implement feedback components (alerts, modals, toasts)

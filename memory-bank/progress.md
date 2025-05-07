@@ -59,6 +59,10 @@
 - ✅ EnsureFrontendRole middleware registered in Kernel.php
 - ✅ Dashboard widgets for bookings, profile, and team stats implemented as Blade components
 - ✅ Integrated widgets into user and manager dashboards
+- ✅ Lead capture form refactored to match reference UI and UX
+- ✅ Lead form now posts to a new named route and is handled by LeadController
+- ✅ Modal suppression on login/register pages confirmed
+- ✅ Autonomous workflow in effect for routine and best-practice changes
 
 ## What's Left to Build
 - **Feedback Components**: Implement alerts, modals, and toast notifications.

@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use Filament\Facades\Filament;
-use Filament\Navigation\NavigationGroup;
 use Illuminate\Support\ServiceProvider;
 
 class FilamentServiceProvider extends ServiceProvider
@@ -21,31 +19,30 @@ class FilamentServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Add auth check for roles
-        Filament::serving(function () {
-            // Require admin or manager role to access Filament
-            Filament::registerRenderHook(
-                'content.start',
-                fn (): string => auth()->check() && (auth()->user()->hasRole(['admin', 'manager'])) 
-                    ? '' 
-                    : redirect()->route('login')->with('error', 'You need admin permissions to access this area.')->getContent()
-            );
-        });
-        
-        // Configure the navigation groups
-        Filament::navigation(function (\Filament\Navigation\NavigationBuilder $builder) {
-            $builder->items([
-                // Your items
-            ]);
+        if (class_exists('Filament\\Facades\\Filament')) {
+            \Filament\Facades\Filament::serving(function () {
+                \Filament\Facades\Filament::registerRenderHook(
+                    'content.start',
+                    fn (): string => auth()->check() && (auth()->user()->hasRole(['admin', 'manager']))
+                        ? ''
+                        : redirect()->route('login')->with('error', 'You need admin permissions to access this area.')->getContent()
+                );
+            });
 
-            $builder->groups([
-                NavigationGroup::make()
-                    ->label('Access Management')
-                    ->icon('heroicon-o-shield-check'),
-                NavigationGroup::make()
-                    ->label('Content')
-                    ->icon('heroicon-o-document-text'),
-            ]);
-        });
+            \Filament\Facades\Filament::navigation(function ($builder) {
+                $builder->items([
+                    // Your items
+                ]);
+
+                $builder->groups([
+                    \Filament\Navigation\NavigationGroup::make()
+                        ->label('Access Management')
+                        ->icon('heroicon-o-shield-check'),
+                    \Filament\Navigation\NavigationGroup::make()
+                        ->label('Content')
+                        ->icon('heroicon-o-document-text'),
+                ]);
+            });
+        }
     }
 } 

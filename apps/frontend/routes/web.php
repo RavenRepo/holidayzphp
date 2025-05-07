@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManagerDashboardController;
+use App\Http\Controllers\LeadController;
 
 // Main Routes
 Route::get('/', function () {
@@ -55,3 +56,6 @@ Route::middleware(['auth', 'ensure.frontend.role:user|premium_user|verified_trav
 Route::middleware(['auth', 'ensure.frontend.role:manager'])->group(function () {
     Route::get('/manager/dashboard', [ManagerDashboardController::class, 'index'])->name('manager.dashboard');
 });
+
+// Lead Submission
+Route::post('/lead/submit', [LeadController::class, 'submit'])->name('lead.submit');
