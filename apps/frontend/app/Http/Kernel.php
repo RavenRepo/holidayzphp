@@ -27,4 +27,8 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
+
+    protected $routeMiddleware = [
+        'ensure.frontend.role' => \App\Http\Middleware\EnsureFrontendRole::class,
+    ];
 }

@@ -5,6 +5,8 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ManagerDashboardController;
 
 // Main Routes
 Route::get('/', function () {
@@ -44,3 +46,12 @@ Route::post('/contact/submit', [ContactController::class, 'submit'])->name('cont
 // UI Component Demo Routes
 Route::view('/ui-demo', 'components.demo')->name('ui.demo');
 Route::view('/ui-demo/carousel', 'components.ui.carousel.demo')->name('ui.demo.carousel');
+
+// Dashboard Routes (Authenticated)
+Route::middleware(['auth', 'ensure.frontend.role:user|premium_user|verified_traveler|content_creator'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+
+Route::middleware(['auth', 'ensure.frontend.role:manager'])->group(function () {
+    Route::get('/manager/dashboard', [ManagerDashboardController::class, 'index'])->name('manager.dashboard');
+});

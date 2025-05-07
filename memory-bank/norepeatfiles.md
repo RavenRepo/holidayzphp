@@ -144,3 +144,14 @@ This registry documents all files and directories in the Holidayz Manager monore
 1. Frontend components use shared resources from `/resources/`
 2. Both frontend and admin apps use packages from `/packages/`
 3. Shared CSS and design system ensure consistent styling
+
+## New Entries
+| Path | Type | Description | Imports/Exports | Relationships |
+| ---------------------- | --------- | ----------------------------------- | --------------- | ------------- |
+| `/apps/frontend/app/Http/Controllers/DashboardController.php` | File | User dashboard controller (frontend) | Returns dashboard view, uses Auth | Used by `/dashboard` route, passes user/profile/bookings |
+| `/apps/frontend/app/Http/Controllers/ManagerDashboardController.php` | File | Manager dashboard controller (frontend) | Returns manager dashboard view, uses Auth | Used by `/manager/dashboard` route, passes user/teamMembers/teamBookings |
+| `/apps/frontend/resources/views/dashboard.blade.php` | File | User dashboard Blade view | Extends layouts/app, uses Tailwind | Used by DashboardController, shown at `/dashboard` |
+| `/apps/frontend/resources/views/manager/dashboard.blade.php` | File | Manager dashboard Blade view | Extends layouts/app, uses Tailwind | Used by ManagerDashboardController, shown at `/manager/dashboard` |
+| `/apps/frontend/resources/views/components/dashboard/bookings-widget.blade.php` | File | Bookings widget Blade component | Accepts bookings prop, shows table or empty state | Used in user and manager dashboards |
+| `/apps/frontend/resources/views/components/dashboard/profile-widget.blade.php` | File | Profile widget Blade component | Accepts profile prop, shows user info | Used in user dashboard |
+| `/apps/frontend/resources/views/components/dashboard/team-stats-widget.blade.php` | File | Team stats widget Blade component | Accepts teamMembers and teamBookings props, shows stats and list | Used in manager dashboard |

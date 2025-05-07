@@ -54,6 +54,11 @@
 - `apps/admin` Laravel application installed.
 - Basic structure for shared `packages/Core` created (`composer.json`, `src/` directory).
 - `UsesUuid` trait created in `packages/Core/src/Traits`.
+- ✅ User dashboard implemented as Blade view/controller (`/dashboard`)
+- ✅ Manager dashboard implemented as Blade view/controller (`/manager/dashboard`)
+- ✅ EnsureFrontendRole middleware registered in Kernel.php
+- ✅ Dashboard widgets for bookings, profile, and team stats implemented as Blade components
+- ✅ Integrated widgets into user and manager dashboards
 
 ## What's Left to Build
 - **Feedback Components**: Implement alerts, modals, and toast notifications.
@@ -73,92 +78,9 @@
 - Configure build process (Vite/Mix).
 - Prepare deployment strategy for Hostinger.
 - **Role Management**: Implement role-based access control (RBAC) for admin users.
+- ⏭️ Build dashboard widgets for bookings, profile, team stats
+- ⏭️ Add feature tests for dashboard access control
 
 ## Known Issues
 - None at the moment.
-- `edit_file` tool unreliable for modifying `composer.json` in this session (required manual user intervention).
-- Password reset and email verification not implemented yet.
-
-## Evolution of Project Decisions
-- Decided to create reusable components for better code organization and maintenance.
-- Pushed the initial codebase to GitHub for version control and collaboration.
-- Confirmed monorepo root is `d:\Projects files\holidayzphp`.
-- Decided to start API routes within `frontend` app.
-- Adopted Cline's Memory Bank workflow for documentation and context management.
-- Initially planned to use Laravel Breeze for authentication, but switched to custom implementation for better control.
-- Separated admin and frontend guards for authentication.
-- Using Spatie Permission package for role-based access control (RBAC).
-
-## Project Progress
-
-### Phase 1: Basic Admin Authentication (COMPLETED)
-
-1. Core Authentication Setup:
-   - ✅ Admin guard configuration
-   - ✅ Authentication routes
-   - ✅ Login and registration views
-   - ✅ Authentication controllers
-
-2. Middleware Configuration:
-   - ✅ Authenticate middleware with admin guard
-   - ✅ RedirectIfAuthenticated middleware
-   - ✅ Middleware groups in Kernel.php
-   - ✅ Route protection
-
-3. View Components:
-   - ✅ AppLayout component
-   - ✅ Guest layout
-   - ✅ Navigation and user dropdown
-   - ✅ UI components
-
-### Phase 2: Role Management (IN PROGRESS)
-
-1. Planned Tasks:
-   - ⏳ Install Spatie Permission
-   - ⏳ Role migrations with UUIDs
-   - ⏳ Role CRUD
-   - ⏳ Role management UI
-
-## UI Component Progress (DATE)
-
-### Completed
-- ✅ Created foundation:
-  - 🏗️ Basic project structure established with monorepo approach
-  - 🎨 Design system implementation with Tailwind CSS
-  - 📑 Page layouts with consistent headers/footers
-
-- ✅ Form components:
-  - 🔘 `button.blade.php` - Multiple variants, sizes, and states
-  - 📝 `input.blade.php` - With labels and error handling 
-
-- ✅ Feedback components:
-  - 🚨 `alert.blade.php` - Info, success, warning, error variants with icons and dismissible options
-  - 🗨️ `modal.blade.php` - Accessible, customizable modals with different sizes and Alpine.js integration
-
-- ✅ Carousel components:
-  - 🎠 `slick.blade.php` - Responsive, configurable carousel using Slick Carousel via CDN
-  - 🖼️ `slide.blade.php` - Standardized slide component with image, title, subtitle, and link options
-
-- ✅ Documentation & examples:
-  - 📚 Component demo pages showing usage examples for UI components
-  - 📑 Carousel demo page with multiple configuration examples
-  - 📝 File registry updated to track component structure
-
-- ✅ Homepage Implementation:
-  - 🏠 `home.blade.php` - Complete homepage with multiple sections
-  - 🎠 `hero-carousel.blade.php` - Dynamic hero section with search overlay
-  - 🧩 `popular-packages.blade.php` - Featured travel packages carousel
-  - ✨ `why-choose-us.blade.php` - Company features and benefits section
-  - 💬 `testimonials.blade.php` - Customer reviews carousel
-  - 📝 `blog-inspirations.blade.php` - Travel blog preview grid
-  - 🔔 `cta-section.blade.php` - Call-to-action with promotional content
-  - 📋 `lead-form.blade.php` - Customer information capture form
-
-### In Progress
-- 🔄 Cards & Display components
-- 🔄 Navigation components  
-
-### Next Steps
-- ⏭️ Implement toast notifications system
-- ⏭️ Create data visualization components 
-- ⏭️ Add complex form elements (multiselect, datepicker, etc.)
+- `

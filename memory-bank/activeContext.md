@@ -17,6 +17,13 @@
 - Installed Filament package for admin dashboard
 - Refactored welcome page to use new component system
 - Updated AppServiceProvider to register all UI components
+- Implemented user dashboard as Blade view/controller (`/dashboard`)
+- Implemented manager dashboard as Blade view/controller (`/manager/dashboard`)
+- Registered EnsureFrontendRole middleware in Kernel.php
+- Added new entries to norepeatfiles.md for dashboard controllers and views
+- Built dashboard widgets for bookings, profile, and team stats as Blade components
+- Integrated widgets into user and manager dashboards
+- Registered new widget components in norepeatfiles.md
 
 ## Next Steps
 - Implement feedback components (alerts, modals, toasts)
@@ -24,6 +31,9 @@
 - Add Alpine.js for interactive components
 - Implement accessibility features and component testing
 - Continue building out the component library
+- Build dashboard widgets for bookings, profile, team stats
+- Add feature tests for dashboard access control
+- Continue UI/UX improvements and componentization
 
 ## Active Decisions and Considerations
 - Using namespaced components (`x-ui.*`) for better organization
