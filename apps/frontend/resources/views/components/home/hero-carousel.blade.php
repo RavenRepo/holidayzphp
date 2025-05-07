@@ -1,7 +1,16 @@
-@props(['slides' => []])
+@props(['slides' => [], 'carouselImages' => []])
 
-<x-ui.slider.hero :slides="$slides" />
-    
+<div class="relative w-full h-80 md:h-96 overflow-hidden rounded-xl">
+    <div class="absolute inset-0 z-10 bg-gradient-to-r from-black/40 to-transparent"></div>
+    <div class="w-full h-full">
+        <div class="w-full h-full flex">
+            @foreach ($carouselImages as $image)
+                <img src="{{ $image }}" alt="Travel Carousel" class="object-cover w-full h-full transition-opacity duration-700" loading="lazy" />
+            @endforeach
+        </div>
+    </div>
+</div>
+
     <!-- Search Box Overlay -->
     <div class="absolute bottom-0 left-0 right-0 z-10 transform translate-y-1/2">
         <div class="container mx-auto px-4">

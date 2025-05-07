@@ -1,3 +1,5 @@
+{{-- Benefits Section Component --}}
+{{-- Props: $benefitImages (array of image URLs) --}}
 <section class="py-20 bg-gradient-to-br from-brandblue/5 via-white to-saffron/10">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
@@ -10,73 +12,13 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            <!-- Innovative -->
-            <div class="flex flex-col items-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden mb-6 shadow-soft">
-                    <img 
-                        src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                        alt="Innovative travel experiences" 
-                        class="w-full h-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                    >
+            @foreach ($benefitImages as $image)
+                <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+                    <img src="{{ $image }}" alt="Travel Benefit" class="w-20 h-20 object-cover rounded-full mb-3" loading="lazy" />
+                    <div class="font-semibold text-lg text-gray-800 mb-1">Travel Benefit</div>
+                    <div class="text-gray-500 text-sm mb-2">Enjoy exclusive benefits with us</div>
                 </div>
-                <h3 class="text-xl font-semibold text-brandblue mb-2">Innovative</h3>
-                <p class="text-center text-gray-700">
-                    Our innovative holiday company creates cutting-edge travel experiences that exceed expectations and inspire lifelong memories
-                </p>
-            </div>
-            
-            <!-- Personalised -->
-            <div class="flex flex-col items-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden mb-6 shadow-soft">
-                    <img 
-                        src="https://images.unsplash.com/photo-1519055548599-6d4d129508c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                        alt="Personalised travel packages" 
-                        class="w-full h-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                    >
-                </div>
-                <h3 class="text-xl font-semibold text-brandblue mb-2">Personalised</h3>
-                <p class="text-center text-gray-700">
-                    Experience your dream vacation with our bespoke travel packages, tailored to your unique interests and preferences
-                </p>
-            </div>
-            
-            <!-- Customer-focused -->
-            <div class="flex flex-col items-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden mb-6 shadow-soft">
-                    <img 
-                        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                        alt="Customer-focused service" 
-                        class="w-full h-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                    >
-                </div>
-                <h3 class="text-xl font-semibold text-brandblue mb-2">Customer-focused</h3>
-                <p class="text-center text-gray-700">
-                    From start to finish, our customer-focused travel services prioritize your comfort, convenience, and satisfaction
-                </p>
-            </div>
-            
-            <!-- Trustworthy -->
-            <div class="flex flex-col items-center">
-                <div class="w-48 h-48 rounded-full overflow-hidden mb-6 shadow-soft">
-                    <img 
-                        src="https://images.unsplash.com/photo-1667996238267-1a53e0cb9c76?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                        alt="Trustworthy travel services" 
-                        class="w-full h-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                    >
-                </div>
-                <h3 class="text-xl font-semibold text-brandblue mb-2">Trustworthy</h3>
-                <p class="text-center text-gray-700">
-                    Travel with peace of mind, as our trustworthy and reliable services prioritize your safety and security
-                </p>
-            </div>
+            @endforeach
         </div>
         
         <div class="text-center">

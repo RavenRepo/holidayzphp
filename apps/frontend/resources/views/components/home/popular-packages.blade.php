@@ -1,4 +1,4 @@
-@props(['packages' => []])
+@props(['packages' => [], 'packageImages' => []])
 
 <section class="py-20 bg-neutral-50">
     <div class="container mx-auto px-4">
@@ -6,19 +6,14 @@
             <h2 class="text-3xl md:text-4xl font-poppins font-bold text-brandblue mb-4">Popular Packages</h2>
             <p class="text-lg font-open-sans text-neutral-600 max-w-2xl mx-auto leading-relaxed">Discover our most loved travel experiences handpicked for unforgettable journeys</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach($packages as $package)
-                @if($loop->index < 6)
-                    <x-ui.card.card
-                        :image="$package['image']"
-                        :alt="$package['title']"
-                        :badge="$package['duration']"
-                        :title="$package['title']"
-                        :description="$package['description']"
-                        :price="'$' . number_format($package['price'])"
-                        :action="'<a href=\'' . $package['link'] . '\' class=\'inline-flex items-center text-brandblue hover:text-brandblue-dark font-medium transition-colors duration-300\'>View Details</a>'"
-                    />
-                @endif
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            @foreach ($packageImages as $image)
+                <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+                    <img src="{{ $image }}" alt="Popular Package" class="w-full h-40 object-cover rounded-md mb-3" loading="lazy" />
+                    <div class="font-semibold text-lg text-gray-800 mb-1">Holiday Package</div>
+                    <div class="text-gray-500 text-sm mb-2">Explore this destination</div>
+                    <a href="#" class="text-brandblue font-medium hover:underline">View Details</a>
+                </div>
             @endforeach
         </div>
         <div class="text-center mt-8">

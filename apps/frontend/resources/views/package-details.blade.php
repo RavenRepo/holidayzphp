@@ -42,7 +42,18 @@
                 <!-- Itinerary -->
                 <div>
                     <h2 class="text-3xl font-bold text-brandblue mb-8">Detailed Itinerary</h2>
-                    <x-package.itinerary :days="$package['itinerary']" />
+                    <div class="container mx-auto px-4 py-12">
+                        <h2 class="text-2xl font-bold mb-6">Itinerary Highlights</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            @foreach ($itineraryImages as $image)
+                                <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+                                    <img src="{{ $image }}" alt="Itinerary Highlight" class="w-full h-32 object-cover rounded-md mb-3" loading="lazy" />
+                                    <div class="font-semibold text-lg text-gray-800 mb-1">Itinerary Highlight</div>
+                                    <div class="text-gray-500 text-sm mb-2">Experience this on your trip</div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Inclusions & Exclusions -->

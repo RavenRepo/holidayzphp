@@ -8,22 +8,21 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManagerDashboardController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DestinationsController;
+use App\Http\Controllers\BlogController;
 
 // Main Routes
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/destinations', function () {
-    return view('destinations');
-})->name('destinations');
+Route::get('/destinations', [DestinationsController::class, 'index'])->name('destinations');
 
 Route::get('/package/{slug}', [PackageController::class, 'show'])->name('package.details');
 
 Route::post('/package/enquiry', [PackageController::class, 'submitEnquiry'])->name('package.enquiry');
 
 Route::view('/about', 'about')->name('about');
-Route::view('/blog', 'blog')->name('blog');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::view('/contact', 'contact')->name('contact');
 Route::view('/privacy', 'privacy')->name('privacy');
 Route::view('/terms', 'terms')->name('terms');

@@ -199,4 +199,18 @@
             </div>
         </div>
     </section>
+
+    <div class="container mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold mb-8">Top Destinations</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            @foreach ($destinationImages as $image)
+                <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+                    <img src="{{ $image }}" alt="Destination" class="w-full h-40 object-cover rounded-md mb-3" loading="lazy" />
+                    <div class="font-semibold text-lg text-gray-800 mb-1">Destination</div>
+                    <div class="text-gray-500 text-sm mb-2">Explore this place</div>
+                    <a href="#" class="text-brandblue font-medium hover:underline">View Details</a>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection

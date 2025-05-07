@@ -1,4 +1,4 @@
-@props(['posts' => []])
+@props(['posts' => [], 'inspirationImages' => []])
 
 <section class="py-20 bg-gradient-to-br from-saffron/10 via-white to-brandblue/5" aria-label="Travel Blog and Inspirations">
     <div class="container mx-auto px-4">
@@ -81,6 +81,18 @@
                         </div>
                     </div>
                 </article>
+            @endforeach
+        </div>
+
+        {{-- Inspiration Images --}}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+            @foreach ($inspirationImages as $image)
+                <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+                    <img src="{{ $image }}" alt="Travel Inspiration" class="w-full h-32 object-cover rounded-md mb-3" loading="lazy" />
+                    <div class="font-semibold text-lg text-gray-800 mb-1">Travel Inspiration</div>
+                    <div class="text-gray-500 text-sm mb-2">Get inspired for your next journey</div>
+                    <a href="#" class="text-brandblue font-medium hover:underline">Read More</a>
+                </div>
             @endforeach
         </div>
     </div>

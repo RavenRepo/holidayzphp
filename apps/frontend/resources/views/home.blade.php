@@ -4,110 +4,10 @@
 
 @section('content')
     {{-- Hero Carousel Section --}}
-    <x-home.hero-carousel :slides="[
-        [
-            'image' => 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-            'title' => 'Discover the Magic of India',
-            'subtitle' => 'Explore ancient wonders, vibrant cultures, and breathtaking landscapes',
-            'button' => [
-                'text' => 'Start Your Journey',
-                'link' => '/packages'
-            ]
-        ],
-        [
-            'image' => 'https://images.unsplash.com/photo-1598091383021-15ddea10925d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-            'title' => 'Rajasthan: Land of Kings',
-            'subtitle' => 'Immerse yourself in royal heritage, colorful festivals, and desert adventures',
-            'button' => [
-                'text' => 'Explore Rajasthan',
-                'link' => '/packages/rajasthan'
-            ]
-        ],
-        [
-            'image' => 'https://images.unsplash.com/photo-1591017683260-5ef06d8be2e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-            'title' => 'Kerala: God\'s Own Country',
-            'subtitle' => 'Unwind in the tranquil backwaters, lush hills, and pristine beaches',
-            'button' => [
-                'text' => 'Discover Kerala',
-                'link' => '/packages/kerala'
-            ]
-        ],
-        [
-            'image' => 'https://images.unsplash.com/photo-1546320831-5213fa166c64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-            'title' => 'Himalayan Escapes',
-            'subtitle' => 'Find peace and adventure in the majestic mountains of North India',
-            'button' => [
-                'text' => 'Mountain Getaways',
-                'link' => '/packages/himalayas'
-            ]
-        ],
-        [
-            'image' => 'https://images.unsplash.com/photo-1570168866149-be9a4817f6a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-            'title' => 'Goa: Sun, Sand & Serenity',
-            'subtitle' => 'Experience the perfect blend of beaches, culture, and vibrant nightlife',
-            'button' => [
-                'text' => 'Beach Holidays',
-                'link' => '/packages/goa'
-            ]
-        ],
-    ]" />
+    <x-home.hero-carousel :carousel-images="$carouselImages" />
     
     {{-- Popular Packages Section --}}
-    <x-home.popular-packages :packages="[
-        [
-            'image' => 'https://images.unsplash.com/photo-1586612438666-ffd0ae97ad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            'title' => 'Golden Triangle Tour',
-            'description' => 'Experience the cultural heritage of Delhi, Agra, and Jaipur in this iconic Indian journey.',
-            'duration' => '6',
-            'price' => 24999,
-            'rating' => 4.8,
-            'reviewCount' => 145,
-            'discount' => 15,
-            'link' => '/packages/golden-triangle'
-        ],
-        [
-            'image' => 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            'title' => 'Kerala Backwaters & Beaches',
-            'description' => 'Cruise on houseboats, relax on pristine beaches, and rejuvenate with Ayurvedic treatments.',
-            'duration' => '7',
-            'price' => 32999,
-            'rating' => 4.9,
-            'reviewCount' => 210,
-            'discount' => 12,
-            'link' => '/packages/kerala-bliss'
-        ],
-        [
-            'image' => 'https://images.unsplash.com/photo-1564507004663-b6dfb3c824d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            'title' => 'Goa Beach Getaway',
-            'description' => 'Soak up the sun on beautiful beaches, enjoy water sports, and experience Goa\'s vibrant nightlife.',
-            'duration' => '5',
-            'price' => 18999,
-            'rating' => 4.7,
-            'reviewCount' => 189,
-            'link' => '/packages/goa-beach'
-        ],
-        [
-            'image' => 'https://images.unsplash.com/photo-1588285556203-c1f0666ceec0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            'title' => 'Himachal Adventure',
-            'description' => 'Trek through scenic trails, camp under stars, and experience thrilling adventure sports.',
-            'duration' => '8',
-            'price' => 29999,
-            'rating' => 4.6,
-            'reviewCount' => 156,
-            'discount' => 10,
-            'link' => '/packages/himachal-adventure'
-        ],
-        [
-            'image' => 'https://images.unsplash.com/photo-1629412503383-98613e64e365?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            'title' => 'Royal Rajasthan Tour',
-            'description' => 'Explore magnificent forts and palaces, experience desert safaris, and enjoy cultural performances.',
-            'duration' => '9',
-            'price' => 36999,
-            'rating' => 4.8,
-            'reviewCount' => 176,
-            'link' => '/packages/royal-rajasthan'
-        ],
-    ]" />
+    <x-home.popular-packages :package-images="$packageImages" />
     
     {{-- Visa Free Destinations Section --}}
     <x-home.visa-free-destinations />
@@ -171,53 +71,13 @@
     ]" />
     
     {{-- Blog/Inspirations Section --}}
-    <x-home.blog-inspirations :posts="[
-        [
-            'image' => 'https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            'title' => 'Top 10 Hidden Gems in India That Most Tourists Miss',
-            'excerpt' => 'Discover lesser-known destinations that offer authentic experiences away from the crowds. From the pristine beaches of Gokarna to the living root bridges of Meghalaya...',
-            'category' => 'Travel Tips',
-            'date' => 'March 15, 2024',
-            'readTime' => '7',
-            'link' => '/blog/hidden-gems-india',
-            'author' => [
-                'name' => 'Vikram Nair',
-                'avatar' => 'https://randomuser.me/api/portraits/men/32.jpg'
-            ]
-        ],
-        [
-            'image' => 'https://images.unsplash.com/photo-1551351731-7ab09b6bf5e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            'title' => 'A Culinary Journey Through India\'s Regional Cuisines',
-            'excerpt' => 'From the fiery flavors of Andhra Pradesh to the subtle sweetness of Bengali dishes, this guide takes you through India\'s diverse culinary landscape...',
-            'category' => 'Food & Culture',
-            'date' => 'February 28, 2024',
-            'readTime' => '9',
-            'link' => '/blog/india-culinary-journey',
-            'author' => [
-                'name' => 'Meera Iyer',
-                'avatar' => 'https://randomuser.me/api/portraits/women/44.jpg'
-            ]
-        ],
-        [
-            'image' => 'https://images.unsplash.com/photo-1585484173186-5f8b2a9b0544?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            'title' => 'Sustainable Travel: Eco-Friendly Destinations in India',
-            'excerpt' => 'Explore responsible tourism options in India. From organic farm stays in Sikkim to eco-villages in Gujarat, learn how to minimize your environmental footprint...',
-            'category' => 'Eco Tourism',
-            'date' => 'April 2, 2024',
-            'readTime' => '6',
-            'link' => '/blog/sustainable-india-travel',
-            'author' => [
-                'name' => 'Arjun Singh',
-                'avatar' => 'https://randomuser.me/api/portraits/men/67.jpg'
-            ]
-        ],
-    ]" />
+    <x-home.blog-inspirations :inspiration-images="$inspirationImages" />
     
     {{-- CTA Section --}}
     <x-home.cta-section />
     
     {{-- Benefits Section --}}
-    <x-home.benefits-section />
+    <x-home.benefits-section :benefit-images="$benefitImages" />
     
     {{-- Lead Capture Form --}}
     <x-home.lead-form />

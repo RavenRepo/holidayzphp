@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Mail\PackageEnquiry;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use App\Services\UnsplashService;
 
 class PackageController extends Controller
 {
@@ -48,12 +49,13 @@ class PackageController extends Controller
     }
 
     /**
-     * Display the specified package.
+     * Display the specified package details and itinerary with Unsplash images.
      *
-     * @param  string  $slug
+     * @param string $slug
+     * @param UnsplashService $unsplash
      * @return \Illuminate\View\View
      */
-    public function show($slug)
+    public function show($slug, UnsplashService $unsplash)
     {
         // Mock package data - replace with database query later
         $package = [
@@ -153,7 +155,11 @@ class PackageController extends Controller
             ]
         ];
 
-        return view('package-details', compact('package'));
+        $itineraryImages = $unsplash->searchImages($slug . ' travel', 5);
+        return view('package-details', [
+            'package' => $package,
+            'itineraryImages' => $itineraryImages,
+        ]);
     }
 
     /**

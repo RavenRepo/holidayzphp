@@ -200,4 +200,18 @@
             </div>
         </div>
     </section>
+
+    <div class="container mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold mb-8">Travel Blog</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            @foreach ($blogImages as $image)
+                <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+                    <img src="{{ $image }}" alt="Blog Post" class="w-full h-32 object-cover rounded-md mb-3" loading="lazy" />
+                    <div class="font-semibold text-lg text-gray-800 mb-1">Travel Story</div>
+                    <div class="text-gray-500 text-sm mb-2">Get inspired for your next journey</div>
+                    <a href="#" class="text-brandblue font-medium hover:underline">Read More</a>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection
