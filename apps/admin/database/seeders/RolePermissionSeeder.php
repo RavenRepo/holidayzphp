@@ -6,34 +6,32 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use App\Models\Permission;
+use App\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
-
 class RolePermissionSeeder extends Seeder
 {
     public function run(): void
     {
-        // Only truncate tables in local, testing environments
-        if (app()->environment('local', 'testing')) {
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        // Clear permission cache
+        app(PermissionRegistrar::class)->forgetCachedPermissions();
+
+        // Only truncate in local/testing environments
+        if (app()->environment(['local', 'testing'])) {
             DB::table('role_has_permissions')->truncate();
             DB::table('model_has_roles')->truncate();
             DB::table('model_has_permissions')->truncate();
-            DB::table('roles')->truncate();
-            DB::table('permissions')->truncate();
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-            // Clear permission cache after truncation
-            app()->make(PermissionRegistrar::class)->forgetCachedPermissions();
+            Role::truncate();
+            Permission::truncate();
         }
 
-        // Define roles and permissions
         $roles = [
             'admin',
             'manager',
             'editor',
             'customer',
         ];
+
         $permissions = [
             'manage packages', 'view packages', 'create package', 'edit package', 'delete package',
             'manage bookings', 'view bookings', 'create booking', 'edit booking', 'cancel booking',
@@ -42,38 +40,73 @@ class RolePermissionSeeder extends Seeder
             'view dashboard', 'access admin panel',
         ];
 
-        // Create permissions
+        // Create permissions with UUIDs if they don't exist
         foreach ($permissions as $permission) {
-            Permission::create([
-                'id' => (string) Str::uuid(),
-                'name' => $permission,
-                'guard_name' => 'admin',
-            ]);
+            Permission::firstOrCreate(
+                ['name' => $permission, 'guard_name' => 'admin'],
+                ['id' => Str::uuid()]
+            );
         }
 
-        // Create roles
+        // Create roles with UUIDs if they don't exist
         foreach ($roles as $role) {
-            Role::create([
-                'id' => (string) Str::uuid(),
-                'name' => $role,
-                'guard_name' => 'admin',
-            ]);
+            Role::firstOrCreate(
+                ['name' => $role, 'guard_name' => 'admin'],
+                ['id' => Str::uuid()]
+            );
         }
 
-        // Reload permissions and roles from the database
-        $allPermissions = Permission::pluck('name')->toArray();
+        // Assign all permissions to admin role
         $adminRole = Role::where('name', 'admin')->where('guard_name', 'admin')->first();
+
         if ($adminRole) {
-            $adminRole->givePermissionTo($allPermissions);
+            $adminPermissionNames = Permission::where('guard_name', 'admin')->pluck('name')->toArray();
+            $adminRole->syncPermissions($adminPermissionNames); // Assign by name (Spatie will resolve)
         }
 
-        // Assign admin role to the first user (if exists)
+        // Assign admin role to the first user (ensure guard matches)
         $adminUser = User::first();
-        if ($adminUser && ! $adminUser->hasRole('admin')) {
-            $adminUser->assignRole('admin');
+        if ($adminUser && !$adminUser->hasRole('admin', 'admin')) {
+            $adminUser->assignRole('admin', 'admin'); // Specify guard
         }
 
-        // Clear permission cache again after assignments
-        app()->make(PermissionRegistrar::class)->forgetCachedPermissions();
+        // Clear cache again just in case
+        app(PermissionRegistrar::class)->forgetCachedPermissions();
+
+        // Seed sample users for each role
+        $users = [
+            [
+                'name' => 'Admin User',
+                'email' => 'admin@example.com',
+                'password' => bcrypt('password'),
+                'role' => 'admin',
+            ],
+            [
+                'name' => 'Manager User',
+                'email' => 'manager@example.com',
+                'password' => bcrypt('password'),
+                'role' => 'manager',
+            ],
+            [
+                'name' => 'Customer User',
+                'email' => 'customer@example.com',
+                'password' => bcrypt('password'),
+                'role' => 'customer',
+            ],
+        ];
+        foreach ($users as $userData) {
+            $user = \App\Models\User::firstOrCreate(
+                ['email' => $userData['email']],
+                ['name' => $userData['name'], 'password' => $userData['password']]
+            );
+            if (! $user->hasRole($userData['role'], 'admin')) {
+                $user->assignRole($userData['role'], 'admin');
+            }
+        }
+
+        // dump('Permissions:', Permission::all()->pluck('id', 'name')->toArray());
+        // dump('Roles:', Role::all()->pluck('id', 'name')->toArray());
+        // dump('Permission class:', get_class(new Permission));
+        // dump('Role class:', get_class(new Role));
     }
 }

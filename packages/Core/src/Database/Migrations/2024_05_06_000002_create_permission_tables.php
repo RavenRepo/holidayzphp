@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Permission;
+use App\Models\Role;
 
 return new class extends Migration
 {
@@ -109,6 +111,10 @@ return new class extends Migration
         app('cache')
             ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)
             ->forget(config('permission.cache.key'));
+
+        // dump('Permissions:', Permission::all()->pluck('id', 'name')->toArray());
+        // dump('Roles:', Role::all()->pluck('id', 'name')->toArray());
+        // exit; // Stop before assignments
     }
 
     /**

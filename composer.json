@@ -5,7 +5,8 @@
     "keywords": ["laravel", "monorepo", "travel"],
     "license": "proprietary",
     "require": {
-        "php": "^8.2"
+        "php": "^8.2",
+        "spatie/laravel-permission": "^6.3"
     },
     "require-dev": {
         "pestphp/pest": "^2.0",
