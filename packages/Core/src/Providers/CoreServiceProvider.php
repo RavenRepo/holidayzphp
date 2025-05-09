@@ -24,11 +24,11 @@ class CoreServiceProvider extends ServiceProvider
         // Publish migrations
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../Database/Migrations' => database_path('migrations'),
+                __DIR__.'/../Database/Migrations' => database_path('migrations'),
             ], 'holidayz-core-migrations');
         }
 
         // Load migrations
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
     }
 }

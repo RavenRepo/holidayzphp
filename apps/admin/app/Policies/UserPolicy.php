@@ -3,7 +3,6 @@
 namespace App\Policies;
 
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Log;
 
@@ -44,17 +43,18 @@ class UserPolicy
         if ($user->id === $model->id) {
             // Self-edit allowed
             Log::info('Self-edit allowed', ['user_id' => $user->id, 'model_id' => $model->id]);
+
             return true;
         }
-        
+
         // Editing others needs permission
         $hasPermission = $user->hasPermissionTo('edit user');
         Log::info('Edit others permission check', [
-            'user_id' => $user->id, 
+            'user_id' => $user->id,
             'model_id' => $model->id,
-            'has_permission' => $hasPermission
+            'has_permission' => $hasPermission,
         ]);
-        
+
         return $hasPermission;
     }
 
@@ -66,17 +66,18 @@ class UserPolicy
         // Prevent self-deletion
         if ($user->id === $model->id) {
             Log::info('Self-deletion prevented', ['user_id' => $user->id]);
+
             return false;
         }
-        
+
         // Deleting others needs permission
         $hasPermission = $user->hasPermissionTo('delete user');
         Log::info('Delete user permission check', [
-            'user_id' => $user->id, 
+            'user_id' => $user->id,
             'model_id' => $model->id,
-            'has_permission' => $hasPermission
+            'has_permission' => $hasPermission,
         ]);
-        
+
         return $hasPermission;
     }
 
@@ -97,7 +98,7 @@ class UserPolicy
         if ($user->id === $model->id) {
             return false;
         }
-        
+
         return $user->hasPermissionTo('delete user');
     }
-} 
+}

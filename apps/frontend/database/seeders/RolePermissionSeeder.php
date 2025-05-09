@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
-use App\Models\User;
 
 class RolePermissionSeeder extends Seeder
 {
@@ -30,7 +30,7 @@ class RolePermissionSeeder extends Seeder
             'verified_traveler',
             'content_creator',
         ];
-        
+
         $permissions = [
             'view packages',
             'book package',
@@ -65,36 +65,36 @@ class RolePermissionSeeder extends Seeder
 
         // Assign permissions to roles
         $basicPermissions = [
-            'view packages', 
-            'book package', 
-            'cancel booking', 
-            'view bookings'
+            'view packages',
+            'book package',
+            'cancel booking',
+            'view bookings',
         ];
-        
+
         $premiumPermissions = [
-            'view packages', 
-            'book package', 
-            'cancel booking', 
-            'submit review', 
+            'view packages',
+            'book package',
+            'cancel booking',
+            'submit review',
             'access premium content',
-            'view bookings'
+            'view bookings',
         ];
-        
+
         $verifiedPermissions = [
-            'view packages', 
-            'book package', 
-            'cancel booking', 
-            'submit review', 
-            'view bookings'
+            'view packages',
+            'book package',
+            'cancel booking',
+            'submit review',
+            'view bookings',
         ];
-        
+
         $contentCreatorPermissions = [
-            'view packages', 
-            'book package', 
-            'cancel booking', 
-            'submit review', 
+            'view packages',
+            'book package',
+            'cancel booking',
+            'submit review',
             'create travel story',
-            'view bookings'
+            'view bookings',
         ];
 
         // Assign permissions to user role
@@ -102,33 +102,33 @@ class RolePermissionSeeder extends Seeder
         if ($userRole) {
             $userRole->givePermissionTo($basicPermissions);
         }
-        
+
         // Assign permissions to premium_user role
         $premiumRole = Role::where('name', 'premium_user')->where('guard_name', 'web')->first();
         if ($premiumRole) {
             $premiumRole->givePermissionTo($premiumPermissions);
         }
-        
+
         // Assign permissions to verified_traveler role
         $verifiedRole = Role::where('name', 'verified_traveler')->where('guard_name', 'web')->first();
         if ($verifiedRole) {
             $verifiedRole->givePermissionTo($verifiedPermissions);
         }
-        
+
         // Assign permissions to content_creator role
         $creatorRole = Role::where('name', 'content_creator')->where('guard_name', 'web')->first();
         if ($creatorRole) {
             $creatorRole->givePermissionTo($contentCreatorPermissions);
         }
-        
+
         // Assign user role to all existing users
         User::all()->each(function ($user) {
-            if (!$user->hasRole('user')) {
+            if (! $user->hasRole('user')) {
                 $user->assignRole('user');
             }
         });
-        
+
         // Clear permission cache
         app()->make(PermissionRegistrar::class)->forgetCachedPermissions();
     }
-} 
+}

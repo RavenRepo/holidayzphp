@@ -9,13 +9,13 @@ use Tests\TestCase;
 class PackagePolicyTest extends TestCase
 {
     protected PackagePolicy $policy;
-    
+
     protected function setUp(): void
     {
         parent::setUp();
-        $this->policy = new PackagePolicy();
+        $this->policy = new PackagePolicy;
     }
-    
+
     /**
      * @test
      */
@@ -23,11 +23,11 @@ class PackagePolicyTest extends TestCase
     {
         // Arrange
         $user = $this->mockUserWithPermissions(['view packages']);
-        
+
         // Act & Assert
         $this->assertTrue($this->policy->viewAny($user));
     }
-    
+
     /**
      * @test
      */
@@ -35,11 +35,11 @@ class PackagePolicyTest extends TestCase
     {
         // Arrange
         $user = $this->mockUserWithPermissions([]);
-        
+
         // Act & Assert
         $this->assertFalse($this->policy->viewAny($user));
     }
-    
+
     /**
      * @test
      */
@@ -47,11 +47,11 @@ class PackagePolicyTest extends TestCase
     {
         // Arrange
         $user = $this->mockUserWithPermissions(['view packages']);
-        
+
         // Act & Assert
         $this->assertTrue($this->policy->view($user));
     }
-    
+
     /**
      * @test
      */
@@ -59,11 +59,11 @@ class PackagePolicyTest extends TestCase
     {
         // Arrange
         $user = $this->mockUserWithPermissions(['create package']);
-        
+
         // Act & Assert
         $this->assertTrue($this->policy->create($user));
     }
-    
+
     /**
      * @test
      */
@@ -71,11 +71,11 @@ class PackagePolicyTest extends TestCase
     {
         // Arrange
         $user = $this->mockUserWithPermissions([]);
-        
+
         // Act & Assert
         $this->assertFalse($this->policy->create($user));
     }
-    
+
     /**
      * @test
      */
@@ -83,11 +83,11 @@ class PackagePolicyTest extends TestCase
     {
         // Arrange
         $user = $this->mockUserWithPermissions(['edit package']);
-        
+
         // Act & Assert
         $this->assertTrue($this->policy->update($user));
     }
-    
+
     /**
      * @test
      */
@@ -95,11 +95,11 @@ class PackagePolicyTest extends TestCase
     {
         // Arrange
         $user = $this->mockUserWithPermissions([]);
-        
+
         // Act & Assert
         $this->assertFalse($this->policy->update($user));
     }
-    
+
     /**
      * @test
      */
@@ -107,11 +107,11 @@ class PackagePolicyTest extends TestCase
     {
         // Arrange
         $user = $this->mockUserWithPermissions(['delete package']);
-        
+
         // Act & Assert
         $this->assertTrue($this->policy->delete($user));
     }
-    
+
     /**
      * @test
      */
@@ -119,11 +119,11 @@ class PackagePolicyTest extends TestCase
     {
         // Arrange
         $user = $this->mockUserWithPermissions([]);
-        
+
         // Act & Assert
         $this->assertFalse($this->policy->delete($user));
     }
-    
+
     /**
      * @test
      */
@@ -131,11 +131,11 @@ class PackagePolicyTest extends TestCase
     {
         // Arrange
         $user = $this->mockUserWithPermissions(['manage packages']);
-        
+
         // Act & Assert
         $this->assertTrue($this->policy->restore($user));
     }
-    
+
     /**
      * @test
      */
@@ -143,24 +143,24 @@ class PackagePolicyTest extends TestCase
     {
         // Arrange
         $user = $this->mockUserWithPermissions(['delete package']);
-        
+
         // Act & Assert
         $this->assertTrue($this->policy->forceDelete($user));
     }
-    
+
     /**
      * Helper method to mock a user with permissions
      */
     private function mockUserWithPermissions(array $permissions): User
     {
         $user = $this->createMock(User::class);
-        
+
         $user->expects($this->any())
             ->method('hasPermissionTo')
             ->willReturnCallback(function ($permission) use ($permissions) {
                 return in_array($permission, $permissions);
             });
-            
+
         return $user;
     }
-} 
+}

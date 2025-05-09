@@ -13,4 +13,4 @@ class CreatePermission extends CreateRecord
     {
         return $this->getResource()::getUrl('index');
     }
-} 
+}

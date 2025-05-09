@@ -21,6 +21,7 @@ class ManagerDashboardController extends Controller
         // Dummy data for now
         $teamMembers = [];
         $teamBookings = [];
+
         return view('manager.dashboard', compact('user', 'teamMembers', 'teamBookings'));
     }
-} 
+}

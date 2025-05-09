@@ -2,4 +2,4 @@
 
 return [
     'guard_name' => 'admin',
-]; 
+];

@@ -59,6 +59,7 @@ This registry documents all files and directories in the Holidayz Manager monore
 | `memory-bank/techContext.md`  | File | Technologies, setup, constraints             | N/A             | Cline Workflow  |
 | `memory-bank/activeContext.md`| File | Current focus, next steps, decisions         | N/A             | Cline Workflow  |
 | `memory-bank/progress.md`     | File | What works, what's left, status, issues      | N/A             | Cline Workflow  |
+| `memory-bank/deployproduction.md` | File | Production deployment guide for Laravel monorepo (Hostinger) | N/A | Deployment, DevOps |
 
 
 # File and Directory Registry

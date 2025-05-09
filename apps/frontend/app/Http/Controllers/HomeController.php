@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\UnsplashService;
 
 /**
@@ -13,7 +12,6 @@ class HomeController extends Controller
     /**
      * Show the homepage with Unsplash images.
      *
-     * @param UnsplashService $unsplash
      * @return \Illuminate\View\View
      */
     public function index(UnsplashService $unsplash)
@@ -30,4 +28,4 @@ class HomeController extends Controller
             'benefitImages' => $benefitImages,
         ]);
     }
-} 
+}

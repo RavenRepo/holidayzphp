@@ -16,18 +16,18 @@ class EnsureFrontendRole
      */
     public function handle(Request $request, Closure $next, string $role): Response
     {
-        if (!Auth::guard('web')->check()) {
+        if (! Auth::guard('web')->check()) {
             return redirect()->route('login')
                 ->with('error', 'You must be logged in to access this page.');
         }
 
         $user = Auth::guard('web')->user();
 
-        if (!$user->hasRole(explode('|', $role))) {
+        if (! $user->hasRole(explode('|', $role))) {
             return redirect()->route('home')
                 ->with('error', 'You do not have permission to access this page.');
         }
 
         return $next($request);
     }
-} 
+}

@@ -21,4 +21,4 @@ class EditUser extends EditRecord
     {
         return $this->getResource()::getUrl('index');
     }
-} 
+}

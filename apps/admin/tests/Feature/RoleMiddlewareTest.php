@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
-use App\Models\User;
 
 class RoleMiddlewareTest extends TestCase
 {
@@ -49,4 +49,4 @@ class RoleMiddlewareTest extends TestCase
         // Assert: success
         $response->assertStatus(200);
     }
-} 
+}

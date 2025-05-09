@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPolicies();
-        
+
         // Define super-admin gate for users with the admin role
         Gate::before(function ($user, $ability) {
             if ($user->hasRole('admin')) {
@@ -35,4 +35,4 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
     }
-} 
+}

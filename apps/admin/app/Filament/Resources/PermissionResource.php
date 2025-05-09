@@ -13,23 +13,23 @@ use Spatie\Permission\Models\Permission;
 class PermissionResource extends Resource
 {
     protected static ?string $model = Permission::class;
-    
+
     protected static ?string $navigationIcon = 'heroicon-o-key';
-    
+
     protected static ?string $navigationGroup = 'Access Management';
-    
+
     protected static ?int $navigationSort = 3;
-    
+
     public static function getModelLabel(): string
     {
         return __('Permission');
     }
-    
+
     public static function getPluralModelLabel(): string
     {
         return __('Permissions');
     }
-    
+
     public static function form(Form $form): Form
     {
         return $form
@@ -42,10 +42,10 @@ class PermissionResource extends Resource
                         Forms\Components\Hidden::make('guard_name')
                             ->default('admin')
                             ->required(),
-                    ])
+                    ]),
             ]);
     }
-    
+
     public static function table(Table $table): Table
     {
         return $table
@@ -80,14 +80,14 @@ class PermissionResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -96,4 +96,4 @@ class PermissionResource extends Resource
             'edit' => Pages\EditPermission::route('/{record}/edit'),
         ];
     }
-} 
+}

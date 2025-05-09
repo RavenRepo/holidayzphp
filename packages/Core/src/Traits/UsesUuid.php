@@ -22,8 +22,6 @@ trait UsesUuid
 
     /**
      * Tell Eloquent that the model does not use auto-incrementing IDs.
-     *
-     * @return bool
      */
     public function getIncrementing(): bool
     {
@@ -32,8 +30,6 @@ trait UsesUuid
 
     /**
      * Tell Eloquent the primary key type is string.
-     *
-     * @return string
      */
     public function getKeyType(): string
     {

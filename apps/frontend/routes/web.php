@@ -1,16 +1,16 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PackageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ManagerDashboardController;
-use App\Http\Controllers\LeadController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DestinationsController;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LeadController;
+use App\Http\Controllers\ManagerDashboardController;
+use App\Http\Controllers\PackageController;
+use Illuminate\Support\Facades\Route;
 
 // Main Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');

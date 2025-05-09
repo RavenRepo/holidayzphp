@@ -16,7 +16,7 @@ return [
     | Model Definitions
     |--------------------------------------------------------------------------
     |
-    | Specify the model classes to use for Spatie's permission package 
+    | Specify the model classes to use for Spatie's permission package
     | in the frontend app.
     |
     */
@@ -127,4 +127,4 @@ return [
          */
         'store' => 'default',
     ],
-]; 
+];

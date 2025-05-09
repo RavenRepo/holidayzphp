@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\UnsplashService;
 
 /**
@@ -13,14 +12,14 @@ class DestinationsController extends Controller
     /**
      * Show the destinations page with Unsplash images.
      *
-     * @param UnsplashService $unsplash
      * @return \Illuminate\View\View
      */
     public function index(UnsplashService $unsplash)
     {
         $destinationImages = $unsplash->searchImages('top travel destinations', 8);
+
         return view('destinations', [
             'destinationImages' => $destinationImages,
         ]);
     }
-} 
+}

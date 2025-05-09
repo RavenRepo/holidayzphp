@@ -1,3 +1,3 @@
 <?php
 
-// API routes for the admin app (currently empty) 
+// API routes for the admin app (currently empty)

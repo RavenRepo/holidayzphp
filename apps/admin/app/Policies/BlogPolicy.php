@@ -68,4 +68,4 @@ class BlogPolicy
     {
         return $user->hasPermissionTo('delete blog');
     }
-} 
+}

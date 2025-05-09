@@ -68,4 +68,4 @@ class PackagePolicy
     {
         return $user->hasPermissionTo('delete package');
     }
-} 
+}

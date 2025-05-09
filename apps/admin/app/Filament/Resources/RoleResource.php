@@ -8,29 +8,28 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleResource extends Resource
 {
     protected static ?string $model = Role::class;
-    
+
     protected static ?string $navigationIcon = 'heroicon-o-shield-check';
-    
+
     protected static ?string $navigationGroup = 'Access Management';
-    
+
     protected static ?int $navigationSort = 2;
-    
+
     public static function getModelLabel(): string
     {
         return __('Role');
     }
-    
+
     public static function getPluralModelLabel(): string
     {
         return __('Roles');
     }
-    
+
     public static function form(Form $form): Form
     {
         return $form
@@ -48,10 +47,10 @@ class RoleResource extends Resource
                             ->searchable()
                             ->columns(2)
                             ->required(),
-                    ])
+                    ]),
             ]);
     }
-    
+
     public static function table(Table $table): Table
     {
         return $table
@@ -90,14 +89,14 @@ class RoleResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -106,4 +105,4 @@ class RoleResource extends Resource
             'edit' => Pages\EditRole::route('/{record}/edit'),
         ];
     }
-} 
+}

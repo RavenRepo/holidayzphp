@@ -12,7 +12,6 @@ class LeadController extends Controller
     /**
      * Handle the lead form submission.
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function submit(Request $request)
@@ -31,4 +30,4 @@ class LeadController extends Controller
 
         return back()->with('success', 'Thank you! Our expert will contact you soon.');
     }
-} 
+}

@@ -21,4 +21,4 @@ class EditPermission extends EditRecord
     {
         return $this->getResource()::getUrl('index');
     }
-} 
+}

@@ -19,16 +19,16 @@ class StatsOverviewWidget extends BaseWidget
                 ->description('Total registered users')
                 ->descriptionIcon('heroicon-s-users')
                 ->color('success'),
-                
+
             Card::make('Roles', Role::count())
                 ->description('System roles for access control')
                 ->descriptionIcon('heroicon-s-shield-check')
                 ->color('primary'),
-                
+
             Card::make('Permissions', Permission::count())
                 ->description('Granular access permissions')
                 ->descriptionIcon('heroicon-s-key')
                 ->color('warning'),
         ];
     }
-} 
+}

@@ -22,7 +22,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         // Register Home Components
         Blade::componentNamespace('App\\View\\Components\\Home', 'home');
-        
+
         // Explicitly register home blade components
         $this->loadViewComponentsAs('home', [
             'hero-carousel' => 'components.home.hero-carousel',

@@ -11,18 +11,17 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Role;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
-    
+
     protected static ?string $navigationIcon = 'heroicon-o-users';
-    
+
     protected static ?string $navigationGroup = 'Access Management';
-    
+
     protected static ?int $navigationSort = 1;
-    
+
     public static function form(Form $form): Form
     {
         return $form
@@ -46,10 +45,10 @@ class UserResource extends Resource
                             ->relationship('roles', 'name')
                             ->preload()
                             ->required(),
-                    ])
+                    ]),
             ]);
     }
-    
+
     public static function table(Table $table): Table
     {
         return $table
@@ -94,14 +93,14 @@ class UserResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -110,9 +109,9 @@ class UserResource extends Resource
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
-    
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->withoutGlobalScopes();
     }
-} 
+}

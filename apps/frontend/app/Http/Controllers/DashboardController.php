@@ -24,6 +24,7 @@ class DashboardController extends Controller
             'name' => $user->name,
             'email' => $user->email,
         ];
+
         return view('dashboard', compact('user', 'bookings', 'profile'));
     }
-} 
+}

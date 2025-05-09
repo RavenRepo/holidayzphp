@@ -12,8 +12,6 @@ class User extends CoreUser
 
     /**
      * The guard that should be used for authentication.
-     *
-     * @var string
      */
     protected string $guard = 'admin';
 }

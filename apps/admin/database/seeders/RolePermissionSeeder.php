@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
-use App\Models\User;
 
 class RolePermissionSeeder extends Seeder
 {
@@ -69,11 +69,11 @@ class RolePermissionSeeder extends Seeder
 
         // Assign admin role to the first user (if exists)
         $adminUser = User::first();
-        if ($adminUser && !$adminUser->hasRole('admin')) {
+        if ($adminUser && ! $adminUser->hasRole('admin')) {
             $adminUser->assignRole('admin');
         }
 
         // Clear permission cache again after assignments
         app()->make(PermissionRegistrar::class)->forgetCachedPermissions();
     }
-} 
+}

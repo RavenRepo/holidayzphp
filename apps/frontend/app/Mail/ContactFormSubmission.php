@@ -20,6 +20,6 @@ class ContactFormSubmission extends Mailable
     public function build()
     {
         return $this->markdown('emails.contact-form-submission')
-                    ->subject('New Contact Form Submission - Holidayz Manager');
+            ->subject('New Contact Form Submission - Holidayz Manager');
     }
 }

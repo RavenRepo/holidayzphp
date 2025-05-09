@@ -11,10 +11,6 @@ class UnsplashService
 {
     /**
      * Search Unsplash for images by keyword.
-     *
-     * @param string $query
-     * @param int $count
-     * @return array
      */
     public function searchImages(string $query, int $count = 5): array
     {
@@ -32,6 +28,7 @@ class UnsplashService
                 ->values()
                 ->all();
         }
+
         return [];
     }
-} 
+}

@@ -15,7 +15,6 @@ class PackageEnquiry extends Mailable
     /**
      * Create a new message instance.
      *
-     * @param  array  $enquiry
      * @return void
      */
     public function __construct(array $enquiry)
@@ -31,9 +30,9 @@ class PackageEnquiry extends Mailable
     public function build()
     {
         return $this->markdown('emails.package-enquiry')
-                    ->subject('New Package Enquiry: ' . $this->enquiry['package'])
-                    ->with([
-                        'enquiry' => $this->enquiry
-                    ]);
+            ->subject('New Package Enquiry: '.$this->enquiry['package'])
+            ->with([
+                'enquiry' => $this->enquiry,
+            ]);
     }
 }

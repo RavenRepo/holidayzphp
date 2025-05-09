@@ -16,4 +16,4 @@ class ListPermissions extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
-} 
+}

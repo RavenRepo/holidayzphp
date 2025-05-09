@@ -12,7 +12,8 @@
     "require": {
         "php": "^8.2",
         "spatie/laravel-permission": "^6.3",
-        "ramsey/uuid": "^4.7"
+        "ramsey/uuid": "^4.7",
+        "filament/filament": "^3.2"
     },
     "autoload": {
         "psr-4": {
