@@ -35,6 +35,8 @@
 - Registered AdminPanelProvider in config/app.php providers array.
 - Audited and cleaned up all Filament-related configuration and usage in the codebase.
 - Temporarily disabled SSL verification for Unsplash API requests in UnsplashService for local development (to be reverted for production).
+- Implemented admin password reset (forgot/reset) flow with new controllers and Blade views
+- Added docblocks and inline comments to all admin auth controllers and views for maintainability
 
 ## Next Steps
 - Implement feedback components (alerts, modals, toasts)

@@ -12,6 +12,8 @@
 - ✅ Middleware setup
 - ✅ View components
 - ✅ Route protection
+- ✅ Admin password reset (forgot/reset) flow implemented with controllers and Blade views
+- ✅ Docblocks and inline comments added to all admin auth controllers and views
 
 ### Role Management (🚧 Phase 2 In Progress)
 - ✅ Core package RBAC foundation

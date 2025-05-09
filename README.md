@@ -54,4 +54,27 @@ A scalable Laravel monorepo for travel management, replicating and extending hol
 - Follow code quality standards (PSR-12, SOLID).
 - Write unit and integration tests (aim for >80% coverage).
 - Document code using DocBlocks and update READMEs/wiki.
-- Ensure UI follows brand guidelines and WCAG accessibility standards. 
+- Ensure UI follows brand guidelines and WCAG accessibility standards.
+
+## Admin Authentication Flow
+
+- **Login:**
+  - URL: `/admin/siteadmin`
+  - Controller: `AdminLoginController`
+  - View: `auth/admin-login.blade.php`
+- **Password Reset:**
+  - Forgot Password: `/admin/siteadmin/forgot-password`
+    - Controller: `AdminForgotPasswordController`
+    - View: `auth/admin-forgot-password.blade.php`
+  - Reset Password: `/admin/siteadmin/reset-password/{token}`
+    - Controller: `AdminResetPasswordController`
+    - View: `auth/admin-reset-password.blade.php`
+- **Dashboard:**
+  - URL: `/admin/dashboard`
+  - Controller: `AdminDashboardController`
+  - View: `admin/dashboard.blade.php`
+- **Logout:**
+  - URL: `/admin/logout` (POST)
+  - Controller: `AdminLoginController`
+
+All routes are protected by the `admin` guard. Password reset uses the same user provider as login. See Memory Bank for full file registry and relationships. 
