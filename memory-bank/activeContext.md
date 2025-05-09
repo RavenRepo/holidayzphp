@@ -30,6 +30,11 @@
 - Registered POST route for lead submission in routes/web.php
 - Confirmed modal suppression on login/register pages
 - Proceeding with more autonomous workflow as per user preference
+- Migrated all Filament admin configuration to a new AdminPanelProvider (PanelProvider) as per Filament v3 best practices.
+- Removed the custom FilamentServiceProvider to prevent duplicate/conflicting configuration.
+- Registered AdminPanelProvider in config/app.php providers array.
+- Audited and cleaned up all Filament-related configuration and usage in the codebase.
+- Temporarily disabled SSL verification for Unsplash API requests in UnsplashService for local development (to be reverted for production).
 
 ## Next Steps
 - Implement feedback components (alerts, modals, toasts)

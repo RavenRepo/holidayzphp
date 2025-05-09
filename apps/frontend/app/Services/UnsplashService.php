@@ -15,7 +15,8 @@ class UnsplashService
     public function searchImages(string $query, int $count = 5): array
     {
         $accessKey = config('services.unsplash.access_key');
-        $response = Http::get('https://api.unsplash.com/search/photos', [
+        // TEMPORARY: Disable SSL verification for local development. REMOVE for production!
+        $response = Http::withOptions(['verify' => false])->get('https://api.unsplash.com/search/photos', [
             'query' => $query,
             'per_page' => $count,
             'client_id' => $accessKey,

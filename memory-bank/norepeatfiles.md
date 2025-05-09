@@ -156,3 +156,5 @@ This registry documents all files and directories in the Holidayz Manager monore
 | `/apps/frontend/resources/views/components/dashboard/bookings-widget.blade.php` | File | Bookings widget Blade component | Accepts bookings prop, shows table or empty state | Used in user and manager dashboards |
 | `/apps/frontend/resources/views/components/dashboard/profile-widget.blade.php` | File | Profile widget Blade component | Accepts profile prop, shows user info | Used in user dashboard |
 | `/apps/frontend/resources/views/components/dashboard/team-stats-widget.blade.php` | File | Team stats widget Blade component | Accepts teamMembers and teamBookings props, shows stats and list | Used in manager dashboard |
+| `apps/admin/app/Providers/AdminPanelProvider.php` | File | Filament v3 PanelProvider for admin panel configuration | Registers Filament panel, navigation, widgets, hooks | Used in config/app.php, replaces FilamentServiceProvider |
+| `apps/frontend/app/Services/UnsplashService.php` | File | Service for Unsplash API image search | Uses Laravel HTTP client, temporarily disables SSL verification for local dev | Used by HomeController, DestinationsController |

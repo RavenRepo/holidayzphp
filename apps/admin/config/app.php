@@ -173,7 +173,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
-        App\Providers\FilamentServiceProvider::class,
+        App\Providers\AdminPanelProvider::class,
     ],
 
 ];

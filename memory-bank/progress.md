@@ -39,6 +39,10 @@
 - Ready to implement shared components and link packages via Composer.
 - First shared component (`UsesUuid` trait) created.
 - Ready to link `holidayz/core` package to `frontend` and `admin` apps.
+- Migrated all Filament admin configuration to AdminPanelProvider (PanelProvider) for v3 compliance.
+- Removed custom FilamentServiceProvider and registered AdminPanelProvider in config/app.php.
+- Audited and cleaned up all Filament-related configuration and usage.
+- Temporarily disabled SSL verification for Unsplash API requests in UnsplashService for local development (to be reverted for production).
 
 ## What's Working
 - Comprehensive UI component library with namespaced components.
