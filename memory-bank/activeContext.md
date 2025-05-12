@@ -38,7 +38,18 @@
 - Implemented admin password reset (forgot/reset) flow with new controllers and Blade views
 - Added docblocks and inline comments to all admin auth controllers and views for maintainability
 
+## Recent Issue
+- **Admin login failed** with SQL error: `Unknown column 'email' in 'where clause'` for the `admins` table.
+- Root cause: `admins` table was missing `email` and `password` columns, but the admin guard was configured to use this table/model for authentication.
+
+## Resolution
+- Migration for `admins` table updated to include `email` and `password` columns.
+- Ran `php artisan migrate:refresh --seed` to apply the migration and reseed the database.
+- Admin authentication now works as expected.
+
 ## Next Steps
+- Confirm login and dashboard access for admin users.
+- Continue to monitor for any further authentication or role-based issues.
 - Implement feedback components (alerts, modals, toasts)
 - Create card components for packages and blog posts
 - Add Alpine.js for interactive components

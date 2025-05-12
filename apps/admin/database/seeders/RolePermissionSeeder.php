@@ -104,6 +104,12 @@ class RolePermissionSeeder extends Seeder
             }
         }
 
+        // Seed default admin in admins table for admin guard authentication
+        \App\Models\Admin::firstOrCreate(
+            ['email' => 'admin@example.com'],
+            ['password' => bcrypt('password')]
+        );
+
         // dump('Permissions:', Permission::all()->pluck('id', 'name')->toArray());
         // dump('Roles:', Role::all()->pluck('id', 'name')->toArray());
         // dump('Permission class:', get_class(new Permission));

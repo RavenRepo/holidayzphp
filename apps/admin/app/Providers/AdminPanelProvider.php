@@ -12,6 +12,8 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->id('admin')
             ->path('admin')
+            ->authGuard('admin')
+            ->middleware(['web', 'auth:admin'])
             // ->navigation([...])
             // ->widgets([...])
             // ->renderHook('content.start', ...)
