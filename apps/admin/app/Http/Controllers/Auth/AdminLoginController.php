@@ -29,7 +29,8 @@ class AdminLoginController extends Controller
         // Attempt to authenticate using the admin guard
         if (Auth::guard('admin')->attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
-            return redirect()->intended(route('admin.dashboard'));
+            // Redirect to Filament admin panel
+            return redirect()->intended('/admin');
         }
         // Authentication failed: redirect back with error
         return back()->withErrors([
@@ -45,6 +46,15 @@ class AdminLoginController extends Controller
         Auth::guard('admin')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        
+        // Check if the request is coming from Filament
+        $referer = $request->headers->get('referer');
+        if ($referer && str_contains($referer, '/admin')) {
+            // If coming from Filament admin panel, redirect to Filament login
+            return redirect('/admin/login');
+        }
+        
+        // Otherwise, redirect to the admin login route
         return redirect()->route('admin.login');
     }
 } 

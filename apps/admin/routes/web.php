@@ -40,3 +40,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('logout', [App\Http\Controllers\Auth\AdminLoginController::class, 'logout'])->name('logout');
     });
 });
+
+// Filament specific routes
+Route::name('filament.')->group(function () {
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::post('auth/logout', [App\Http\Controllers\Auth\AdminLoginController::class, 'logout'])->name('auth.logout');
+    });
+});

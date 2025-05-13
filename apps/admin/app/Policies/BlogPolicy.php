@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 /**
@@ -15,56 +16,70 @@ class BlogPolicy
 
     /**
      * Determine whether the user can view any blogs.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function viewAny(User $user): bool
+    public function viewAny($user): bool
     {
         return $user->hasPermissionTo('view blogs');
     }
 
     /**
      * Determine whether the user can view the blog.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function view(User $user): bool
+    public function view($user): bool
     {
         return $user->hasPermissionTo('view blogs');
     }
 
     /**
      * Determine whether the user can create blogs.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function create(User $user): bool
+    public function create($user): bool
     {
         return $user->hasPermissionTo('create blog');
     }
 
     /**
      * Determine whether the user can update the blog.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function update(User $user): bool
+    public function update($user): bool
     {
         return $user->hasPermissionTo('edit blog');
     }
 
     /**
      * Determine whether the user can delete the blog.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function delete(User $user): bool
+    public function delete($user): bool
     {
         return $user->hasPermissionTo('delete blog');
     }
 
     /**
      * Determine whether the user can restore the blog.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function restore(User $user): bool
+    public function restore($user): bool
     {
         return $user->hasPermissionTo('manage blogs');
     }
 
     /**
      * Determine whether the user can permanently delete the blog.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function forceDelete(User $user): bool
+    public function forceDelete($user): bool
     {
         return $user->hasPermissionTo('delete blog');
     }

@@ -4,10 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PermissionResource\Pages;
 use Filament\Forms;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Table;
 use Spatie\Permission\Models\Permission;
 
 class PermissionResource extends Resource
@@ -34,15 +34,24 @@ class PermissionResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Card::make()
+                Forms\Components\Section::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
+                            ->label('Permission Name')
                             ->unique(ignoreRecord: true)
-                            ->required(),
+                            ->required()
+                            ->maxLength(255),
+                            
+                        Forms\Components\TextInput::make('description')
+                            ->label('Description')
+                            ->placeholder('Describe what this permission allows')
+                            ->maxLength(255),
+                            
                         Forms\Components\Hidden::make('guard_name')
                             ->default('admin')
                             ->required(),
-                    ]),
+                    ])
+                    ->columns(1),
             ]);
     }
 
@@ -54,16 +63,30 @@ class PermissionResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                    
                 Tables\Columns\TextColumn::make('name')
+                    ->label('Permission Name')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->color('primary'),
+                    
+                Tables\Columns\TextColumn::make('description')
+                    ->label('Description')
+                    ->searchable()
+                    ->limit(50)
+                    ->toggleable(),
+                    
                 Tables\Columns\TextColumn::make('guard_name')
+                    ->label('Guard')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(),
+                    
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                    
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
@@ -73,11 +96,16 @@ class PermissionResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->tooltip('Edit this permission'),
+                    
+                Tables\Actions\DeleteAction::make()
+                    ->tooltip('Delete this permission'),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
             ]);
     }
 

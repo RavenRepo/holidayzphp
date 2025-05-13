@@ -26,10 +26,10 @@ class RolePermissionSeeder extends Seeder
         }
 
         $roles = [
-            'admin',
-            'manager',
-            'editor',
-            'customer',
+            'admin' => 'Full access to all system features and settings',
+            'manager' => 'Manage bookings, packages, and limited user management',
+            'editor' => 'Create and edit content like blogs and packages',
+            'customer' => 'Access to customer-specific features and bookings',
         ];
 
         $permissions = [
@@ -49,10 +49,10 @@ class RolePermissionSeeder extends Seeder
         }
 
         // Create roles with UUIDs if they don't exist
-        foreach ($roles as $role) {
+        foreach ($roles as $role => $description) {
             Role::firstOrCreate(
                 ['name' => $role, 'guard_name' => 'admin'],
-                ['id' => Str::uuid()]
+                ['id' => Str::uuid(), 'description' => $description]
             );
         }
 

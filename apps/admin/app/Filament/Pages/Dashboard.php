@@ -2,37 +2,18 @@
 
 namespace App\Filament\Pages;
 
-use Filament\Pages\Page as BasePage;
-use Illuminate\Contracts\Support\Htmlable;
+use Filament\Pages\Dashboard as BaseDashboard;
 
-class Dashboard extends BasePage
+class Dashboard extends BaseDashboard
 {
     protected static ?string $navigationIcon = 'heroicon-o-home';
-
-    protected static string $view = 'filament.pages.dashboard';
-
-    public function getTitle(): string|Htmlable
+    
+    protected static ?string $title = 'Admin Dashboard';
+    
+    protected static ?int $navigationSort = -1;
+    
+    public function getHeaderWidgetsColumns(): int|array
     {
-        return __('Admin Dashboard');
-    }
-
-    protected function getHeaderWidgets(): array
-    {
-        return [
-            \App\Filament\Widgets\StatsOverviewWidget::class,
-        ];
-    }
-
-    protected function getFooterWidgets(): array
-    {
-        // TODO: Implement LatestUsers widget or update this reference if needed in the future.
-        return [
-            // \App\Filament\Widgets\LatestUsers::class,
-        ];
-    }
-
-    public static function makeFilamentTranslatableContentDriver(): ?string
-    {
-        return null;
+        return 3;
     }
 }

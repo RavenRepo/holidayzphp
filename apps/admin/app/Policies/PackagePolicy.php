@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 /**
@@ -15,56 +16,70 @@ class PackagePolicy
 
     /**
      * Determine whether the user can view any packages.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function viewAny(User $user): bool
+    public function viewAny($user): bool
     {
         return $user->hasPermissionTo('view packages');
     }
 
     /**
      * Determine whether the user can view the package.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function view(User $user): bool
+    public function view($user): bool
     {
         return $user->hasPermissionTo('view packages');
     }
 
     /**
      * Determine whether the user can create packages.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function create(User $user): bool
+    public function create($user): bool
     {
         return $user->hasPermissionTo('create package');
     }
 
     /**
      * Determine whether the user can update the package.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function update(User $user): bool
+    public function update($user): bool
     {
         return $user->hasPermissionTo('edit package');
     }
 
     /**
      * Determine whether the user can delete the package.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function delete(User $user): bool
+    public function delete($user): bool
     {
         return $user->hasPermissionTo('delete package');
     }
 
     /**
      * Determine whether the user can restore the package.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function restore(User $user): bool
+    public function restore($user): bool
     {
         return $user->hasPermissionTo('manage packages');
     }
 
     /**
      * Determine whether the user can permanently delete the package.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function forceDelete(User $user): bool
+    public function forceDelete($user): bool
     {
         return $user->hasPermissionTo('delete package');
     }

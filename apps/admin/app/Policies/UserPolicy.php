@@ -3,8 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\Model;
 
 class UserPolicy
 {
@@ -12,33 +14,48 @@ class UserPolicy
 
     /**
      * Determine whether the user can view any models.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function viewAny(User $user): bool
+    public function viewAny($user): bool
     {
         return $user->hasPermissionTo('view users');
     }
 
     /**
      * Determine whether the user can view the model.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
+     * @param \App\Models\User $model
      */
-    public function view(User $user, User $model): bool
+    public function view($user, User $model): bool
     {
         return $user->hasPermissionTo('view users');
     }
 
     /**
      * Determine whether the user can create models.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
      */
-    public function create(User $user): bool
+    public function create($user): bool
     {
         return $user->hasPermissionTo('manage users');
     }
 
     /**
      * Determine whether the user can update the model.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
+     * @param \App\Models\User $model
      */
-    public function update(User $user, User $model): bool
+    public function update($user, User $model): bool
     {
+        // Check if user is Admin model (always has permission to edit users)
+        if ($user instanceof Admin) {
+            return $user->hasPermissionTo('edit user');
+        }
+        
         // Users can edit themselves, otherwise need permission
         if ($user->id === $model->id) {
             // Self-edit allowed
@@ -60,9 +77,17 @@ class UserPolicy
 
     /**
      * Determine whether the user can delete the model.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
+     * @param \App\Models\User $model
      */
-    public function delete(User $user, User $model): bool
+    public function delete($user, User $model): bool
     {
+        // Check if user is Admin model (always has permission to delete users)
+        if ($user instanceof Admin) {
+            return $user->hasPermissionTo('delete user');
+        }
+        
         // Prevent self-deletion
         if ($user->id === $model->id) {
             Log::info('Self-deletion prevented', ['user_id' => $user->id]);
@@ -83,17 +108,28 @@ class UserPolicy
 
     /**
      * Determine whether the user can restore the model.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
+     * @param \App\Models\User $model
      */
-    public function restore(User $user, User $model): bool
+    public function restore($user, User $model): bool
     {
         return $user->hasPermissionTo('manage users');
     }
 
     /**
      * Determine whether the user can permanently delete the model.
+     * 
+     * @param \App\Models\User|\App\Models\Admin $user
+     * @param \App\Models\User $model
      */
-    public function forceDelete(User $user, User $model): bool
+    public function forceDelete($user, User $model): bool
     {
+        // Check if user is Admin model (always has permission to force delete users)
+        if ($user instanceof Admin) {
+            return $user->hasPermissionTo('delete user');
+        }
+        
         // Prevent self-deletion
         if ($user->id === $model->id) {
             return false;

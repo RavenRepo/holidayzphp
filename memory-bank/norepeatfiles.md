@@ -23,6 +23,25 @@ This registry documents all files and directories in the Holidayz Manager monore
 | Path                        | Type      | Description                       | Imports/Exports | Relationships   |
 | --------------------------- | --------- | --------------------------------- | --------------- | --------------- |
 | `apps/admin/`               | Directory | Admin Panel (Standard Laravel)    | N/A             | `packages/`     |
+| `apps/admin/app/Filament/`  | Directory | Filament admin panel resources    | N/A             | Filament        |
+| `apps/admin/app/Filament/Pages/` | Directory | Filament pages | N/A | Filament |
+| `apps/admin/app/Filament/Pages/Dashboard.php` | File | Admin dashboard page | BaseDashboard | Filament |
+| `apps/admin/app/Filament/Resources/` | Directory | Filament resources | N/A | Filament |
+| `apps/admin/app/Filament/Resources/RoleResource.php` | File | Role management resource | Role | Spatie Permission |
+| `apps/admin/app/Filament/Resources/RoleResource/` | Directory | Role resource pages | N/A | Filament |
+| `apps/admin/app/Filament/Resources/PermissionResource.php` | File | Permission management resource | Permission | Spatie Permission |
+| `apps/admin/app/Filament/Resources/PermissionResource/` | Directory | Permission resource pages | N/A | Filament |
+| `apps/admin/app/Filament/Resources/UserResource.php` | File | User management resource | User | Spatie Permission |
+| `apps/admin/app/Filament/Resources/UserResource/` | Directory | User resource pages | N/A | Filament |
+| `apps/admin/app/Http/Controllers/Auth/` | Directory | Auth controllers | N/A | Laravel Auth |
+| `apps/admin/app/Http/Controllers/Auth/AdminLoginController.php` | File | Admin login controller | Auth | Laravel Auth |
+| `apps/admin/app/Models/Admin.php` | File | Admin user model | FilamentUser | Filament, Spatie Permission |
+| `apps/admin/app/Providers/AdminPanelProvider.php` | File | Filament admin panel configuration | PanelProvider | Filament |
+| `apps/admin/database/migrations/2025_05_09_105805_create_admins_table.php` | File | Admins table migration | N/A | Database |
+| `apps/admin/database/migrations/2025_05_13_191635_add_description_to_roles_table.php` | File | Adds description to roles | N/A | Spatie Permission |
+| `apps/admin/database/migrations/2025_05_14_000000_add_fields_to_admins_table.php` | File | Adds fields for Filament auth | N/A | Filament |
+| `apps/admin/database/seeders/RolePermissionSeeder.php` | File | Seeds roles and permissions | Role, Permission | Spatie Permission |
+| `apps/admin/resources/css/filament/admin/theme.css` | File | Custom theme for Filament | N/A | Filament |
 | `apps/frontend/`            | Directory | Public Website (Standard Laravel) | N/A             | `packages/`     |
 
 ## `packages/` Directory
@@ -31,10 +50,18 @@ This registry documents all files and directories in the Holidayz Manager monore
 | ---------------------- | --------- | ----------------------------------- | --------------- | ------------- |
 | `packages/.gitkeep`    | File      | Ensures directory tracking by Git | N/A             | Git           |
 | `packages/Core/`                 | Directory | Shared Core components package        | N/A             | `composer.json` |
-| `packages/Core/composer.json`    | File      | Package definition & autoloading    | PSR-4           | Composer        |
+| `packages/Core/composer.json`    | File      | Package definition & autoloading    | PSR-4           | Composer, Spatie Permission |
 | `packages/Core/src/`             | Directory | Source code for Core package        | N/A             | PHP Code        |
-| `packages/Core/src/Traits/`        | Directory | Shared Traits                       | N/A             | PHP Code        |
-| `packages/Core/src/Traits/UsesUuid.php` | File      | Trait for UUID primary keys         | N/A             | Models          |
+| `packages/Core/src/Database/`    | Directory | Database migrations and seeders     | N/A             | Database        |
+| `packages/Core/src/Database/Migrations/` | Directory | Shared migrations | N/A | Database |
+| `packages/Core/src/Database/Migrations/2024_05_06_000001_create_users_table.php` | File | UUID users table migration | N/A | Database |
+| `packages/Core/src/Database/Migrations/2024_05_06_000002_create_permission_tables.php` | File | UUID permission tables migration | N/A | Spatie Permission |
+| `packages/Core/src/Models/`      | Directory | Shared models                       | N/A             | PHP Code        |
+| `packages/Core/src/Models/User.php` | File | Base user model with UUID and RBAC | HasRoles | Spatie Permission |
+| `packages/Core/src/Providers/`   | Directory | Service providers                   | N/A             | Laravel        |
+| `packages/Core/src/Providers/CoreServiceProvider.php` | File | Registers Core package services | PermissionServiceProvider | Spatie Permission |
+| `packages/Core/src/Traits/`      | Directory | Shared Traits                       | N/A             | PHP Code        |
+| `packages/Core/src/Traits/UsesUuid.php` | File | Trait for UUID primary keys | N/A | Models |
 
 ## `resources/` Directory
 
