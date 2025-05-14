@@ -11,9 +11,4 @@ class Dashboard extends BaseDashboard
     protected static ?string $title = 'Admin Dashboard';
     
     protected static ?int $navigationSort = -1;
-    
-    public function getHeaderWidgetsColumns(): int|array
-    {
-        return 3;
-    }
 }

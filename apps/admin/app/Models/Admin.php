@@ -49,6 +49,7 @@ class Admin extends Authenticatable implements FilamentUser
      */
     public function canAccessPanel(Panel $panel): bool
     {
-        return true; // You can add role-based conditions here later
+        // Allow access to the admin panel for authenticated admin users
+        return $panel->getId() === 'admin';
     }
 }

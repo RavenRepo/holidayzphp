@@ -29,8 +29,12 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Sky,
                 'gray' => Color::Slate,
+                'danger' => Color::Rose,
+                'info' => Color::Blue,
+                'success' => Color::Emerald,
+                'warning' => Color::Orange,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -58,9 +62,19 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authGuard('admin')
             ->profile()
-            ->logout()
             ->brandName('Holidayz Admin')
             ->favicon(asset('favicon.ico'))
-            ->viteTheme('resources/css/filament/admin/theme.css');
+            ->colors([
+                'primary' => Color::Sky,
+                'danger' => Color::Rose,
+                'gray' => Color::Slate,
+                'info' => Color::Blue,
+                'success' => Color::Emerald,
+                'warning' => Color::Orange,
+            ])
+            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
+            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
+            ->spa()
+            ->maxContentWidth('full');
     }
 }
