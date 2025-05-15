@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\UnsplashService;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -9,9 +10,14 @@ class BlogController extends Controller
     /**
      * Display the blog index page.
      */
-    public function index()
+    public function index(UnsplashService $unsplash)
     {
-        // You can pass data to the view as needed
-        return view('blog.index');
+        // Fetch blog images using UnsplashService
+        $blogImages = $unsplash->searchImages('travel blog writing', 6);
+        
+        // Pass data to the view
+        return view('blog', [
+            'blogImages' => $blogImages
+        ]);
     }
 } 

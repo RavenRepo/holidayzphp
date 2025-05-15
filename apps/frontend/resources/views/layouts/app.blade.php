@@ -14,6 +14,9 @@
     
     <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Page-specific styles -->
+    @stack('styles')
 </head>
 <body class="bg-white min-h-screen flex flex-col">
     <!-- Header -->
@@ -30,5 +33,8 @@
     @if (!Route::is('login') && !Route::is('register'))
         <x-ui.lead-capture-modal />
     @endif
+    
+    <!-- Page-specific scripts -->
+    @stack('scripts')
 </body>
 </html> 

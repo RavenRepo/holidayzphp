@@ -25,10 +25,15 @@
 - **RBAC:**
   - Spatie Laravel Permission (^6.0)
   - UUID support via ramsey/uuid
+- **Admin Panel:**
+  - Filament v3 (admin panel framework)
+  - Official Filament theme
+  - Tailwind plugins (@tailwindcss/forms, @tailwindcss/typography)
 - **Logging:**
   - Spatie Activitylog
 - **Authentication:**
   - Custom implementation with Laravel's built-in auth
+  - Filament authentication integration
 - **Future Integrations:**
   - Laravel Scout (for search)
   - Laravel Socialite (social login)

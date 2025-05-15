@@ -6,8 +6,8 @@
     {{-- Hero Carousel Section --}}
     <x-home.hero-carousel :carousel-images="$carouselImages" />
     
-    {{-- Popular Packages Section --}}
-    <x-home.popular-packages :package-images="$packageImages" />
+    {{-- Popular Destinations Section --}}
+    <x-home.popular-packages :destinations="$destinations" />
     
     {{-- Visa Free Destinations Section --}}
     <x-home.visa-free-destinations />

@@ -4,7 +4,7 @@
     <!-- Main Image -->
     <div class="aspect-[16/9] overflow-hidden rounded-2xl group cursor-pointer">
         <img 
-            src="{{ asset('images/packages/' . $images[0]) }}" 
+            src="{{ $images[0] ?? 'https://via.placeholder.com/1200x675?text=No+Image+Available' }}" 
             alt="Main Package Image"
             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             loading="lazy"
@@ -17,7 +17,7 @@
         @foreach(array_slice($images, 1, 4) as $image)
             <div class="aspect-square overflow-hidden rounded-xl group cursor-pointer">
                 <img 
-                    src="{{ asset('images/packages/' . $image) }}" 
+                    src="{{ $image }}" 
                     alt="Package Image"
                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"

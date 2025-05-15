@@ -1,20 +1,22 @@
 # Active Context - HolidayzPHP
 
 ## Current Focus
-- Completing documentation for RBAC implementation
-- Testing and fixing any remaining Filament integration issues
+- Testing user registration flow with automatic role assignment
 - Implementing comprehensive testing for role-based access control
 - Enhancing Filament admin dashboard with additional resources
 - Preparing for deployment with proper permission cache handling
 
 ## Recent Changes
+- Completed user registration implementation with automatic 'user' role assignment
+- Added validation for terms and conditions acceptance in registration form
+- Implemented success message display after registration
 - Completed RBAC implementation with Spatie Permission package
 - Created Filament resources for Role, Permission, and User management
 - Added role descriptions and categorized permissions by functionality
 - Integrated Admin model with Filament authentication
 - Fixed Filament admin panel login issues
 - Updated all Filament resources to v3 format
-- Created custom theme for Filament admin panel matching design system
+- Switched from custom theme to official Filament theme for better compatibility and maintenance
 - Added migration to add necessary fields to admins table (name, remember_token, email_verified_at)
 - Updated Admin model to implement FilamentUser interface
 - Fixed Dashboard page to be compatible with Filament v3
@@ -23,6 +25,7 @@
 - Protected Filament admin routes with proper authentication middleware
 - Implemented role-based access control for admin panel resources
 - Updated memory bank documentation to reflect RBAC implementation
+- Fixed Filament admin panel layout issues by using official theme and proper configuration
 
 ## Recent Issues and Resolutions
 
@@ -42,6 +45,7 @@
   - Modified AdminLoginController to redirect to Filament admin panel after login
 
 ## Next Steps
+- Add feature tests for user registration and role assignment
 - Complete documentation of middleware & policy patterns in `systemPatterns.md`
 - Add permission cache reset to deployment pipeline
 - Implement comprehensive testing for RBAC implementation
@@ -54,6 +58,7 @@
 - Continue building out the component library
 
 ## Active Decisions and Considerations
+- Automatically assigning the 'user' role to new registrations
 - Using Spatie Permission package for RBAC implementation
 - Implementing UUID-based primary keys for security
 - Using Filament admin panel for role and permission management
@@ -84,5 +89,6 @@
 - Categorizing permissions by functionality improves usability
 - Integration between custom authentication and Filament requires proper configuration
 - UUID-based primary keys provide better security for sensitive data
+- Automatic role assignment simplifies user onboarding process
 
-*(Updated: 2025-05-14T01:09:13+05:30)*
+*(Updated: 2025-05-15T10:15:22+05:30)*

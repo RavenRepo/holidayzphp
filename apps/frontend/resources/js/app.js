@@ -5,9 +5,8 @@ import $ from 'jquery';
 import 'slick-carousel';
 window.$ = window.jQuery = $;
 
-// Initialize popular packages carousel when the DOM is ready
-$(document).ready(function() {
-    // Initialize all Slick carousels
+// Define global initialization function for Slick carousels
+window.initializeSlickCarousels = function() {
     $('.slick-carousel-container').each(function() {
         const $carousel = $(this);
         if ($carousel.data('slick-initialized') === false) {
@@ -24,30 +23,16 @@ $(document).ready(function() {
                 fade: $carousel.data('slick-fade') === 'true',
                 responsive: $carousel.data('slick-responsive')
             };
-            $carousel.slick(config).data('slick-initialized', true);
+            $carousel.find('.slick-carousel').slick(config);
+            $carousel.data('slick-initialized', true);
         }
     });
+};
 
-    // Initialize popular packages carousel
-    $('.popular-packages-carousel').slick({
-        dots: true,
-        arrows: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 5000,
-        cssEase: 'ease-out',
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    arrows: false
-                }
-            }
-        ]
-    });
+// Initialize all Slick carousels when the DOM is ready
+$(document).ready(function() {
+    // Initialize all Slick carousels
+    initializeSlickCarousels();
 
     // Initialize popular packages carousel
     $('.popular-packages-carousel').slick({
@@ -76,4 +61,40 @@ $(document).ready(function() {
             }
         ]
     });
+    
+    // Initialize curated destinations section in package-details page
+    $('.curated-destinations-carousel').slick({
+        dots: true,
+        arrows: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 640,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+});
+
+// Make sure any dynamically loaded carousels get initialized
+document.addEventListener('DOMContentLoaded', function() {
+    // Add a small delay to ensure all components are fully loaded
+    setTimeout(function() {
+        initializeSlickCarousels();
+    }, 100);
 });

@@ -1,8 +1,19 @@
 @props(['name', 'description', 'image', 'tags' => []])
+@php
+    use Illuminate\Support\Str;
+@endphp
 
 <a href="{{ route('package.details', ['slug' => Str::slug($name)]) }}" class="block bg-white/70 backdrop-blur-md rounded-2xl border border-gray-100 overflow-hidden shadow-soft hover:shadow-lg transition-all duration-300 group">
     <div class="relative h-48 overflow-hidden">
-        @if(file_exists(public_path('images/destinations/' . $image)))
+        @if(filter_var($image, FILTER_VALIDATE_URL))
+            <img 
+                src="{{ $image }}" 
+                alt="{{ $name }}"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+                decoding="async"
+            >
+        @elseif(file_exists(public_path('images/destinations/' . $image)))
             <img 
                 src="{{ asset('images/destinations/' . $image) }}" 
                 alt="{{ $name }}"

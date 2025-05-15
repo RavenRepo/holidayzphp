@@ -9,7 +9,7 @@
                 From the snow-capped Himalayas to the tropical beaches of Kerala, your perfect Indian adventure awaits. Book now and save up to 25% on selected packages!
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="/packages" class="px-8 py-4 bg-saffron hover:bg-saffron/90 text-white font-bold rounded-md transition duration-300 text-lg">
+                <a href="/destinations" class="px-8 py-4 bg-saffron hover:bg-saffron/90 text-white font-bold rounded-md transition duration-300 text-lg">
                     Explore Packages
                 </a>
                 <a href="/contact" class="px-8 py-4 bg-white hover:bg-gray-100 text-brandblue font-bold rounded-md transition duration-300 text-lg">

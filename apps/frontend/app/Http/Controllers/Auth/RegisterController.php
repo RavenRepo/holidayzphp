@@ -27,6 +27,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'terms' => ['required', 'accepted'],
         ]);
 
         $user = User::create([
@@ -35,8 +36,13 @@ class RegisterController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
+        // Assign the default 'user' role to new users
+        $user->assignRole('user');
+        
+        // Log the user in automatically
         Auth::login($user);
 
-        return redirect('/dashboard');
+        // Set a welcome flash message
+        return redirect('/dashboard')->with('status', 'Registration successful! Welcome to Holidayz Manager.');
     }
 }

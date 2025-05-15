@@ -40,6 +40,15 @@
    - Policy-based authorization for model actions
    - Permission seeder with explicit role/permission relationships
 
+7. **Admin Panel Architecture**
+   - Filament v3 as the admin panel framework
+   - Official Filament theme for consistent UI
+   - Resource-based CRUD operations
+   - Panel provider configuration in `AdminPanelProvider.php`
+   - Standard Tailwind configuration with required plugins
+   - SPA mode for smoother navigation
+   - Role-based access control integrated with Filament
+
 ## Implementation Guidelines
 1. **Component Creation**
    - Place in appropriate `/components/ui/[category]` directory

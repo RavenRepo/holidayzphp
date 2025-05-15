@@ -25,65 +25,6 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-brandblue mb-12">International Destinations</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @php
-                $internationalDestinations = [
-                    [
-                        'name' => 'Singapore',
-                        'description' => 'Experience the perfect blend of modernity and tradition',
-                        'image' => 'singapore.jpg',
-                        'tags' => ['Modern', 'Shopping', 'Family']
-                    ],
-                    [
-                        'name' => 'Malaysia',
-                        'description' => 'Discover diverse cultures and natural wonders',
-                        'image' => 'malaysia.jpg',
-                        'tags' => ['Culture', 'Nature', 'Adventure']
-                    ],
-                    [
-                        'name' => 'Bali',
-                        'description' => 'Immerse in spiritual beauty and tropical paradise',
-                        'image' => 'bali.jpg',
-                        'tags' => ['Beach', 'Culture', 'Wellness']
-                    ],
-                    [
-                        'name' => 'Thailand',
-                        'description' => 'Explore exotic beaches and vibrant city life',
-                        'image' => 'thailand.jpg',
-                        'tags' => ['Beach', 'Nightlife', 'Food']
-                    ],
-                    [
-                        'name' => 'Dubai',
-                        'description' => 'Experience luxury and desert adventures',
-                        'image' => 'dubai.jpg',
-                        'tags' => ['Luxury', 'Shopping', 'Desert']
-                    ],
-                    [
-                        'name' => 'Vietnam',
-                        'description' => 'Journey through rich history and scenic landscapes',
-                        'image' => 'vietnam.jpg',
-                        'tags' => ['Culture', 'History', 'Nature']
-                    ],
-                    [
-                        'name' => 'Cambodia',
-                        'description' => 'Discover ancient temples and cultural heritage',
-                        'image' => 'cambodia.jpg',
-                        'tags' => ['Heritage', 'History', 'Culture']
-                    ],
-                    [
-                        'name' => 'Azerbaijan',
-                        'description' => 'Experience where East meets West',
-                        'image' => 'azerbaijan.jpg',
-                        'tags' => ['Culture', 'History', 'Modern']
-                    ],
-                    [
-                        'name' => 'Maldives',
-                        'description' => 'Escape to paradise islands and luxury resorts',
-                        'image' => 'maldives.jpg',
-                        'tags' => ['Luxury', 'Beach', 'Romance']
-                    ]
-                ];
-                @endphp
-
                 @foreach($internationalDestinations as $destination)
                     <x-destinations.card 
                         :name="$destination['name']"
@@ -101,53 +42,6 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-brandblue mb-12">Incredible India</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @php
-                $domesticDestinations = [
-                    [
-                        'name' => 'Ladakh',
-                        'description' => 'Experience the magic of high-altitude desert',
-                        'image' => 'ladakh.jpg',
-                        'tags' => ['Adventure', 'Mountains', 'Culture']
-                    ],
-                    [
-                        'name' => 'Kerala',
-                        'description' => 'Discover God\'s own country and backwaters',
-                        'image' => 'kerala.jpg',
-                        'tags' => ['Nature', 'Wellness', 'Culture']
-                    ],
-                    [
-                        'name' => 'Goa',
-                        'description' => 'Enjoy beaches, parties, and Portuguese heritage',
-                        'image' => 'goa.jpg',
-                        'tags' => ['Beach', 'Nightlife', 'Heritage']
-                    ],
-                    [
-                        'name' => 'Meghalaya',
-                        'description' => 'Explore the abode of clouds and living root bridges',
-                        'image' => 'meghalaya.jpg',
-                        'tags' => ['Nature', 'Adventure', 'Culture']
-                    ],
-                    [
-                        'name' => 'Rajasthan',
-                        'description' => 'Discover royal heritage and desert culture',
-                        'image' => 'rajasthan.jpg',
-                        'tags' => ['Heritage', 'Culture', 'Desert']
-                    ],
-                    [
-                        'name' => 'Kashmir',
-                        'description' => 'Visit paradise on Earth',
-                        'image' => 'kashmir.jpg',
-                        'tags' => ['Nature', 'Mountains', 'Culture']
-                    ],
-                    [
-                        'name' => 'Andaman',
-                        'description' => 'Experience tropical paradise and water sports',
-                        'image' => 'andaman.jpg',
-                        'tags' => ['Beach', 'Adventure', 'Nature']
-                    ]
-                ];
-                @endphp
-
                 @foreach($domesticDestinations as $destination)
                     <x-destinations.card 
                         :name="$destination['name']"
@@ -165,29 +59,6 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-brandblue mb-12">Neighboring Destinations</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @php
-                $neighboringDestinations = [
-                    [
-                        'name' => 'Nepal',
-                        'description' => 'Trek through the mighty Himalayas',
-                        'image' => 'nepal.jpg',
-                        'tags' => ['Mountains', 'Adventure', 'Culture']
-                    ],
-                    [
-                        'name' => 'Bhutan',
-                        'description' => 'Experience the last Shangri-La',
-                        'image' => 'bhutan.jpg',
-                        'tags' => ['Culture', 'Buddhism', 'Nature']
-                    ],
-                    [
-                        'name' => 'Sri Lanka',
-                        'description' => 'Discover the pearl of Indian Ocean',
-                        'image' => 'srilanka.jpg',
-                        'tags' => ['Beach', 'Heritage', 'Wildlife']
-                    ]
-                ];
-                @endphp
-
                 @foreach($neighboringDestinations as $destination)
                     <x-destinations.card 
                         :name="$destination['name']"
@@ -201,13 +72,13 @@
     </section>
 
     <div class="container mx-auto px-4 py-12">
-        <h1 class="text-3xl font-bold mb-8">Top Destinations</h1>
+        <h1 class="text-3xl font-bold mb-8">More Destinations to Explore</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            @foreach ($destinationImages as $image)
+            @foreach ($destinationImages as $index => $image)
                 <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
-                    <img src="{{ $image }}" alt="Destination" class="w-full h-40 object-cover rounded-md mb-3" loading="lazy" />
-                    <div class="font-semibold text-lg text-gray-800 mb-1">Destination</div>
-                    <div class="text-gray-500 text-sm mb-2">Explore this place</div>
+                    <img src="{{ $image }}" alt="Destination {{ $index + 1 }}" class="w-full h-40 object-cover rounded-md mb-3" loading="lazy" />
+                    <div class="font-semibold text-lg text-gray-800 mb-1">Popular Destination {{ $index + 1 }}</div>
+                    <div class="text-gray-500 text-sm mb-2">Explore this amazing location</div>
                     <a href="#" class="text-brandblue font-medium hover:underline">View Details</a>
                 </div>
             @endforeach

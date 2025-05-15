@@ -25,10 +25,10 @@
                 <!-- Actions -->
                 <div class="flex items-center gap-2 lg:gap-4">
                     <a href="{{ route('login') }}" class="hidden md:inline-block px-4 py-2 rounded-lg bg-brandblue text-white font-medium hover:bg-saffron transition-colors">
-                        Login
+                        Sign In
                     </a>
                     <a href="{{ route('register') }}" class="hidden md:inline-block px-4 py-2 rounded-lg bg-saffron text-white font-medium hover:bg-brandblue transition-colors">
-                        Get Started
+                        Sign Up
                     </a>
 
                     <!-- Mobile Menu Button -->

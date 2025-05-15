@@ -190,3 +190,5 @@ This registry documents all files and directories in the Holidayz Manager monore
 | `/apps/admin/resources/views/auth/admin-forgot-password.blade.php` | File | Admin forgot password Blade view | Extends layouts/app, uses Tailwind | Used by AdminForgotPasswordController |
 | `/apps/admin/resources/views/auth/admin-reset-password.blade.php` | File | Admin reset password Blade view | Extends layouts/app, uses Tailwind | Used by AdminResetPasswordController |
 | `/apps/admin/database/migrations/2025_05_09_105805_create_admins_table.php` | File | Migration for the admins table. Now includes id, email, password, timestamps. Used by the admin guard for authentication (see config/auth.php). Related to App\Models\Admin. | N/A | Migration |
+| `/apps/frontend/app/Http/Controllers/Auth/RegisterController.php` | File | User registration controller | Creates new users, assigns 'user' role, validates terms | Used by `/register` route, interacts with User model |
+| `/apps/frontend/resources/views/auth/register.blade.php` | File | User registration form view | Extends layouts/app, includes terms validation | Used by RegisterController, shown at `/register` |

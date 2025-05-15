@@ -1,24 +1,52 @@
-@props(['packages' => [], 'packageImages' => []])
+@props(['destinations' => []])
 
 <section class="py-20 bg-neutral-50">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-poppins font-bold text-brandblue mb-4">Popular Packages</h2>
-            <p class="text-lg font-open-sans text-neutral-600 max-w-2xl mx-auto leading-relaxed">Discover our most loved travel experiences handpicked for unforgettable journeys</p>
+            <h2 class="text-3xl md:text-4xl font-poppins font-bold text-brandblue mb-4">Popular Destinations</h2>
+            <p class="text-lg font-open-sans text-neutral-600 max-w-2xl mx-auto leading-relaxed">Discover our most loved travel destinations for your next unforgettable journey</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            @foreach ($packageImages as $image)
-                <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
-                    <img src="{{ $image }}" alt="Popular Package" class="w-full h-40 object-cover rounded-md mb-3" loading="lazy" />
-                    <div class="font-semibold text-lg text-gray-800 mb-1">Holiday Package</div>
-                    <div class="text-gray-500 text-sm mb-2">Explore this destination</div>
-                    <a href="#" class="text-brandblue font-medium hover:underline">View Details</a>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach ($destinations as $destination)
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
+                    <div class="relative h-60 overflow-hidden">
+                        <img 
+                            src="{{ $destination['image'] }}" 
+                            alt="{{ $destination['name'] }}" 
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                            loading="lazy" 
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <span class="inline-block px-3 py-1 bg-saffron text-white text-xs font-bold rounded-full mb-2">From {{ $destination['price'] }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-brandblue mb-2">{{ $destination['name'] }}</h3>
+                        <p class="text-gray-600 mb-4 text-sm">{{ $destination['description'] }}</p>
+                        
+                        <a 
+                            href="/package/{{ $destination['slug'] }}" 
+                            class="inline-flex items-center font-medium text-brandblue hover:text-saffron transition-colors duration-300 group-hover:translate-x-2 transition-transform"
+                        >
+                            <span>Explore Packages</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             @endforeach
         </div>
-        <div class="text-center mt-8">
-            <a href="/packages" class="inline-flex items-center font-medium text-brandblue hover:text-brandblue-dark transition-colors duration-300">
-                <span>View All Packages</span>
+        
+        <div class="text-center mt-12">
+            <a 
+                href="/destinations" 
+                class="inline-flex items-center justify-center px-6 py-3 bg-brandblue text-white font-medium rounded-lg hover:bg-saffron transition-colors duration-300 shadow-md hover:shadow-lg"
+            >
+                <span>View All Destinations</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>

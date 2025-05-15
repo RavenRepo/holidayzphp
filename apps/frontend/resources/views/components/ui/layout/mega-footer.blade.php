@@ -34,7 +34,7 @@
                 <h3 class="font-heading text-xl font-bold mb-6">Quick Links</h3>
                 <ul class="space-y-4">
                     <li><a href="{{ route('about') }}" class="text-gray-200 hover:text-saffron transition-colors">About Us</a></li>
-                    <li><a href="{{ route('packages') }}" class="text-gray-200 hover:text-saffron transition-colors">Tour Packages</a></li>
+                    <li><a href="{{ route('destinations') }}" class="text-gray-200 hover:text-saffron transition-colors">Tour Packages</a></li>
                     <li><a href="{{ route('blog') }}" class="text-gray-200 hover:text-saffron transition-colors">Travel Blog</a></li>
                     <li><a href="{{ route('contact') }}" class="text-gray-200 hover:text-saffron transition-colors">Contact Us</a></li>
                 </ul>

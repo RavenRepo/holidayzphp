@@ -137,10 +137,41 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Wait for global init function to be available
+        if (typeof initializeSlickCarousels === 'function') {
+            initializeSlickCarousels();
+        }
+        
+        // Backup direct initialization after a delay in case the global function failed
         setTimeout(function() {
-            if (typeof initializeSlickCarousels === 'function') {
-                initializeSlickCarousels();
+            const carousel = document.getElementById('{{ $id }}');
+            if (carousel && !$(carousel).data('slick-initialized')) {
+                // Prepare the configuration object
+                var slickConfig = {
+                    dots: {{ $dots ? 'true' : 'false' }},
+                    arrows: {{ $arrows ? 'true' : 'false' }},
+                    infinite: {{ $infinite ? 'true' : 'false' }},
+                    speed: {{ $speed }},
+                    slidesToShow: {{ $slidesToShow }},
+                    slidesToScroll: {{ $slidesToScroll }},
+                    autoplay: {{ $autoplay ? 'true' : 'false' }},
+                    autoplaySpeed: {{ $autoplaySpeed }},
+                    pauseOnHover: {{ $pauseOnHover ? 'true' : 'false' }},
+                    centerMode: {{ $centerMode ? 'true' : 'false' }},
+                    variableWidth: {{ $variableWidth ? 'true' : 'false' }},
+                    fade: {{ $fade ? 'true' : 'false' }},
+                    adaptiveHeight: {{ $adaptiveHeight ? 'true' : 'false' }},
+                    lazyLoad: '{{ $lazyLoad }}'
+                };
+                
+                // Add responsive property if it exists
+                @if($responsive)
+                slickConfig.responsive = {!! $responsiveJson !!};
+                @endif
+                
+                // Initialize the carousel
+                $(carousel).find('.slick-carousel').slick(slickConfig);
+                $(carousel).data('slick-initialized', true);
             }
-        }, 0);
+        }, 300);
     });
 </script> 

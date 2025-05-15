@@ -14,9 +14,10 @@
     "require": {
         "php": "^8.2",
         "guzzlehttp/guzzle": "^7.2",
+        "holidayz/core": "dev-development",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
-        "holidayz/core": "dev-main"
+        "spatie/laravel-permission": "6.18"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

@@ -107,6 +107,9 @@
                             and 
                             <a href="#" class="text-brandblue hover:text-saffron transition-colors">Privacy Policy</a>
                         </label>
+                        @error('terms')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
