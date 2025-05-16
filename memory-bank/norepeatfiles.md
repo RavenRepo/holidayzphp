@@ -43,6 +43,7 @@ This registry documents all files and directories in the Holidayz Manager monore
 | `apps/admin/database/seeders/RolePermissionSeeder.php` | File | Seeds roles and permissions | Role, Permission | Spatie Permission |
 | `apps/admin/resources/css/filament/admin/theme.css` | File | Custom theme for Filament | N/A | Filament |
 | `apps/frontend/`            | Directory | Public Website (Standard Laravel) | N/A             | `packages/`     |
+| `apps/frontend/app/Services/UnsplashService.php` | File | Service for handling Unsplash API requests with fallbacks | Http | HomeController, external API |
 
 ## `packages/` Directory
 
@@ -129,6 +130,8 @@ This registry documents all files and directories in the Holidayz Manager monore
   - `components/demo.blade.php`: Demonstration page for UI components with usage examples
 - `/apps/frontend/resources/views/components/package-card.blade.php`: Blade component for displaying a single travel package card. Used by packages/index.blade.php. Imports: Tailwind classes, uses props for package data.
 - `/apps/frontend/resources/views/packages/index.blade.php`: Main package listing page. Extends layouts/app.blade.php. Uses: x-package-card component for each package.
+- `/apps/frontend/app/Http/Controllers/HomeController.php`: Controller for the homepage that provides destination data and fetches images from UnsplashService. Renders home.blade.php with data for carousel, destinations, and other sections.
+- `/apps/frontend/app/Services/UnsplashService.php`: Service for searching and retrieving images from Unsplash API, with increased timeout settings and fallback placeholder images.
 
 ## Admin Application
 - `/apps/admin/resources/views/`
@@ -172,6 +175,7 @@ This registry documents all files and directories in the Holidayz Manager monore
 1. Frontend components use shared resources from `/resources/`
 2. Both frontend and admin apps use packages from `/packages/`
 3. Shared CSS and design system ensure consistent styling
+4. External API services (like Unsplash) are accessed through service classes with proper error handling and fallbacks
 
 ## New Entries
 | Path | Type | Description | Imports/Exports | Relationships |
@@ -184,7 +188,7 @@ This registry documents all files and directories in the Holidayz Manager monore
 | `/apps/frontend/resources/views/components/dashboard/profile-widget.blade.php` | File | Profile widget Blade component | Accepts profile prop, shows user info | Used in user dashboard |
 | `/apps/frontend/resources/views/components/dashboard/team-stats-widget.blade.php` | File | Team stats widget Blade component | Accepts teamMembers and teamBookings props, shows stats and list | Used in manager dashboard |
 | `apps/admin/app/Providers/AdminPanelProvider.php` | File | Filament v3 PanelProvider for admin panel configuration | Registers Filament panel, navigation, widgets, hooks | Used in config/app.php, replaces FilamentServiceProvider |
-| `apps/frontend/app/Services/UnsplashService.php` | File | Service for Unsplash API image search | Uses Laravel HTTP client, temporarily disables SSL verification for local dev | Used by HomeController, DestinationsController |
+| `apps/frontend/app/Services/UnsplashService.php` | File | Service for Unsplash API image search | Uses Laravel HTTP client, temporarily disables SSL verification for local dev, increased timeout, fallback images | Used by HomeController, DestinationsController |
 | `/apps/admin/app/Http/Controllers/Auth/AdminForgotPasswordController.php` | File | Admin forgot password controller (shows form, sends reset link) | Uses Password broker, returns Blade view | Used by `/admin/siteadmin/forgot-password` route |
 | `/apps/admin/app/Http/Controllers/Auth/AdminResetPasswordController.php` | File | Admin reset password controller (shows form, handles reset) | Uses Password broker, returns Blade view | Used by `/admin/siteadmin/reset-password/{token}` route |
 | `/apps/admin/resources/views/auth/admin-forgot-password.blade.php` | File | Admin forgot password Blade view | Extends layouts/app, uses Tailwind | Used by AdminForgotPasswordController |
@@ -192,3 +196,4 @@ This registry documents all files and directories in the Holidayz Manager monore
 | `/apps/admin/database/migrations/2025_05_09_105805_create_admins_table.php` | File | Migration for the admins table. Now includes id, email, password, timestamps. Used by the admin guard for authentication (see config/auth.php). Related to App\Models\Admin. | N/A | Migration |
 | `/apps/frontend/app/Http/Controllers/Auth/RegisterController.php` | File | User registration controller | Creates new users, assigns 'user' role, validates terms | Used by `/register` route, interacts with User model |
 | `/apps/frontend/resources/views/auth/register.blade.php` | File | User registration form view | Extends layouts/app, includes terms validation | Used by RegisterController, shown at `/register` |
+| `/apps/frontend/resources/views/package-details.blade.php` | File | Detailed view of individual travel package | Extends layouts/app, uses package components | Shows package details, gallery, overview, etc. |

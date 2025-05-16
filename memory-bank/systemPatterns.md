@@ -4,6 +4,7 @@
 - Monorepo structure with separate frontend, admin, and API applications
 - Shared packages for common functionality
 - Component-based frontend architecture
+- Service layer for external API integration and business logic
 
 ## Design Patterns
 1. **Component Architecture**
@@ -21,11 +22,13 @@
    - Blade templates with Tailwind CSS
    - Alpine.js for interactive functionality
    - Responsive design principles
+   - Mobile-first approach
 
 4. **Backend Architecture**
    - Laravel 10+ framework
    - RESTful API design
    - MySQL with UUID primary keys
+   - Service layer pattern for external integrations
 
 5. **Authentication & Authorization**
    - Laravel Breeze/Jetstream
@@ -48,6 +51,14 @@
    - Standard Tailwind configuration with required plugins
    - SPA mode for smoother navigation
    - Role-based access control integrated with Filament
+
+8. **Service Layer Pattern**
+   - Dedicated service classes for external API integrations
+   - Fallback mechanisms for API failures
+   - Consistent error handling
+   - Environment-specific configurations
+   - Configurable timeout settings
+   - Interface-based design for mockability and testing
 
 ## Implementation Guidelines
 1. **Component Creation**
@@ -90,3 +101,12 @@
    - Feature tests for applications
    - Integration tests for API
    - Policy tests for authorization
+   - Mock-based tests for service layer
+
+8. **Service Layer Implementation**
+   - Create service classes in `app/Services` directory
+   - Use dependency injection for configuration
+   - Implement error handling and fallback mechanisms
+   - Document expected behavior clearly
+   - Separate data transformation from data fetching
+   - Cache external data when appropriate

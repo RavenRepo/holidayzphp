@@ -34,6 +34,8 @@
 - **Authentication:**
   - Custom implementation with Laravel's built-in auth
   - Filament authentication integration
+- **External APIs:**
+  - Unsplash API (for travel images)
 - **Future Integrations:**
   - Laravel Scout (for search)
   - Laravel Socialite (social login)
@@ -75,6 +77,14 @@
   - Foreign key constraints
   - Index optimization
 
+### External Services
+- **Unsplash API:**
+  - Used for travel destination images
+  - Requires access key (configured in .env)
+  - Implemented with fallback strategies
+  - Increased timeout settings for reliability
+  - Local development uses SSL verification disabled (to be enabled in production)
+
 ## Dependencies
 
 ### PHP Packages
@@ -109,6 +119,12 @@
 3. Role-based access control implementation
 4. View component development with Blade
 
+### API Integration Strategy
+1. Service classes for external API interactions
+2. Configurable timeout settings based on API responsiveness
+3. Fallback mechanisms for API failures
+4. Environment-specific configuration options
+
 ### Testing Strategy
 1. Feature tests for authentication
 2. Unit tests for RBAC
@@ -124,3 +140,9 @@
 - `composer install` at root level.
 - `npm install` / `npm run dev/build` potentially run within each `apps/*` directory or configured globally.
 - Laravel Artisan commands (`migrate`, `cache:clear`, etc.) run within specific `apps/*` directories.
+
+### Error Handling and Resilience
+1. Graceful degradation for external service failures
+2. Default/fallback content when APIs are unreachable
+3. User-friendly error messages
+4. Comprehensive logging for troubleshooting
