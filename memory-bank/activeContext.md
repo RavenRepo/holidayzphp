@@ -18,6 +18,12 @@
   - Adding fallback placeholder images when API fails
 - Updated HomeController with fixed data structure for destination information
 - Refactored popular-packages.blade.php component to display destination cards in a grid
+- Enhanced user authentication flow:
+  - Updated User model to properly extend CoreUser from the Core package
+  - Added ForgotPasswordController and ResetPasswordController for password recovery
+  - Created password recovery views (forgot-password, reset-password)
+  - Updated header component to show appropriate auth-based navigation
+  - Implemented user dropdown menu with dashboard and logout options
 
 ## Recent Issues and Resolutions
 

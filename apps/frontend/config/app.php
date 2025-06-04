@@ -176,6 +176,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\SQLiteServiceProvider::class,
+        // App\Providers\DatabaseServiceProvider::class,
 
     ],
 

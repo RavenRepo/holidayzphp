@@ -196,4 +196,10 @@ This registry documents all files and directories in the Holidayz Manager monore
 | `/apps/admin/database/migrations/2025_05_09_105805_create_admins_table.php` | File | Migration for the admins table. Now includes id, email, password, timestamps. Used by the admin guard for authentication (see config/auth.php). Related to App\Models\Admin. | N/A | Migration |
 | `/apps/frontend/app/Http/Controllers/Auth/RegisterController.php` | File | User registration controller | Creates new users, assigns 'user' role, validates terms | Used by `/register` route, interacts with User model |
 | `/apps/frontend/resources/views/auth/register.blade.php` | File | User registration form view | Extends layouts/app, includes terms validation | Used by RegisterController, shown at `/register` |
+| `/apps/frontend/app/Http/Controllers/Auth/LoginController.php` | File | User login controller | Handles authentication with web guard | Used by `/login` route, redirects to dashboard |
+| `/apps/frontend/resources/views/auth/login.blade.php` | File | User login form view | Extends layouts/app, includes remember me | Used by LoginController, shown at `/login` |
+| `/apps/frontend/app/Http/Controllers/Auth/ForgotPasswordController.php` | File | Password reset request controller | Sends reset link email | Used by `/forgot-password` route |
+| `/apps/frontend/app/Http/Controllers/Auth/ResetPasswordController.php` | File | Password reset controller | Handles password reset with token | Used by `/reset-password/{token}` route |
+| `/apps/frontend/resources/views/auth/forgot-password.blade.php` | File | Forgot password form view | Extends layouts/app, requests email | Used by ForgotPasswordController |
+| `/apps/frontend/resources/views/auth/reset-password.blade.php` | File | Reset password form view | Extends layouts/app, accepts new password | Used by ResetPasswordController |
 | `/apps/frontend/resources/views/package-details.blade.php` | File | Detailed view of individual travel package | Extends layouts/app, uses package components | Shows package details, gallery, overview, etc. |
